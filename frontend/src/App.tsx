@@ -3,6 +3,7 @@ import { Header } from "./components/Header"
 import { HeaderADM } from "./components/HeaderADM"
 import { HeaderDelivery } from "./components/HeaderDelivery"
 import { Login } from "./pages/Login"
+import { GestADM } from "./pages/GestADM"
 
 import Modal from 'react-modal';
 
@@ -24,7 +25,7 @@ function App() {
     <div className="App">
       <HeaderDelivery />
       <div className="content">
-      <Login />
+      <GestADM />
 
       </div>
     </div>

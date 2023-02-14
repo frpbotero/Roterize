@@ -1,0 +1,8 @@
+.containerCard{
+    display: flex;
+    flex-direction: column;
+    background: #EDF2F7;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
