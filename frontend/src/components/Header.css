@@ -1,0 +1,30 @@
+.containerHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.containerHeader>img{
+    width: 4rem;
+    height: 5
+}
+.containerHeader>button{
+    height: 2rem;
+    width: 5rem;
+    background: rgb(221, 87, 87);
+    color:white;
+    border: none;
+    border-radius: 0.5rem; 
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.containerHeader>button:hover{
+    opacity: 0.7;
+}
+.contentOptionHeader{
+    display: flex;
+    gap:1rem
+}
+
+a{
+    text-decoration: none;
+}
