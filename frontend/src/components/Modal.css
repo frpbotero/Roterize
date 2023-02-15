@@ -10,23 +10,21 @@
 .containerModal{
     display: flex;
     flex-direction: column;
-    width: 90%;
+
 }
 .observationDiv{
     display: flex;
     border: 1px sold black;
     width: 100%;
-    
     align-items: center;
     margin: 1rem 0;
-
-
     height: 4rem;
     
 }
 #observation{
     width: 100%;
     height: 4rem;
+    border-radius: 0.5rem;
 }
 
 .buttonActions{
@@ -86,3 +84,6 @@ table.blueTable {
     color:white;
     border: none;
   }
+
+
+  
