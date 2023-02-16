@@ -1,0 +1,111 @@
+.productContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1em
+}
+.modal{
+    display: flex;
+    flex-direction: column;
+    gap:1em
+}
+.inputClient{
+    display: flex;  
+    height: 2em;
+    background: red;
+    align-items: center;
+}
+.inputClient>label{
+    width: 6em;
+}
+.inputClient>input{
+    border: none;
+    background: transparent;
+}
+
+
+.productName>input{
+    padding-left: 0.5em;
+    height: 1.5em;
+    font-size: large;
+    border-radius: 0.5em;
+
+}
+
+.productName,
+.productData{
+    display: flex;
+    flex-direction: column;
+}
+.productName>label,
+.productData>label{
+    padding: 0 0.5em;
+    font-size: small;
+}
+.productData>textarea{
+    padding-left: 0.5em;
+    height: 5em;
+    border-radius: 0.5em;
+    
+}
+
+
+.buttonsProduct{
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+    gap:3em
+    
+}
+.buttonsProduct button{
+    width: 10rem;
+    border-radius: 2em;
+    height: 3em;
+    border: none;
+    font-size: medium;
+    font-weight: bold;
+    cursor: pointer;
+}
+.buttonsProduct button:first-child{
+    
+    border:1px solid red;
+    color: red;
+    transition: all 0.2s;
+}
+.buttonsProduct button:last-child{
+    border: 1px solid green;
+    color:green;
+    transition: all 0.2s;
+}
+.buttonsProduct button:first-child:hover{
+    background: red;
+    color: white;
+    transition: all 0.2s;
+}
+.buttonsProduct button:last-child:hover{
+    background: green;
+    color: white;
+    transition: all 0.2s;
+}
+@media (max-width:700px) {
+    .modal{
+        width: 70%;
+    }
+    #email{
+        width: auto;
+    }
+    #referencePoint{
+        width: auto;
+    }
+    #complement{
+        width: auto;
+    }
+    .clientData,
+.clientInfo,
+.clientCode,
+.clientAddress,
+.clientSpecification{
+    display: flex;
+    flex-direction: column;
+}
+}   
