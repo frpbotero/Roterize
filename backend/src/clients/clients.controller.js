@@ -21,7 +21,7 @@ async function findById(req, res) {
 }
 async function create(req, res) {
   const client = req.body;
-
+  console.log(client);
   if (
     !client ||
     !client.name ||
