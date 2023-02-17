@@ -13,7 +13,7 @@ async function findById(req, res) {
   if (!isObjectIdValid(id)) {
     return res.status(404).json({ message: "ID inválido!" });
   }
-  const client = await findByIdClients(id);
+  const client = await service.findByIdClient(id);
   if (!client) {
     return res.status(404).json({ message: "Cliente não encontrado!" });
   }
