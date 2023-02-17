@@ -36,7 +36,7 @@ async function updateById(req, res) {
   if (!isObjectIdValid(id)) {
     return res.status(404).json({ message: "ID inválido!" });
   }
-  const product = req.params;
+  const product = req.body;
 
   if (!product || !product.name || !product.description) {
     return res.status(404).json({ message: "Dados inválidos." });
