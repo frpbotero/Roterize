@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <HeaderDelivery />
       <div className="content">
-        <Entregas />
+        <Clientes />
       </div>
     </div>
   )
