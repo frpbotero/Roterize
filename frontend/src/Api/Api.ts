@@ -10,29 +10,25 @@ const api = axios.create({
 })
 
 
-
-
 export const apiService = {
   
 
   clients: {
-    endpoint: function () {
-      return api 
-    },
+    
     createURL: function (body:clients) {
-      return api.post<clients>(this.endpoint()+ "clients/" ,body)
+      return api.post<clients>("/clients" ,body)
     },
     updateURL: function (id:any, body:clients) {
-      return api.put<any>(this.endpoint()+ "clients/"+id,body)
+      return api.put<any>("/clients/"+id,body)
     },
     readAllURL: function () {
-      return api.get<clients>(this.endpoint()+ "clients/")
+      return api.get<clients>("/clients")
     },
     readById: function (id:any) {
-      return api.get<any>(this.endpoint()+ "clients/"+id)
+      return api.get<any>("/clients/"+id)
     },
     deleteURL: function (id:any) {
-      return api.delete<any>(this.endpoint()+ "clients/"+id)
+      return api.delete<any>("/clients/"+id)
     },
   },
   products: {
@@ -56,23 +52,21 @@ export const apiService = {
     },
   },
   delivery: {
-    endpoint: function () {
-      return api+"delivery"
-    },
+   
     createURL: function (body:delivery) {
-      return api.post<delivery>(this.endpoint(),body)
+      return api.post<delivery>("/delivery",body)
     },
     updateURL: function (id:any, body:delivery) {
-      return api.put<any>(this.endpoint()+"/"+id,body)
+      return api.put<any>("/delivery/"+id,body)
     },
     readAllURL: function () {
-      return api.get<delivery>(this.endpoint())
+      return api.get<delivery>("/delivery")
     },
     readById: function (id:any) {
-      return api.get<any>(this.endpoint()+"/"+id)
+      return api.get<any>("/delivery/"+id)
     },
     deleteURL: function (id:any) {
-      return api.delete<any>(this.endpoint()+"/"+id)
+      return api.delete<any>("/delivery/"+id)
     },
   },
 }
