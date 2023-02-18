@@ -9,6 +9,7 @@ import { GestADM } from "./pages/GestADM"
 import { Clientes } from "./pages/Clientes"
 import { Produtos } from "./pages/Produtos"
 import { Entregas } from "./pages/Entregas"
+import { Delivery } from "./pages/Delivery"
 
 import Modal from 'react-modal';
 
@@ -18,7 +19,7 @@ function App() {
     <div className="App">
       <HeaderDelivery />
       <div className="content">
-        <Entregas />
+        <Delivery />
       </div>
     </div>
   )
