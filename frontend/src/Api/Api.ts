@@ -32,23 +32,21 @@ export const apiService = {
     },
   },
   products: {
-    endpoint: function () {
-      return api+"products"
-    },
+    
     createURL: function (body:products) {
-      return api.post<products>(this.endpoint(),body)
+      return api.post<products>("/products/",body)
     },
     updateURL: function (id:any, body:products) {
-      return api.put<any>(this.endpoint()+"/"+id,body)
+      return api.put<any>("/products/:id",body)
     },
     readAllURL: function () {
-      return api.get<products>(this.endpoint())
+      return api.get<products>("/products/")
     },
     readById: function (id:any) {
-      return api.get<any>(this.endpoint()+"/"+id)
+      return api.get<any>("/products/:id")
     },
     deleteURL: function (id:any) {
-      return api.delete<any>(this.endpoint()+"/"+id)
+      return api.delete<any>("/products/:id")
     },
   },
   delivery: {

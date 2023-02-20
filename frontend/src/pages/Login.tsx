@@ -41,6 +41,19 @@ export function Login(){
     function CloseModalDelivery(){
         setIsOpenDelivery(false)
     }
+
+    function loginADM(){
+        localStorage.setItem("user","ADM")
+    }
+    function loginDelivery(){
+        localStorage.setItem("user","Delivery")
+    }
+
+
+
+
+
+
     return(
         <div>
             <div className="containerLogin">
@@ -66,7 +79,7 @@ export function Login(){
                     <div>
                        <img src={pass} alt="" /> <input type="password" placeholder="Senha" />
                     </div>
-                    <button>Login</button>
+                    <button onClick={loginADM}>Login</button>
                 </div>
                 
                 </div>
@@ -88,7 +101,7 @@ export function Login(){
                     <div>
                        <img src={pass} alt="" /> <input type="password" placeholder="Senha" />
                     </div>
-                    <button>Login</button>
+                    <button onClick={loginDelivery}>Login</button>
                 </div>
                 
                 </div>

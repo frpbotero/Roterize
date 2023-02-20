@@ -10,6 +10,7 @@ export function Delivery(){
     function showClients(){
         apiService.delivery.readAllURL().then((response:any)=>{
             setDelivery(response.data)
+            
  
         }).catch((e:Error)=>{
             console.log(e)
@@ -20,16 +21,19 @@ export function Delivery(){
     useEffect(()=>{
         showClients()
     },[])
-
+    
     return(
         <div>
             <h1>Delivery</h1>
             {
-                delivery.map(loan=>(
-                    <Card key={loan.descriptionDelivery} name={loan.client.name} address={`${loan.client.address}, ${loan.client.number} - ${loan.client.district}`}/>
-                ))
-            }
-            {/* Modal */}
+            delivery.map(loan=>(
+                <Card key={loan.descriptionDelivery} 
+                name={loan.client.name} 
+                address={`${loan.client.address}, ${loan.client.number} - ${loan.client.district}`}/>
+    ))
+} 
         </div>
     )
 }
+
+

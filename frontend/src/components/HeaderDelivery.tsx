@@ -2,6 +2,7 @@ import logo  from "../assets/Router2.svg"
 import "./Header.css"
 
 export function HeaderDelivery(){
+    
     return(
         <div className="containerHeader">
         <img src={logo} alt="" />
@@ -9,7 +10,7 @@ export function HeaderDelivery(){
             <input type="date" />
         </div>
 
-        <button>Login</button>
+        <button>Logout</button>
         </div>
     )
 }

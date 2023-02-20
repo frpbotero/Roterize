@@ -1,9 +1,7 @@
 import "./App.css"
 
 import { Home } from "./pages/Home"
-import { Header } from "./components/Header"
-import { HeaderADM } from "./components/HeaderADM"
-import { HeaderDelivery } from "./components/HeaderDelivery"
+
 import { Login } from "./pages/Login"
 import { GestADM } from "./pages/GestADM"
 import { Clientes } from "./pages/Clientes"
@@ -12,14 +10,18 @@ import { Entregas } from "./pages/Entregas"
 import { Delivery } from "./pages/Delivery"
 
 import Modal from 'react-modal';
+import { AppRoutes } from "./routes/Routes"
 
 Modal.setAppElement('#root');
 function App() {
+  
+
+
   return (
     <div className="App">
-      <HeaderDelivery />
+      <AppRoutes/>
       <div className="content">
-        <Delivery />
+        
       </div>
     </div>
   )

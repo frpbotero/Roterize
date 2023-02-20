@@ -1,18 +1,25 @@
+import { Link } from "react-router-dom"
 import logo  from "../assets/Router2.svg"
 import "./Header.css"
 
 export function HeaderADM(){
+    
+    function logout(){
+        localStorage.removeItem("user")
+    }
+    
+
     return(
         <div className="containerHeader">
         <img src={logo} alt="" />
         <div className="contentOptionHeader">
-            <a href="">PRODUTO</a>
-            <a href="">CLIENTE</a>
-            <a href="">CAUTELA</a>
-            <a href="">USUÁRIO</a>
+            <Link to="/produtos">PRODUTO</Link>
+            <Link to="/clientes">CLIENTE</Link>
+            <Link to="/entregas">CAUTELA</Link>
+            {/* <Link to="">USUÁRIO</Link> */}
         </div>
 
-        <button>Login</button>
+        <button onClick={logout}>Logout</button>
         </div>
     )
 }

@@ -1,22 +1,22 @@
 export type clients ={
-    name: string,
-  cnpj: string,
-  numberwhats: number,
-  numbercontact: number,
-  email: string,
-  cep: string,
-  address: string,
-  district: string,
-  number: number,
-  complement: string,
-  referencePoint: string,
+    name: string|null,
+    cnpj: string|null,
+    numberwhats: number|null,
+    numbercontact: number|null,
+    email: string|null,
+    cep: string|null,
+    address: string|null,
+    district: string|null,
+    number: number|null,
+    complement: string|null,
+    referencePoint: string|null,
 }
 export type products={
-    name:string,
-    description:string
+    name:string|null,
+    description:string|null
 }
 export type delivery={
-    client:string,
-    delivery:Array<string>
-    descriptionDelivery:string
+    client:string|null,
+    delivery:Array<string>|null,
+    descriptionDelivery:string|null,
 }
