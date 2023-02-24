@@ -16,7 +16,7 @@ export type products={
     description:string|null
 }
 export type delivery={
-    client:string|null,
+    client:clients|null,
     delivery:Array<string>|null,
     descriptionDelivery:string|null,
 }

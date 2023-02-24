@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const deliverySchema = new mongoose.Schema({
-  client: { type: Object, require: true },
+  client: { type: Array, require: true },
   deliveryList: { type: Array, require: true },
   descriptionDelivery: { type: String, require: true },
 });

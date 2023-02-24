@@ -52,13 +52,13 @@ export const apiService = {
   delivery: {
    
     createURL: function (body:delivery) {
-      return api.post<delivery>("/delivery",body)
+      return api.post<delivery>("/delivery/",body)
     },
     updateURL: function (id:any, body:delivery) {
       return api.put<any>("/delivery/"+id,body)
     },
     readAllURL: function () {
-      return api.get<delivery>("/delivery")
+      return api.get<delivery>("/delivery/")
     },
     readById: function (id:any) {
       return api.get<any>("/delivery/"+id)

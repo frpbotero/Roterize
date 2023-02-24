@@ -83,7 +83,7 @@ export function Clientes(){
                 <div className="clientData">
                     <div>
                     <label htmlFor="CNPJ">CNPJ</label>
-                    <input type="number" name="CNPJ" id="CNPJ"placeholder="99.999.999/9999-99"onChange={e=>setCNPJ(e.target.value)}/>
+                    <input type="text" name="CNPJ" id="CNPJ"placeholder="99.999.999/9999-99"onChange={e=>setCNPJ(e.target.value)}/>
                     </div>
                     <div>
                     <label htmlFor="whatsapp">WhatsApp</label>

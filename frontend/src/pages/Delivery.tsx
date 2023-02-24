@@ -6,13 +6,20 @@ import { clients, delivery } from "../types/types"
 
 export function Delivery(){
     const [delivery,setDelivery] = useState<Array<delivery>>([])
+    const[client,setClient]=useState()
 
-    function showClients(){
-        apiService.delivery.readAllURL().then((response:any)=>{
-            setDelivery(response.data)
+    async function showClients(){
+        await apiService.delivery.readAllURL()
+        .then((response:any)=>{
+            const data = response.data       
             
- 
-        }).catch((e:Error)=>{
+            setDelivery(data)
+           
+          
+        })
+        
+        
+        .catch((e:Error)=>{
             console.log(e)
         })
        
@@ -21,15 +28,15 @@ export function Delivery(){
     useEffect(()=>{
         showClients()
     },[])
-    
+    console.log(delivery)
     return(
         <div>
             <h1>Delivery</h1>
             {
-            delivery.map(loan=>(
+            delivery.map((loan,index)=>(
                 <Card key={loan.descriptionDelivery} 
-                name={loan.client.name} 
-                address={`${loan.client.address}, ${loan.client.number} - ${loan.client.district}`}/>
+                name={loan.client[index].name} 
+                address={`${loan.client[index].address}, ${loan.client[index].number} - ${loan.client[index].district}`}/>
     ))
 } 
         </div>
