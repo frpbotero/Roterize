@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
+import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { GestADM } from "./pages/GestADM";
 import { Clientes } from "./pages/Clientes";
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <Login /> },
+      { path: "/", element: <Home /> },
+      { path: "/login", element: <Login /> },
       { path: "/gestadm", element: <GestADM /> },
       { path: "/client", element: <Clientes /> },
       { path: "/product", element: <Produtos /> },

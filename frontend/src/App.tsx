@@ -1,30 +1,30 @@
-import "./App.css"
+import "./App.css";
 
-import { Home } from "./pages/Home"
+import Modal from "react-modal";
+import { AppRoutes } from "./routes/Routes";
+import { Outlet } from "react-router-dom";
+import { HeaderADM } from "./components/HeaderADM";
+import { HeaderDelivery } from "./components/HeaderDelivery";
+import { Header } from "./components/Header";
 
-import { Login } from "./pages/Login"
-import { GestADM } from "./pages/GestADM"
-import { Clientes } from "./pages/Clientes"
-import { Produtos } from "./pages/Produtos"
-import { Entregas } from "./pages/Entregas"
-import { Delivery } from "./pages/Delivery"
+const oauth = localStorage.getItem("user");
 
-import Modal from 'react-modal';
-import { AppRoutes } from "./routes/Routes"
-
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 function App() {
-  
-
-
   return (
     <div className="App">
-      <AppRoutes/>
+      {!oauth ? (
+        <Header />
+      ) : oauth === "ADM" ? (
+        <HeaderADM />
+      ) : (
+        <HeaderDelivery />
+      )}
       <div className="content">
-        
+        <Outlet />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
