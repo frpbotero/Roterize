@@ -28,3 +28,23 @@
 a{
     text-decoration: none;
 }
+.buttonLogin{
+    height: 2rem;
+    width: 5rem;
+    background: transparent;
+    color:rgb(221, 87, 87);
+    border: 2px solid rgb(221, 87, 87) ;
+    border-radius: 0.5rem; 
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+}
+.buttonLogin:hover{
+   
+    background: rgb(221, 87, 87);
+    color:white;
+   
+    transition: all 0.2s;
+   
+}
