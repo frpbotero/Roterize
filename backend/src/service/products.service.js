@@ -1,4 +1,4 @@
-const Product = require("./products.model");
+const Product = require("../model/products.model");
 
 const ObjectId = require("mongoose").Types.ObjectId;
 

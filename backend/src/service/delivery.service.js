@@ -1,4 +1,4 @@
-const Delivery = require("./delivery.model");
+const Delivery = require("../model/delivery.model");
 
 const ObjectId = require("mongoose").Types.ObjectId;
 

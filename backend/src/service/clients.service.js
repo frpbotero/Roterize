@@ -1,4 +1,4 @@
-const Client = require("./clients.model");
+const Client = require("../model/clients.model");
 
 const ObjectId = require("mongoose").Types.ObjectId;
 

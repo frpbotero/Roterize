@@ -1,4 +1,4 @@
-const service = require("./products.service");
+const service = require("../service/products.service");
 const { isObjectIdValid } = require("../db/database.helper");
 
 //Controller trabalha com as requisições e respostas
