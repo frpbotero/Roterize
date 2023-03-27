@@ -13,3 +13,6 @@ Adicionar novas funcionalidades: Para manter o projeto relevante e interessante,
 Refatorar o código: Refatorar o código ajuda a melhorar a legibilidade e manutenibilidade do projeto. É importante fazer pequenas mudanças incrementais para evitar que o projeto quebre, e ter em mente que a refatoração não deve mudar a funcionalidade do projeto.
 
 Utilizar uma ferramenta de controle de versão: Utilizar uma ferramenta de controle de versão como o Git ajuda a gerenciar as mudanças no projeto, permitindo que os desenvolvedores trabalhem juntos de forma colaborativa e revertam alterações indesejadas.
+
+
+https://community.latromi.com.br/t/como-criar-um-campo-para-assinatura-digital-usando-canvas/63
