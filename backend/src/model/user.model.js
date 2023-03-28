@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-const clientSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: { type: String, require: true },
   cpf: { type: String, require: true },
   function: { type: String, require: true },
 });
-const Client = mongoose.model("Client", clientSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = Client;
+module.exports = User;
