@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { connectToDataBase } = require("./src/db/database.helper");
-const clientsRouter = require("./src/clients/clients.router");
-const productRouter = require("./src/products/products.router");
-const deliveryRouter = require("./src/delivery/delivery.router");
+const clientsRouter = require("./src/router/clients.router");
+const productRouter = require("./src/router/products.router");
+const deliveryRouter = require("./src/router/delivery.router");
+const userRouter = require("./src/router/users.router");
 const cors = require("cors");
 const url = process.env.URL;
 require("dotenv").config();
@@ -26,6 +27,7 @@ async function main() {
   app.use("/clients", clientsRouter);
   app.use("/products", productRouter);
   app.use("/delivery", deliveryRouter);
+  app.use("/users", userRouter);
 
   app.listen(3000, () => {
     console.log("Servidor rodando na porta 3000");

@@ -4,12 +4,12 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
-import { Home } from "../pages/Home";
-import { Login } from "../pages/Login";
-import { Delivery } from "../pages/Delivery";
-import { Produtos } from "../pages/Produtos";
-import { Entregas } from "../pages/Entregas";
-import { Clientes } from "../pages/Clientes";
+import { Home } from "../pages/Home/Home";
+import { Login } from "../pages/Login/Login";
+import { Delivery } from "../pages/Delivery/Delivery";
+import { Produtos } from "../pages/Products/Produtos";
+import { Entregas } from "../pages/Send/Entregas";
+import { Clientes } from "../pages/Clients/Clientes";
 import { Header } from "../components/Header";
 import { HeaderADM } from "../components/HeaderADM";
 import { HeaderDelivery } from "../components/HeaderDelivery";
