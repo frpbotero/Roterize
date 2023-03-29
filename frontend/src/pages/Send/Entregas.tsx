@@ -9,8 +9,8 @@ import {
 } from "../../types/types";
 
 interface Payload {
-  client: any;
-  delivery: any;
+  client: Object;
+  deliveryList: any;
   descriptionDelivery: any;
 }
 
@@ -22,7 +22,7 @@ interface DeliveryList {
 export function Entregas() {
   //variaveis que compõe o payload
   const [product, setProduct] = useState<string>();
-  const [client, setClient] = useState<String>();
+  const [client, setClient] = useState<clientsType | any>({});
   const [qtd, setQtd] = useState<Number>(0);
   const [descriptionLoad, setDescriptionLoad] = useState<string>("");
   const [delivery, setDelivery] = useState<DeliveryList[]>([]);
@@ -58,11 +58,10 @@ export function Entregas() {
     deliveryCar.innerHTML += `<p>${qtd} - ${product} </p>`;
   }
 
-  const infoClient = client;
   async function saveDelivery() {
     const payload: Payload = {
-      client: infoClient ?? { name: "", address: "", number: 0, district: "" },
-      delivery: delivery,
+      client: client,
+      deliveryList: delivery,
       descriptionDelivery: descriptionLoad ?? null,
     };
 
@@ -77,7 +76,7 @@ export function Entregas() {
       <div className="modal">
         <div className="clientName">
           <label htmlFor="name">Nome Cliente</label>
-          <select onChange={(e) => setClient(e.target.value)}>
+          <select onChange={(e) => setClient(JSON.parse(e.target.value))}>
             <option value="">Cliente Fulado de tal</option>
             {clientDB
               ? clientDB.map((cliente: any) => (

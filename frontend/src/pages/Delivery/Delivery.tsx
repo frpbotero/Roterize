@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
 import { apiService } from "../../Api/Api";
-import { Card } from "../../components/Card";
-import { clients, delivery } from "../../types/types";
+import { Card } from "../../components/Card/Card";
+import { clientsType, deliveryType } from "../../types/types";
 
 export function Delivery() {
-  const [delivery, setDelivery] = useState<clients>();
-  const [client, setClient] = useState();
+  const [delivery, setDelivery] = useState<deliveryType[]>([]);
 
-  async function showClients() {
+  async function showDeliveries() {
     await apiService.delivery
       .readAllURL()
       .then((response: any) => {
-        const data = response.data;
-
-        setDelivery(data);
+        setDelivery(response.data);
       })
 
       .catch((e: Error) => {
@@ -22,20 +19,24 @@ export function Delivery() {
   }
 
   useEffect(() => {
-    showClients();
+    showDeliveries();
   }, []);
   console.log(delivery);
   return (
     <div>
       <h1>Delivery</h1>
-      {
-        <Card
-          name={!delivery ? "" : delivery.name}
-          address={`${!delivery ? "" : delivery.address}, ${
-            !delivery ? "" : delivery.number
-          } - ${!delivery ? "" : delivery.district}`}
-        />
-      }
+      {!delivery
+        ? ""
+        : delivery.map((order, index) => (
+            <div key={`${order}${index}`}>
+              <Card
+                address={order.client.address}
+                name={order.client.name}
+                refreshCard={showDeliveries}
+              />
+              ${order.descriptionDelivery}
+            </div>
+          ))}
     </div>
   );
 }
