@@ -22,7 +22,7 @@ export type productsType = {
 export type deliveryType = {
   _id: string;
   client: clientsType;
-  delivery: Array<deliveryList>;
+  deliveryList: Array<deliveryList>;
   descriptionDelivery: string;
   map?: Array<string>;
 };

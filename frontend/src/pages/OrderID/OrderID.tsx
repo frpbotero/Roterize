@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { apiService } from "../../Api/Api";
 import { deliveryType } from "../../types/types";
+import SignatureCanvas from "react-signature-canvas";
 
-type OrderIDProps = {
-  id: string;
-};
+export function OrderID() {
+  const id = localStorage.getItem("idDelivery");
 
-export function OrderID(props: OrderIDProps) {
-  const { id } = props.params;
   const [delivery, setDelivery] = useState<deliveryType>();
+  const [signature, setSignature] = useState<any>(null);
+  const signatureRef = useRef<SignatureCanvas>(null);
 
   useEffect(() => {
     async function fetchDelivery() {
@@ -18,6 +18,15 @@ export function OrderID(props: OrderIDProps) {
     fetchDelivery();
   }, [id]);
 
+  function clearSignature() {
+    signatureRef.current?.clear();
+    setSignature(null);
+  }
+
+  function saveSignature() {
+    setSignature(signatureRef.current?.toDataURL());
+  }
+
   if (!delivery) {
     return <div>Loading...</div>;
   }
@@ -26,15 +35,30 @@ export function OrderID(props: OrderIDProps) {
     <div>
       <h1>Detalhe de pedido</h1>
       <p>Nome: {delivery.client.name}</p>
-      <p>Endereço: {delivery.client.address}</p>
+      <p>
+        Endereço:{" "}
+        {`${delivery.client.address}, ${delivery.client.number} - ${delivery.client.district}`}
+      </p>
       <p>Descrição: {delivery.descriptionDelivery}</p>
       <ul>
-        {delivery.delivery.map((items: any) => (
-          <li>
+        {delivery.deliveryList.map((items: any, index: number) => (
+          <li key={`${items}${index}`}>
             {items.product} - {items.qtd}
           </li>
         ))}
       </ul>
+      <div>
+        <div>
+          <SignatureCanvas ref={signatureRef} />
+          <button onClick={clearSignature}>Limpar</button>
+          <button onClick={saveSignature}>Salvar</button>
+        </div>
+        {signature && (
+          <div>
+            <img src={signature} alt="Assinatura" />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

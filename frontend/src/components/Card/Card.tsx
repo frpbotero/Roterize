@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./Card.css";
 
@@ -12,17 +12,23 @@ type CardProps = {
 
 export function Card({ name, address, refreshCard, id }: CardProps) {
   const [clientInfo, setClientInfo] = useState();
-
+  const navigate = useNavigate();
   //   async function ShowClient(id) {}
 
   //Função para atualizar o estado da entrega
+  function saveLocalStorageID() {
+    localStorage.setItem("idDelivery", id);
+    const idTarget: any = localStorage.getItem("idDelivery");
+    navigate(`/destiny`);
+  }
 
   return (
     <div className="containerCard">
       <div>
-        <Link to={`/delivery/${id}`}>
+        <button onClick={saveLocalStorageID}>
           <h3 className="clientName">{name}</h3>
-        </Link>
+        </button>
+
         <h3 className="clientName">{id}</h3>
         <p className="clientAddress">{address} </p>
       </div>
