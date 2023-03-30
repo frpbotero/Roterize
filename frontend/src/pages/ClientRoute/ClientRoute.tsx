@@ -3,7 +3,7 @@ import { apiService } from "../../Api/Api";
 import { Card } from "../../components/Card/Card";
 import { clientsType, deliveryType } from "../../types/types";
 
-export function Delivery() {
+export function ClientRoute() {
   const [delivery, setDelivery] = useState<deliveryType[]>([]);
 
   async function showDeliveries() {
@@ -33,8 +33,8 @@ export function Delivery() {
                 address={order.client.address}
                 name={order.client.name}
                 refreshCard={showDeliveries}
+                id={order._id}
               />
-              ${order.descriptionDelivery}
             </div>
           ))}
     </div>

@@ -19,7 +19,7 @@ interface DeliveryList {
   product: string;
 }
 
-export function Entregas() {
+export function Order() {
   //variaveis que compõe o payload
   const [product, setProduct] = useState<string>();
   const [client, setClient] = useState<clientsType | any>({});

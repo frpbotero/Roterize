@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 import { Home } from "../pages/Home/Home";
 import { Login } from "../pages/Login/Login";
-import { Delivery } from "../pages/Delivery/Delivery";
+import { Delivery } from "../pages/ClientRoute/ClientRoute";
 import { Produtos } from "../pages/Products/Produtos";
-import { Entregas } from "../pages/Send/Entregas";
+import { Entregas } from "../pages/Order/Order";
 import { Clientes } from "../pages/Clients/Clientes";
 import { Header } from "../components/Header";
 import { HeaderADM } from "../components/HeaderADM";

@@ -3,9 +3,9 @@ import "./App.css";
 import Modal from "react-modal";
 import { AppRoutes } from "./routes/Routes";
 import { Outlet } from "react-router-dom";
-import { HeaderADM } from "./components/HeaderADM";
-import { HeaderDelivery } from "./components/HeaderDelivery";
-import { Header } from "./components/Header";
+import { HeaderADM } from "./components/Header/HeaderADM";
+import { HeaderDelivery } from "./components/Header/HeaderDelivery";
+import { Header } from "./components/Header/Header";
 
 const oauth = localStorage.getItem("user");
 

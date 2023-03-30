@@ -7,9 +7,10 @@ import { Login } from "./pages/Login/Login";
 import { GestADM } from "./pages/ADM/GestADM";
 import { Clientes } from "./pages/Clients/Clientes";
 import { Produtos } from "./pages/Products/Produtos";
-import { Entregas } from "./pages/Send/Entregas";
-import { Delivery } from "./pages/Delivery/Delivery";
+import { Order } from "./pages/Order/Order";
+import { ClientRoute } from "./pages/ClientRoute/ClientRoute";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { OrderID } from "./pages/OrderID/OrderID";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,9 @@ const router = createBrowserRouter([
       { path: "/gestadm", element: <GestADM /> },
       { path: "/client", element: <Clientes /> },
       { path: "/product", element: <Produtos /> },
-      { path: "/route", element: <Entregas /> },
-      { path: "/delivery", element: <Delivery /> },
+      { path: "/order", element: <Order /> },
+      { path: "/delivery", element: <ClientRoute /> },
+      { path: "/delivery/:id", element: <OrderID /> },
     ],
   },
 ]);
