@@ -1,13 +1,16 @@
 import { useEffect, useState, useRef } from "react";
 import { apiService } from "../../Api/Api";
 import { deliveryType } from "../../types/types";
+//Biblioteca para assinatura
 import SignatureCanvas from "react-signature-canvas";
 
 export function OrderID() {
   const id = localStorage.getItem("idDelivery");
 
   const [delivery, setDelivery] = useState<deliveryType>();
+  //Criando uma estado para armazenar a assinatura
   const [signature, setSignature] = useState<any>(null);
+  //Utilizando o Ref para trabalhar referencia dentro do componente
   const signatureRef = useRef<SignatureCanvas>(null);
 
   useEffect(() => {
@@ -26,6 +29,8 @@ export function OrderID() {
   function saveSignature() {
     setSignature(signatureRef.current?.toDataURL());
   }
+
+  function updateDelivery() {}
 
   if (!delivery) {
     return <div>Loading...</div>;
@@ -51,7 +56,7 @@ export function OrderID() {
         <div>
           <SignatureCanvas ref={signatureRef} />
           <button onClick={clearSignature}>Limpar</button>
-          <button onClick={saveSignature}>Salvar</button>
+          <button onClick={saveSignature}>Assinar</button>
         </div>
         {signature && (
           <div>
@@ -59,6 +64,7 @@ export function OrderID() {
           </div>
         )}
       </div>
+      <button>Salvar</button>
     </div>
   );
 }

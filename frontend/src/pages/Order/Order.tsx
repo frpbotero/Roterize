@@ -12,6 +12,7 @@ interface Payload {
   client: Object;
   deliveryList: any;
   descriptionDelivery: any;
+  status: string;
 }
 
 interface DeliveryList {
@@ -63,6 +64,7 @@ export function Order() {
       client: client,
       deliveryList: delivery,
       descriptionDelivery: descriptionLoad ?? null,
+      status: "Em Rota",
     };
 
     await apiService.delivery
