@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 //Biblioteca para assinatura
 import SignatureCanvas from "react-signature-canvas";
 
+import "./styles.css";
+
 export function OrderID() {
   const id = localStorage.getItem("idDelivery");
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ export function OrderID() {
   }
 
   return (
-    <div>
+    <div className="OrderIDContainer">
       <h1>Detalhe de pedido</h1>
       <p>Nome: {delivery.client.name}</p>
       <p>
@@ -63,7 +65,7 @@ export function OrderID() {
         ))}
       </ul>
       <div>
-        <div>
+        <div className="signatureCanvas">
           <SignatureCanvas ref={signatureRef} />
           <button onClick={clearSignature}>Limpar</button>
           <button onClick={saveSignature}>Assinar</button>

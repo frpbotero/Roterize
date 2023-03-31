@@ -52,7 +52,7 @@ export function Header() {
           <button onClick={logout}>Logout</button>
         </div>
       ) : (
-        <div>
+        <div className="containerHeader">
           <div className="contentOptionHeader">
             <input type="date" />
             <Link to="/delivery">Go</Link>

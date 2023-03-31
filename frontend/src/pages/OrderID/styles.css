@@ -1,0 +1,10 @@
+.OrderIDContainer{
+    width: 70vw;
+}
+
+.signatureCanvas {
+    border: 1px solid #ccc; /* Adiciona uma borda */
+    background-color: #fff; /* Define a cor de fundo */
+    width: 100%; /* Define a largura */
+    height: 300px; /* Define a altura */
+  }

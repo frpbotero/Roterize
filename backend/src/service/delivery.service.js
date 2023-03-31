@@ -3,7 +3,9 @@ const Delivery = require("../model/delivery.model");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 function findAllDelivery() {
-  return Delivery.find().select("_id client deliveryList descriptionDelivery ");
+  return Delivery.find().select(
+    "_id client deliveryList descriptionDelivery status signature"
+  );
 }
 function findByIdDeveliry(id) {
   const objectId = new ObjectId(id);
