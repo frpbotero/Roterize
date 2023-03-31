@@ -1,18 +1,98 @@
-Para melhorar o projeto Roterize, algumas sugestões são:
+# Roterize <img src="https://github.com/FeBotero/Roterize/blob/main/frontend/public/Router1.svg" alt="Roterize">
 
-Adicionar documentação clara e completa: Uma documentação clara e completa ajuda outros desenvolvedores a entenderem o objetivo e a funcionalidade do projeto. Também ajuda na manutenção e evolução do projeto.
+![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/iuricode/README-template?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
 
-Melhorar a organização do código: É importante que o código seja organizado e fácil de entender. Isso inclui a estrutura de pastas, nomes de arquivos e funções, e também o uso de comentários para explicar partes mais complexas do código.
+<img src="https://github.com/FeBotero/Roterize/blob/main/frontend/public/Home.png" alt="Roterize">
 
-Adicionar testes automatizados: Testes automatizados ajudam a garantir que o projeto esteja funcionando corretamente em diferentes cenários e evitam regressões. É possível adicionar testes unitários para cada função ou método, além de testes de integração para verificar o comportamento do sistema como um todo.
+Projeto consiste em um sistema de controle de entrega, onde foi adicionado um campo de coleta de assinatura de recebimento. O usuário pode cadastrar os produtos, clientes e pedidos para ser entregue. Onde possui uma interface para Administrador e outra para o Entregador, filtrando todos os pedidos do dia e sua rota.
 
-Utilizar boas práticas de segurança: Se o projeto lida com dados sensíveis ou informações confidenciais, é importante utilizar boas práticas de segurança, como criptografia e autenticação de usuários.
+### Ajustes e melhorias
 
-Adicionar novas funcionalidades: Para manter o projeto relevante e interessante, é importante adicionar novas funcionalidades de acordo com as necessidades dos usuários. Isso pode ser feito através do uso de feedback dos usuários ou análise de tendências de mercado.
+O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-Refatorar o código: Refatorar o código ajuda a melhorar a legibilidade e manutenibilidade do projeto. É importante fazer pequenas mudanças incrementais para evitar que o projeto quebre, e ter em mente que a refatoração não deve mudar a funcionalidade do projeto.
+- [x] Assinatura de Recebimento
+- [x] CRUD produtos, clientes e pedidos
+- [x] Responsividade Delivery Mobile
+- [ ] Filtro delivery por data
+- [ ] Organização de rota arrastavel
+- [ ] Criaçaõ de PDF
+- [ ] Autenticação com JWT
 
-Utilizar uma ferramenta de controle de versão: Utilizar uma ferramenta de controle de versão como o Git ajuda a gerenciar as mudanças no projeto, permitindo que os desenvolvedores trabalhem juntos de forma colaborativa e revertam alterações indesejadas.
+## 💻 Pré-requisitos
+
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+
+* Você precisar criar um conta no Atlas MongoDB, em seguida criar um projeto para iniciar o backend.
+* Crie um arquivo env com as variaveis de ambiente, adicionando como URL o endereço do seu projeto no Atlas MongoDB
 
 
-https://community.latromi.com.br/t/como-criar-um-campo-para-assinatura-digital-usando-canvas/63
+## 🚀 Instalando <Roterize>
+
+Para instalar o <Roterize>, siga estas etapas:
+
+<p>1 - Clone o repositório</p>
+   
+`$ git clone https://github.com/FeBotero/Roterize.git`
+
+<p>2 - Acesse no repositório localmente</p>
+
+`$ cd Roterize`
+
+<h3>Agora vamos instalar as dependencia do backend e do frontend.</h3>
+
+<p>3 - selecione o backend do repositório</p>
+
+`$ cd backend`
+
+<p>4 - Instale as dependências</p>
+
+`$ npm install`
+
+<p>5 - selecione o frontend do repositório</p>
+
+`$ cd frontend`
+
+<p>6 - Instale as dependências</p>
+
+`$ npm install`
+
+<p>7 - Acesse novamente o backend e o backend da aplicação</p>
+
+`$ npm start`
+
+<p>8 - Acesse novamente o frontend e o frontend da aplicação</p>
+
+`$ npm start`
+
+      
+```
+
+## ☕ Usando Roterize
+
+Para usar Roterize, siga estas etapas:
+
+Para iniciar o uso do Roterize, é necessario a criação de uma conta no Atlas MongoDB, para que seja criado um banco de dados MongoDB hospedado neste dominio. Apos isso será necessario criar um arquivo env para inputar o caminho de conexão com o DB.
+
+Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
+
+## 📫 Contribuindo para <nome_do_projeto>
+<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
+Para contribuir com <nome_do_projeto>, siga estas etapas:
+
+1. Bifurque este repositório.
+2. Crie um branch: `git checkout -b <nome_branch>`.
+3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
+4. Envie para o branch original: `git push origin <Roterize> / <local>`
+5. Crie a solicitação de pull.
+
+Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+
+
+
+
+
