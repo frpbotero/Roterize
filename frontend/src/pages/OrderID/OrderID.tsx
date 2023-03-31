@@ -1,12 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { apiService } from "../../Api/Api";
 import { deliveryType } from "../../types/types";
+import { useNavigate } from "react-router-dom";
 //Biblioteca para assinatura
 import SignatureCanvas from "react-signature-canvas";
 
 export function OrderID() {
   const id = localStorage.getItem("idDelivery");
-
+  const navigate = useNavigate();
   const [delivery, setDelivery] = useState<deliveryType>();
   //Criando uma estado para armazenar a assinatura
   const [signature, setSignature] = useState<any>(null);
@@ -30,7 +31,16 @@ export function OrderID() {
     setSignature(signatureRef.current?.toDataURL());
   }
 
-  function updateDelivery() {}
+  function updateDelivery() {
+    const payload = {
+      status: "Entregue",
+      signature: signature,
+    };
+
+    apiService.delivery.updateURL(id, payload);
+
+    navigate("/delivery");
+  }
 
   if (!delivery) {
     return <div>Loading...</div>;
@@ -64,7 +74,7 @@ export function OrderID() {
           </div>
         )}
       </div>
-      <button>Salvar</button>
+      <button onClick={updateDelivery}>Salvar</button>
     </div>
   );
 }

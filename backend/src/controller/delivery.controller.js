@@ -43,12 +43,7 @@ async function updateById(req, res) {
   }
   const delivery = req.body;
 
-  if (
-    !delivery ||
-    !delivery.client ||
-    !delivery.deliveryList ||
-    !delivery.descriptionDelivery
-  ) {
+  if (!delivery) {
     return res.status(404).json({ message: "Dados inválidos." });
   }
 

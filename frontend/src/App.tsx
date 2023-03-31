@@ -1,7 +1,7 @@
 import "./App.css";
 
 import Modal from "react-modal";
-import { AppRoutes } from "./routes/Routes";
+
 import { Outlet } from "react-router-dom";
 import { HeaderADM } from "./components/Header/HeaderADM";
 import { HeaderDelivery } from "./components/Header/HeaderDelivery";
@@ -13,13 +13,7 @@ Modal.setAppElement("#root");
 function App() {
   return (
     <div className="App">
-      {!oauth ? (
-        <Header />
-      ) : oauth === "ADM" ? (
-        <HeaderADM />
-      ) : (
-        <HeaderDelivery />
-      )}
+      <Header />
       <div className="content">
         <Outlet />
       </div>

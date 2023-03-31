@@ -1,0 +1,10 @@
+.homeContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+.logoHome{
+    height: 60%;
+
+}

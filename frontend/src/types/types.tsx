@@ -1,5 +1,5 @@
 export type clientsType = {
-  _id: string;
+  _id?: string;
   name: string | null;
   cnpj: string | null;
   numberwhats: number | null;
@@ -14,13 +14,13 @@ export type clientsType = {
   map?: Array<string>;
 };
 export type productsType = {
-  _id: string;
+  _id?: string;
   name: string | null;
   description: string | null;
   map?: Array<string>;
 };
 export type deliveryType = {
-  _id: string;
+  _id?: string;
   client: clientsType;
   deliveryList: Array<deliveryList>;
   descriptionDelivery: string;

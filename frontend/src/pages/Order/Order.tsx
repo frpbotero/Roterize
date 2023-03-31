@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Clientes.css";
 import { apiService } from "../../Api/Api";
-import {
-  clientsType,
-  deliveryType,
-  productsType,
-  deliveryList,
-} from "../../types/types";
+import { clientsType, productsType } from "../../types/types";
 
 interface Payload {
   client: Object;
@@ -59,6 +54,13 @@ export function Order() {
     deliveryCar.innerHTML += `<p>${qtd} - ${product} </p>`;
   }
 
+  const productSelect = document.getElementById(
+    "productSelect"
+  ) as HTMLInputElement;
+  const QtdProduct = document.getElementById("quantidade") as HTMLInputElement;
+  const description = document.getElementById(
+    "deliverDescription"
+  ) as HTMLInputElement;
   async function saveDelivery() {
     const payload: Payload = {
       client: client,
@@ -71,6 +73,10 @@ export function Order() {
       .createURL(payload)
       .then((response) => alert(response.data))
       .catch((error) => console.log(error));
+
+    productSelect.value = "";
+    QtdProduct.value = "";
+    description.value = "";
   }
 
   return (
@@ -78,8 +84,9 @@ export function Order() {
       <div className="modal">
         <div className="clientName">
           <label htmlFor="name">Nome Cliente</label>
-          <select onChange={(e) => setClient(JSON.parse(e.target.value))}>
-            <option value="">Cliente Fulado de tal</option>
+          <select
+            id="clientName"
+            onChange={(e) => setClient(JSON.parse(e.target.value))}>
             {clientDB
               ? clientDB.map((cliente: any) => (
                   <option key={cliente._id} value={JSON.stringify(cliente)}>
@@ -92,8 +99,9 @@ export function Order() {
         <div className="deliveryData">
           <div>
             <label htmlFor="produto">Produto</label>
-            <select onChange={(e) => setProduct(e.target.value)}>
-              <option value="">Caixa de papelão</option>
+            <select
+              id="productSelect"
+              onChange={(e) => setProduct(e.target.value)}>
               {productsBD
                 ? productsBD.map((product: any) => (
                     <option key={product._id} value={product.name}>
@@ -114,6 +122,7 @@ export function Order() {
         <div id="deliveryInfo"></div>
         <div className="deliveryDescription">
           <textarea
+            id="deliverDescription"
             name="deliverDescription"
             onChange={(e) => setDescriptionLoad(e.target.value)}></textarea>
         </div>
