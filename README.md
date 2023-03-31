@@ -1,4 +1,4 @@
-# Roterize <img src="https://github.com/FeBotero/Roterize/blob/main/frontend/public/Router1.svg" alt="Roterize">
+# Roterize <img src="https://github.com/FeBotero/Roterize/blob/main/frontend/public/Router1.svg"  width="120" alt="Roterize">
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
