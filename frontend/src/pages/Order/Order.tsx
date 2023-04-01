@@ -77,6 +77,7 @@ export function Order() {
     productSelect.value = "";
     QtdProduct.value = "";
     description.value = "";
+    console.log(payload);
   }
 
   return (
@@ -93,7 +94,7 @@ export function Order() {
                     {cliente.name}
                   </option>
                 ))
-              : ""}
+              : "Carregando..."}
           </select>
         </div>
         <div className="deliveryData">
@@ -108,7 +109,7 @@ export function Order() {
                       {product.name}
                     </option>
                   ))
-                : ""}
+                : "Carregando..."}
             </select>
             <label htmlFor="quantidade">Quantidade</label>
             <input
