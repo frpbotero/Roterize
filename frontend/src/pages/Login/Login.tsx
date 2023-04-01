@@ -38,10 +38,10 @@ export function Login() {
   }
 
   function loginADM() {
-    localStorage.setItem("user", "ADM");
+    localStorage.setItem("User", "ADM");
   }
   function loginDelivery() {
-    localStorage.setItem("user", "Delivery");
+    localStorage.setItem("User", "Delivery");
   }
 
   return (
