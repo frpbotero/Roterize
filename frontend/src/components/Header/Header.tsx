@@ -1,14 +1,16 @@
 import { useState } from "react";
 import logo from "../../assets/router2.svg";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Header() {
   const oauth = localStorage.getItem("User");
+  const navigate = useNavigate();
 
   const [activeLink, setActiveLink] = useState<any>(null); // adicione o estado
   function logout() {
     localStorage.removeItem("user");
+    navigate("/");
   }
   return (
     <div className="containerHeader">

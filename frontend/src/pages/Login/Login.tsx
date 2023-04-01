@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Modal from "react-modal";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 import adm from "../../assets/adm.png";
 import delivery from "../../assets/delivery.png";
@@ -24,6 +25,7 @@ export function Login() {
   const [modaIsOpen, setIsOpen] = useState(false);
   const [modaIsOpenDelivery, setIsOpenDelivery] = useState(false);
 
+  const navigate = useNavigate();
   function openModal() {
     setIsOpen(true);
   }
@@ -39,9 +41,11 @@ export function Login() {
 
   function loginADM() {
     localStorage.setItem("User", "ADM");
+    navigate("/adm");
   }
   function loginDelivery() {
     localStorage.setItem("User", "Delivery");
+    navigate("/delivery");
   }
 
   return (
