@@ -12,19 +12,21 @@ export type clientsType = {
   complement: string | null;
   referencePoint: string | null;
   map?: Array<string>;
+  message?: string;
 };
 export type productsType = {
   _id?: string;
   name: string | null;
   description: string | null;
   map?: Array<string>;
+  message?: string;
 };
 export type deliveryType = {
   _id?: string;
   client: clientsType;
   deliveryList: Array<deliveryList>;
   descriptionDelivery: string;
-  signature: string;
+  signature?: string;
   status: string;
   map?: Array<string>;
 };

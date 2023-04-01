@@ -3,8 +3,6 @@ import "./App.css";
 import Modal from "react-modal";
 
 import { Outlet } from "react-router-dom";
-import { HeaderADM } from "./components/Header/HeaderADM";
-import { HeaderDelivery } from "./components/Header/HeaderDelivery";
 import { Header } from "./components/Header/Header";
 
 const oauth = localStorage.getItem("user");

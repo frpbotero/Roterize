@@ -34,7 +34,7 @@ export function OrderID() {
   }
 
   function updateDelivery() {
-    const payload = {
+    const payload: any = {
       status: "Entregue",
       signature: signature,
     };

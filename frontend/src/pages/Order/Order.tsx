@@ -4,7 +4,7 @@ import { apiService } from "../../Api/Api";
 import { clientsType, productsType } from "../../types/types";
 
 interface Payload {
-  client: Object;
+  client: clientsType;
   deliveryList: any;
   descriptionDelivery: any;
   status: string;
@@ -25,7 +25,7 @@ export function Order() {
 
   //Variaiveis que armazenam as informações do DB
   const [clientDB, setClientDB] = useState<clientsType | any>();
-  const [productsBD, setProductsBD] = useState<productsType[]>([]);
+  const [productsBD, setProductsBD] = useState<productsType[] | any>([]);
 
   async function showClientsProducts() {
     await apiService.clients
