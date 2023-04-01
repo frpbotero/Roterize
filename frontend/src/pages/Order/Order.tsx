@@ -88,6 +88,7 @@ export function Order() {
           <select
             id="clientName"
             onChange={(e) => setClient(JSON.parse(e.target.value))}>
+            <option>Selecione um cliente</option>
             {clientDB
               ? clientDB.map((cliente: any) => (
                   <option key={cliente._id} value={JSON.stringify(cliente)}>
@@ -103,6 +104,7 @@ export function Order() {
             <select
               id="productSelect"
               onChange={(e) => setProduct(e.target.value)}>
+              <option>Selecione um produto</option>
               {productsBD
                 ? productsBD.map((product: any) => (
                     <option key={product._id} value={product.name}>
