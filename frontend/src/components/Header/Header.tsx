@@ -9,7 +9,7 @@ export function Header() {
 
   const [activeLink, setActiveLink] = useState<any>(null); // adicione o estado
   function logout() {
-    localStorage.removeItem("user");
+    localStorage.removeItem("User");
     navigate("/");
   }
   return (
