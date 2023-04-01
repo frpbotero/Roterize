@@ -1,71 +1,63 @@
-
-import axios from "axios"
-import { clients, delivery, products } from "../types/types";
+import axios from "axios";
+import { clientsType, deliveryType, productsType } from "../types/types";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000/",
-  headers:{
-    "Content-Type":"application/json"
-  }
-})
-
+  baseURL: "https://roterize.onrender.com",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 export const apiService = {
-  
-
   clients: {
-    
-    createURL: function (body:clients) {
-      return api.post<clients>("/clients" ,body)
+    createURL: function (body: clientsType) {
+      return api.post<clientsType>("/clients", body);
     },
-    updateURL: function (id:any, body:clients) {
-      return api.put<any>("/clients/"+id,body)
+    updateURL: function (id: any, body: clientsType) {
+      return api.put<any>("/clients/" + id, body);
     },
     readAllURL: function () {
-      return api.get<clients>("/clients")
+      return api.get<clientsType>("/clients");
     },
-    readById: function (id:any) {
-      return api.get<any>("/clients/"+id)
+    readById: function (id: any) {
+      return api.get<any>("/clients/" + id);
     },
-    deleteURL: function (id:any) {
-      return api.delete<any>("/clients/"+id)
+    deleteURL: function (id: any) {
+      return api.delete<any>("/clients/" + id);
     },
   },
   products: {
-    
-    createURL: function (body:products) {
-      return api.post<products>("/products/",body)
+    createURL: function (body: productsType) {
+      return api.post<productsType>("/products/", body);
     },
-    updateURL: function (id:any, body:products) {
-      return api.put<any>("/products/:id",body)
+    updateURL: function (id: any, body: productsType) {
+      return api.put<any>("/products/:id", body);
     },
     readAllURL: function () {
-      return api.get<products>("/products/")
+      return api.get<productsType>("/products/");
     },
-    readById: function (id:any) {
-      return api.get<any>("/products/:id")
+    readById: function (id: any) {
+      return api.get<any>("/products/:id");
     },
-    deleteURL: function (id:any) {
-      return api.delete<any>("/products/:id")
+    deleteURL: function (id: any) {
+      return api.delete<any>("/products/:id");
     },
   },
   delivery: {
-   
-    createURL: function (body:delivery) {
-      return api.post<delivery>("/delivery/",body)
+    createURL: function (body: deliveryType) {
+      return api.post<deliveryType>("/delivery/", body);
     },
-    updateURL: function (id:any, body:delivery) {
-      return api.put<any>("/delivery/"+id,body)
+    updateURL: function (id: any, body: deliveryType) {
+      return api.put<any>("/delivery/" + id, body);
     },
     readAllURL: function () {
-      return api.get<delivery>("/delivery/")
+      return api.get<deliveryType>("/delivery/");
     },
-    readById: function (id:any) {
-      return api.get<any>("/delivery/"+id)
+    readById: function (id: any) {
+      return api.get<any>("/delivery/" + id);
     },
-    deleteURL: function (id:any) {
-      return api.delete<any>("/delivery/"+id)
+    deleteURL: function (id: any) {
+      return api.delete<any>("/delivery/" + id);
     },
   },
-}
-
+};
