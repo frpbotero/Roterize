@@ -41,7 +41,7 @@ export function Login() {
 
   function loginADM() {
     localStorage.setItem("User", "ADM");
-    navigate("/adm");
+    navigate("/product");
   }
   function loginDelivery() {
     localStorage.setItem("User", "Delivery");
