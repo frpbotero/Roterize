@@ -17,7 +17,7 @@ async function findById(req, res) {
   if (!delivery) {
     return res.status(404).json({ message: "Entrega não encontrada!" });
   }
-  res.json(delivery);
+  res.status(200).json(delivery);
 }
 async function create(req, res) {
   const delivery = req.body;
@@ -25,6 +25,7 @@ async function create(req, res) {
   if (
     !delivery ||
     !delivery.client ||
+    delivery.client == "" ||
     !delivery.deliveryList ||
     !delivery.descriptionDelivery
   ) {
