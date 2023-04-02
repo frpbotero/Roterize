@@ -1,4 +1,5 @@
-# Roterize 
+# Roterize
+
 <img src="https://github.com/FeBotero/Roterize/blob/main/frontend/public/Router1.svg"  width="120" alt="Roterize">
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
@@ -18,7 +19,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Assinatura de Recebimento
 - [x] CRUD produtos, clientes e pedidos
 - [x] Responsividade Delivery Mobile
-- [ ] Filtro delivery por data
+- [ ] Filtro delivery por data(Ano/Mês/Dia), por empresa
 - [ ] Organização de rota arrastavel
 - [ ] Criaçaõ de PDF
 - [ ] Autenticação com JWT
@@ -27,9 +28,8 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-* Você precisar criar um conta no Atlas MongoDB, em seguida criar um projeto para iniciar o backend.
-* Crie um arquivo env com as variaveis de ambiente, adicionando como URL o endereço do seu projeto no Atlas MongoDB
-
+- Você precisar criar um conta no Atlas MongoDB, em seguida criar um projeto para iniciar o backend.
+- Crie um arquivo env com as variaveis de ambiente, adicionando como URL o endereço do seu projeto no Atlas MongoDB
 
 ## 🚀 Instalando <Roterize>
 
@@ -69,20 +69,20 @@ Para instalar o <Roterize>, siga estas etapas:
 
 `$ npm start`
 
-      
 ```
 
 ## ☕ Usando Roterize
 
 Para usar Roterize, siga estas etapas:
 
-Para iniciar o uso do Roterize, é necessario a criação de uma conta no Atlas MongoDB, para que seja criado um banco de dados MongoDB hospedado neste dominio. Apos isso será necessario criar um arquivo env para inputar o caminho de conexão com o DB.
+Para iniciar o uso do Roterize, é necessario a criação de uma conta no Atlas MongoDB, para que seja criado um banco de dados MongoDB hospedado neste dominio. Apos isso será necessario criar um arquivo env para inputar o caminho de conexão com o DB, atraves de uma variavel de ambiente "URL".
 
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
+Hoje o sistema ainda não conta com autenticação, então assim que você acessar o login, pode apenas clicar em login que vai ser redirecionado para area de usuário.
+O sistema contem um formulario de assinatura, onde durante a entrega o usuario pode coletar assinatura de quem está recebendo.
 
-## 📫 Contribuindo para <nome_do_projeto>
-<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
-Para contribuir com <nome_do_projeto>, siga estas etapas:
+## 📫 Contribuindo para <Roterize>
+
+Para contribuir com <Roterize>, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b <nome_branch>`.
@@ -97,3 +97,4 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
 
 
 
+```
