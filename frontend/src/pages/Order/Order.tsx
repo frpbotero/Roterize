@@ -61,6 +61,7 @@ export function Order() {
   const description = document.getElementById(
     "deliverDescription"
   ) as HTMLInputElement;
+
   async function saveDelivery() {
     const payload: Payload = {
       client: client,
@@ -71,7 +72,9 @@ export function Order() {
 
     await apiService.delivery
       .createURL(payload)
-      .then((response) => alert(response.data))
+      .then((response) => {
+        alert(response.data.message);
+      })
       .catch((error) => console.log(error));
 
     productSelect.value = "";

@@ -51,28 +51,36 @@ export function OrderID() {
   return (
     <div className="OrderIDContainer">
       <h1>Detalhe de pedido</h1>
-      <p>Nome: {delivery.client.name}</p>
-      <p>
-        Endereço:{" "}
-        {`${delivery.client.address}, ${delivery.client.number} - ${delivery.client.district}`}
-      </p>
-      <p>Descrição: {delivery.descriptionDelivery}</p>
-      <ul>
-        {delivery.deliveryList.map((items: any, index: number) => (
-          <li key={`${items}${index}`}>
-            {items.product} - {items.qtd}
-          </li>
-        ))}
-      </ul>
       <div>
-        <div className="signatureCanvas">
-          <SignatureCanvas ref={signatureRef} />
+        <p>Cliente: {delivery.client.name}</p>
+        <p>
+          Endereço:{" "}
+          {`${delivery.client.address}, ${delivery.client.number} - ${delivery.client.district}`}
+        </p>
+        <p>Descrição: {delivery.descriptionDelivery}</p>
+        <ul>
+          {delivery.deliveryList.map((items: any, index: number) => (
+            <li key={`${items}${index}`}>
+              {items.product} - {items.qtd}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <div>
+          <div>
+            <SignatureCanvas
+              ref={signatureRef}
+              canvasProps={{ className: "sigCanvas" }}
+            />
+          </div>
           <button onClick={clearSignature}>Limpar</button>
           <button onClick={saveSignature}>Assinar</button>
         </div>
         {signature && (
-          <div>
+          <div className="signature">
             <img src={signature} alt="Assinatura" />
+            <p>Responsável</p>
           </div>
         )}
       </div>

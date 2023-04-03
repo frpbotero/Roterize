@@ -29,6 +29,7 @@ export type deliveryType = {
   signature?: string;
   status: string;
   map?: Array<string>;
+  message?: string;
 };
 export type deliveryList = {
   _id: string;

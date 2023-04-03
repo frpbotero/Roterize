@@ -51,7 +51,9 @@ export function Header() {
             {/* <Link to="">USUÁRIO</Link> */}
           </div>
 
-          <button onClick={logout}>Logout</button>
+          <button className="buttonlogout" onClick={logout}>
+            Logout
+          </button>
         </div>
       ) : (
         <div className="containerHeader">
@@ -60,7 +62,9 @@ export function Header() {
             <Link to="/delivery">Go</Link>
           </div>
 
-          <button onClick={logout}>Logout</button>
+          <button className="buttonlogout" onClick={logout}>
+            Logout
+          </button>
         </div>
       )}
     </div>
