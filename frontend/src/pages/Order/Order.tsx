@@ -48,7 +48,7 @@ export function Order() {
       product: String(product),
     };
     const newDeliveryList = [...delivery, payloadDelivery];
-    console.log(newDeliveryList);
+
     setDelivery(newDeliveryList);
 
     const deliveryCar = document.getElementById("deliveryInfo") as HTMLElement;
