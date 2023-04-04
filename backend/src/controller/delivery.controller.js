@@ -27,7 +27,8 @@ async function create(req, res) {
     !delivery.client ||
     delivery.client == "" ||
     !delivery.deliveryList ||
-    !delivery.descriptionDelivery
+    !delivery.descriptionDelivery ||
+    !delivery.date
   ) {
     return res.status(404).json({ message: "Dados inválidos." });
   }
