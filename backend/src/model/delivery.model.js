@@ -6,6 +6,7 @@ const deliverySchema = new mongoose.Schema({
   descriptionDelivery: { type: String, require: true },
   signature: { type: String },
   status: { type: String, require: true },
+  date: { type: Date, require: true },
 });
 const Delivery = mongoose.model("delivery", deliverySchema);
 
