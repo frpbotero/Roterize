@@ -20,7 +20,7 @@ export function Order() {
   //variaveis que compõe o payload
   const [product, setProduct] = useState<string>();
   const [client, setClient] = useState<clientsType | any>({});
-  const [qtd, setQtd] = useState<Number>(0);
+  const [qtd, setQtd] = useState<Number>(1);
   const [descriptionLoad, setDescriptionLoad] = useState<string>("");
   const [delivery, setDelivery] = useState<DeliveryList[]>([]);
 
@@ -82,7 +82,6 @@ export function Order() {
     productSelect.value = "";
     QtdProduct.value = "";
     description.value = "";
-    console.log(payload);
   }
 
   return (

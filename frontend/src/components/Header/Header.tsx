@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logo from "../../assets/router2.svg";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
+import { dateContext } from "../../context/DateContext";
 
 export function Header() {
   const oauth = localStorage.getItem("User");
   const navigate = useNavigate();
+  const { setDate } = useContext(dateContext);
 
   const [activeLink, setActiveLink] = useState<any>(null); // adicione o estado
   function logout() {
     localStorage.removeItem("User");
     navigate("/");
   }
+
+  function handleDateChange(newDate: Date) {
+    setDate(newDate);
+  }
+
   return (
     <div className="containerHeader">
       <Link to="/">
@@ -24,6 +31,7 @@ export function Header() {
           </Link>
         </div>
       ) : oauth === "ADM" ? (
+        //Header Administrativo
         <div className="containerHeader">
           <div className="contentOptionHeader">
             <Link
@@ -58,9 +66,13 @@ export function Header() {
           </button>
         </div>
       ) : (
+        //Header Entrega
         <div className="containerHeader">
           <div className="contentOptionHeader">
-            <input type="date" />
+            <input
+              type="date"
+              onChange={(e) => handleDateChange(new Date(e.target.value))}
+            />
             <Link to="/delivery">Go</Link>
           </div>
 

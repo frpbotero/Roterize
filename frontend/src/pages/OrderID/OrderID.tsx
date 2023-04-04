@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { apiService } from "../../Api/Api";
 import { deliveryType } from "../../types/types";
 import { useNavigate } from "react-router-dom";
+import { dateContext } from "../../context/DateContext";
 //Biblioteca para assinatura
 import SignatureCanvas from "react-signature-canvas";
 
@@ -10,6 +11,7 @@ import "./styles.css";
 export function OrderID() {
   const id = localStorage.getItem("idDelivery");
   const navigate = useNavigate();
+  const { date } = useContext(dateContext);
   const [delivery, setDelivery] = useState<deliveryType>();
   //Criando uma estado para armazenar a assinatura
   const [signature, setSignature] = useState<any>(null);
