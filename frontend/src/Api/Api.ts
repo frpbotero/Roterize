@@ -56,6 +56,9 @@ export const apiService = {
     readById: function (id: any) {
       return api.get<any>("/delivery/" + id);
     },
+    readByDate: function (body: any) {
+      return api.post("/delivery/date/", body);
+    },
     deleteURL: function (id: any) {
       return api.delete<any>("/delivery/" + id);
     },

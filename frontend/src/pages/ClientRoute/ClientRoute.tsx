@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { apiService } from "../../Api/Api";
 import { Card } from "../../components/Card/Card";
 import { deliveryType } from "../../types/types";
 import carregando from "../../../public/carregando.gif";
 import "./styles.css";
-
+import { dateContext } from "../../context/DateContext";
 export function ClientRoute() {
   const [delivery, setDelivery] = useState<deliveryType[]>([]);
-
+  const { date } = useContext(dateContext);
   async function showDeliveries() {
     await apiService.delivery
       .readAllURL()

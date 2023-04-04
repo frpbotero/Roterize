@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/", controller.findAll);
 router.get("/:id", controller.findById);
 router.post("/", controller.create);
+router.post("/date", controller.findByDate);
 router.put("/:id", controller.updateById);
 router.delete("/:id", controller.deleteById);
 

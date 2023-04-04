@@ -19,6 +19,15 @@ async function findById(req, res) {
   }
   res.status(200).json(delivery);
 }
+async function findByDate(req, res) {
+  const { date } = req.body;
+  const deliveries = await service.findAllDelivery();
+  const deliveryFilter = deliveries.filter(
+    (delivery) => delivery.date === date
+  );
+  res.status(200).send(deliveryFilter);
+}
+
 async function create(req, res) {
   const delivery = req.body;
 
@@ -70,4 +79,5 @@ module.exports = {
   create,
   updateById,
   deleteById,
+  findByDate,
 };
