@@ -4,9 +4,10 @@
     align-items: center;
     gap:0.5rem
 }
-.containerHeader>img{
+
+.logoImage {
     width: 4rem;
-    height: 5
+    height: 5rem
 }
 
 .containerHeader>button:hover{

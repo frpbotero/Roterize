@@ -14,7 +14,9 @@ export function Header() {
   }
   return (
     <div className="containerHeader">
-      <img src={logo} alt="" />
+      <Link to="/">
+        <img src={logo} alt="" className="logoImage" />
+      </Link>
       {!oauth ? (
         <div>
           <Link to="/login">
