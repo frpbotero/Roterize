@@ -21,6 +21,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Responsividade Delivery Mobile
 - [ ] Filtro delivery por data(Ano/Mês/Dia), por empresa
 - [ ] Organização de rota arrastavel
+- [ ] Exportar endereço para Api do GoogleMaps
 - [ ] Criaçaõ de PDF
 - [ ] Autenticação com JWT
 
