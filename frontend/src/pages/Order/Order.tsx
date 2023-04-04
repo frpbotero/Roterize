@@ -8,6 +8,7 @@ interface Payload {
   deliveryList: any;
   descriptionDelivery: any;
   status: string;
+  date: string;
 }
 
 interface DeliveryList {
@@ -68,6 +69,7 @@ export function Order() {
       deliveryList: delivery,
       descriptionDelivery: descriptionLoad ?? null,
       status: "Em Rota",
+      date: Intl.DateTimeFormat("pt-BR").format(new Date()),
     };
 
     await apiService.delivery
