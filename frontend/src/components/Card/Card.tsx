@@ -20,18 +20,17 @@ export function Card({
   deliveryList,
   status,
 }: CardProps) {
-  const [clientInfo, setClientInfo] = useState();
   const navigate = useNavigate();
   //   async function ShowClient(id) {}
 
   //Função para atualizar o estado da entrega
   function saveLocalStorageID() {
     if (status == "Entregue") {
-      alert("Pedido já entregue");
-    } else {
       localStorage.setItem("idDelivery", id);
       const idTarget: any = localStorage.getItem("idDelivery");
       navigate(refreshCard);
+    } else {
+      alert("Pedido já entregue");
     }
   }
 
