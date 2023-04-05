@@ -31,7 +31,7 @@ export function Card({
     } else {
       localStorage.setItem("idDelivery", id);
       const idTarget: any = localStorage.getItem("idDelivery");
-      navigate(`/destiny`);
+      navigate(refreshCard);
     }
   }
 

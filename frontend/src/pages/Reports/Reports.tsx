@@ -3,9 +3,10 @@ import { apiService } from "../../Api/Api";
 import { Card } from "../../components/Card/Card";
 import { deliveryType } from "../../types/types";
 import carregando from "../../../public/carregando.gif";
-import "./styles.css";
+
 import { dateContext } from "../../context/DateContext";
-export function ClientRoute() {
+
+export function Reports() {
   const [delivery, setDelivery] = useState<deliveryType[]>([]);
   const { date } = useContext(dateContext);
   async function showDeliveries() {
@@ -35,7 +36,7 @@ export function ClientRoute() {
             <Card
               address={`${order.client.address},${order.client.number} - ${order.client.district} `}
               name={order.client.name}
-              refreshCard="/destiny"
+              refreshCard="/report"
               id={order._id}
               deliveryList={order.deliveryList.length}
               status={order.status}

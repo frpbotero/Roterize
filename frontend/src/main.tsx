@@ -12,6 +12,8 @@ import { ClientRoute } from "./pages/ClientRoute/ClientRoute";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { OrderID } from "./pages/OrderID/OrderID";
 import { DateProvider } from "./context/DateContext";
+import { ReportID } from "./pages/ReportID/ReportID";
+import { Reports } from "./pages/Reports/Reports";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,8 @@ const router = createBrowserRouter([
       { path: "/order", element: <Order /> },
       { path: "/delivery", element: <ClientRoute /> },
       { path: "/destiny", element: <OrderID /> },
+      { path: "/reports", element: <Reports /> },
+      { path: "/report", element: <ReportID /> },
     ],
   },
 ]);
