@@ -1,0 +1,30 @@
+.containerCard{
+    display: flex;
+    width:  25rem;
+    flex-direction: column;
+    background: #EDF2F7;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.containerCard button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.headerCard{
+    display: flex;
+    justify-content: space-between;
+}
+.package{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:0.5rem
+
+}
+@media only screen and (max-width: 480px) {
+    .containerCard{
+        width:  15rem;
+    }
+  }

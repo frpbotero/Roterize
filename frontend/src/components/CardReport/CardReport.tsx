@@ -12,7 +12,7 @@ type CardProps = {
   status: string;
 };
 
-export function Card({
+export function CardReport({
   name,
   address,
   refreshCard,
@@ -26,11 +26,11 @@ export function Card({
   //Função para atualizar o estado da entrega
   function saveLocalStorageID() {
     if (status == "Entregue") {
-      alert("Pedido já entregue");
-    } else {
       localStorage.setItem("idDelivery", id);
       const idTarget: any = localStorage.getItem("idDelivery");
       navigate(refreshCard);
+    } else {
+      alert("Pedido ainda não foi entregue!");
     }
   }
 
