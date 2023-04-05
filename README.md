@@ -19,11 +19,11 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Assinatura de Recebimento
 - [x] CRUD produtos, clientes e pedidos
 - [x] Responsividade Delivery Mobile
+- [x] Criação de PDF
 - [ ] Filtro delivery por data(Ano/Mês/Dia), por empresa
 - [ ] Inserir logo da empresa para personalizar relatório
 - [ ] Organização de rota arrastavel
 - [ ] Exportar endereço para Api do GoogleMaps
-- [ ] Criaçaõ de PDF
 - [ ] Autenticação com JWT
 
 ## 💻 Pré-requisitos
