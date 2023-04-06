@@ -6,10 +6,12 @@ import carregando from "../../../public/carregando.gif";
 import "./ReportID.css";
 //Imports refernte ao PDFMake
 import { pdfMakeFonts } from "./fonts/pdfFonts";
-import * as pdfMake from "pdfmake/build/pdfmake";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 
 // Carrega as fontes necessárias
-pdfMakeFonts.vfs = pdfMakeFonts.vfs;
+pdfMakeFonts.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export function ReportID() {
   const id = localStorage.getItem("idDelivery");
