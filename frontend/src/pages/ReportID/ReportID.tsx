@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import carregando from "../../../public/carregando.gif";
 import "./ReportID.css";
 //Imports refernte ao PDFMake
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "../../fonts/vfs_fonts";
-pdfMake.vfs = pdfFonts;
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export function ReportID() {
   const id = localStorage.getItem("idDelivery");

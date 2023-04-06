@@ -1,1 +1,1 @@
-export const pdfFonts: string = { "Roboto-Italic.ttf": "{...}" };
+export const pdfFonts: string = { "Roboto-Regular.ttf": "{...}" };
