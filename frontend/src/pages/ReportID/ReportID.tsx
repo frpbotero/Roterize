@@ -6,8 +6,8 @@ import carregando from "../../../public/carregando.gif";
 import "./ReportID.css";
 //Imports refernte ao PDFMake
 import pdfMake from "pdfmake/build/pdfmake";
-import * as pdfFonts from "pdfmake/build/vfs_fonts.js";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import pdfFonts from "../../fonts/vfs_fonts";
+pdfMake.vfs = pdfFonts;
 
 export function ReportID() {
   const id = localStorage.getItem("idDelivery");
