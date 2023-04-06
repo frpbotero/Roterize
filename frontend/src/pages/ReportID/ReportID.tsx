@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import carregando from "../../../public/carregando.gif";
 import "./ReportID.css";
 //Imports refernte ao PDFMake
-import pdfFonts from "pdfmake/build/vfs_fonts";
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import pdfMake from "pdfmake/build/pdfmake";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
