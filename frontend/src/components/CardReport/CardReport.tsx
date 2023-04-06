@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Package } from "phosphor-react";
 import "./Card.css";
-import * as S from "./styles.ts";
+import * as S from "./styles";
 
 type CardProps = {
   name: string | null;
