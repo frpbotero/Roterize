@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Package } from "phosphor-react";
 import "./Card.css";
-import * as S from "./styles.ts";
 
 type CardProps = {
   name: string | null;
@@ -12,7 +12,7 @@ type CardProps = {
   status: string;
 };
 
-export function Card({
+export function CardReport({
   name,
   address,
   refreshCard,
@@ -28,28 +28,29 @@ export function Card({
   //Função para atualizar o estado da entrega
   function saveLocalStorageID() {
     if (status == "Entregue") {
-      alert("Pedido já entregue");
-    } else {
       localStorage.setItem("idDelivery", id);
+      card?.classList.add(status);
       const idTarget: any = localStorage.getItem("idDelivery");
       navigate(refreshCard);
+    } else {
+      alert("Pedido já entregue");
     }
   }
-  ("containerCard");
+
   return (
-    <S.containerCard>
-      <div className={`${status}`}>
-        <S.headerCard>
+    <div className="containerCard" id="card">
+      <div>
+        <div className="headerCard">
           <button onClick={saveLocalStorageID}>
             <h3 className="clientName">{name}</h3>
           </button>
           <div className="package">
-            <Package size={32} color="#052074" />
+            <Package size={32} color="#f50000" />
             <h5>{deliveryList}</h5>
           </div>
-        </S.headerCard>
+        </div>
         <p className="clientAddress">{address} </p>
       </div>
-    </S.containerCard>
+    </div>
   );
 }

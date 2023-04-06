@@ -68,7 +68,7 @@ export function Order() {
       client: client,
       deliveryList: delivery,
       descriptionDelivery: descriptionLoad ?? null,
-      status: "Em Rota",
+      status: "EmRota",
       date: Intl.DateTimeFormat("pt-BR").format(new Date()),
     };
 
