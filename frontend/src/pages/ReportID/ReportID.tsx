@@ -1,73 +1,13 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import { apiService } from "../../Api/Api";
 import { deliveryType } from "../../types/types";
-import { useNavigate } from "react-router-dom";
 import carregando from "../../../public/carregando.gif";
 import "./ReportID.css";
-//Imports refernte ao PDFMake
-import { pdfMakeFonts } from "./fonts/pdfFonts";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-
-// Carrega as fontes necessárias
-pdfMakeFonts.vfs = pdfFonts.pdfMake.vfs;
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { generatePDF } from "../../utils/pdfCreate";
 
 export function ReportID() {
   const id = localStorage.getItem("idDelivery");
-  const navigate = useNavigate();
-
-  const [delivery, setDelivery] = useState<deliveryType>();
-
-  function generatePdf() {
-    const documentDefinition: any = {
-      content: [
-        { text: "Detalhe de pedido", style: "header" },
-        { text: `Cliente: ${!delivery ? "" : delivery.client.name}` },
-        {
-          text: `Endereço: ${!delivery ? "" : delivery.client.address}, ${
-            !delivery ? "" : delivery.client.number
-          } - ${!delivery ? "" : delivery.client.district}`,
-        },
-        { text: `Descrição: ${!delivery ? "" : delivery.descriptionDelivery}` },
-        { text: "Itens:", style: "subheader" },
-        {
-          ul: !delivery
-            ? ""
-            : delivery.deliveryList.map(
-                (items: any) => `${items.product} - ${items.qtd}`
-              ),
-        },
-        {
-          text: "Assinatura:",
-          margin: [0, 20, 0, 5],
-        },
-        {
-          image: !delivery ? "" : delivery.signature,
-          width: 150,
-          margin: [0, 0, 0, 20],
-        },
-        {
-          text: `Responsável:`,
-          margin: [0, 0, 0, 40],
-        },
-      ],
-      styles: {
-        header: {
-          fontSize: 22,
-          bold: true,
-          margin: [0, 0, 0, 10],
-        },
-        subheader: {
-          fontSize: 16,
-          bold: true,
-          margin: [0, 20, 0, 10],
-        },
-      },
-    };
-
-    return pdfMake.createPdf(documentDefinition);
-  }
+  const [delivery, setDelivery] = useState<any>();
 
   useEffect(() => {
     async function fetchDelivery() {
@@ -77,16 +17,6 @@ export function ReportID() {
     fetchDelivery();
   }, [id]);
 
-  function pdfPrint() {
-    if (!delivery) {
-      console.error("Delivery is undefined.");
-      alert("Não foi possível gerar o PDF.");
-      return;
-    }
-    const pdfDocGenerator = generatePdf();
-    pdfDocGenerator.open();
-  }
-
   if (!delivery) {
     return (
       <div>
@@ -94,6 +24,13 @@ export function ReportID() {
         <p>Carregando...</p>
       </div>
     );
+  }
+  function createPDF() {
+    if (delivery) {
+      generatePDF(delivery);
+    } else {
+      console.log("Error");
+    }
   }
 
   return (
@@ -120,7 +57,7 @@ export function ReportID() {
         </div>
       </div>
 
-      <button onClick={pdfPrint}>Imprimir</button>
+      <button onClick={createPDF}>Imprimir</button>
     </div>
   );
 }
