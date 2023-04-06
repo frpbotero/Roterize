@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Package } from "phosphor-react";
 import "./Card.css";
+import * as S from "./styles.ts";
 
 type CardProps = {
   name: string | null;
@@ -33,24 +34,24 @@ export function CardReport({
       const idTarget: any = localStorage.getItem("idDelivery");
       navigate(refreshCard);
     } else {
-      alert("Pedido já entregue");
+      alert("Pedido em rota!");
     }
   }
 
   return (
-    <div className="containerCard" id="card">
-      <div>
-        <div className="headerCard">
+    <S.containerCard>
+      <div className={`${status}`}>
+        <S.headerCard>
           <button onClick={saveLocalStorageID}>
-            <h3 className="clientName">{name}</h3>
+            <h3>{name}</h3>
           </button>
           <div className="package">
-            <Package size={32} color="#f50000" />
+            <Package size={32} color="#052074" />
             <h5>{deliveryList}</h5>
           </div>
-        </div>
-        <p className="clientAddress">{address} </p>
+        </S.headerCard>
+        <p>{address} </p>
       </div>
-    </div>
+    </S.containerCard>
   );
 }

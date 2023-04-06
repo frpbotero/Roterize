@@ -9,14 +9,14 @@ export const containerCard = styled.section`
     width: 15rem;
   }
 
-  .Entregue {
+  .EmRota {
     background: #737374;
     opacity: 0.6;
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  .EmRota {
+  .Entregue {
     background: #addcda;
     padding: 0 0.5rem;
     border-radius: 0.5rem;

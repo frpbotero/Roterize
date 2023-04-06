@@ -41,14 +41,14 @@ export function Card({
       <div className={`${status}`}>
         <S.headerCard>
           <button onClick={saveLocalStorageID}>
-            <h3 className="clientName">{name}</h3>
+            <h3>{name}</h3>
           </button>
           <div className="package">
             <Package size={32} color="#052074" />
             <h5>{deliveryList}</h5>
           </div>
         </S.headerCard>
-        <p className="clientAddress">{address} </p>
+        <p>{address} </p>
       </div>
     </S.containerCard>
   );
