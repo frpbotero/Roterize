@@ -6,7 +6,7 @@ import carregando from "../../../public/carregando.gif";
 import "./ReportID.css";
 //Imports refernte ao PDFMake
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
+import * as pdfFonts from "pdfmake/build/vfs_fonts.js";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export function ReportID() {
