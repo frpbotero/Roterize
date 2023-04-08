@@ -69,7 +69,9 @@
 
 
 @media (max-width:500px ) {
- 
+    .containerHeader{
+        width: 100vw;
+    }
 
     .contentOptionHeader a{
         font-size: small;

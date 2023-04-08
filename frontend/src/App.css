@@ -2,7 +2,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: stretch;
 }
 
 /* Aqui faz com que o content fique sempre no meio, e ocupe a maior parte do view */
