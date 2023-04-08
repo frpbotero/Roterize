@@ -27,7 +27,7 @@ export function Reports() {
 
   return (
     <div className="routerContainer">
-      <h1>Delivery</h1>
+      <h1>Entregas</h1>
       {!delivery ? (
         <img src={carregando} />
       ) : (
