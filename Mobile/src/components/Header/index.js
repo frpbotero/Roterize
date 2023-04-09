@@ -48,8 +48,8 @@ export default function Header() {
       />
       {/* Verificação se tem usuario logado */}
       {user != "" ? (
-        <TouchableOpacity onPress={handleModal}>
-          <Text>Data</Text>
+        <TouchableOpacity onPress={handleModal} style={styles.DataContainer}>
+          <Text style={styles.textData}>DATA</Text>
         </TouchableOpacity>
       ) : (
         ""
@@ -58,9 +58,12 @@ export default function Header() {
       <Modal animationType="slide" transparent={true} visible={open}>
         <View style={styles.viewCentered}>
           <View style={styles.modalView}>
-            <TouchableOpacity onPress={handleDeliveryDay}>
-              <Text>X</Text>
-            </TouchableOpacity>
+            <View style={styles.exitModalDateView}>
+              <TouchableOpacity onPress={handleDeliveryDay}>
+                <Feather name="x-circle" size={25} color={"red"} />
+              </TouchableOpacity>
+            </View>
+
             <DatePicker
               format="DD/MM/YYYY"
               style={styles.dateComponent}
@@ -128,6 +131,18 @@ const styles = StyleSheet.create({
     width: 66,
     height: 58,
   },
+  textData: {
+    color: "rgb(221, 87, 87)",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  DataContainer: {
+    elevation: 1,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+  },
   appButtonContainer: {
     elevation: 5,
     backgroundColor: "#fff",
@@ -148,7 +163,6 @@ const styles = StyleSheet.create({
   },
   viewCentered: {
     flex: 1,
-
     alignContent: "center",
     marginTop: 64,
   },
@@ -168,6 +182,12 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+
+  exitModalDateView: {
+    width: "100%",
+    alignItems: "flex-end",
+  },
+
   imgLogin: {
     width: 50,
     height: 50,
