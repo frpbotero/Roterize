@@ -7,8 +7,10 @@ import {
   Image,
   TouchableOpacity,
   Modal,
+  TextInput,
 } from "react-native";
 import DatePicker from "react-native-modern-datepicker";
+import { Feather } from "@expo/vector-icons";
 
 const statusBarHeight = StatusBar.currentHeight
   ? StatusBar.currentHeight + 22
@@ -16,13 +18,22 @@ const statusBarHeight = StatusBar.currentHeight
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
   const [date, setDate] = useState(false);
+  const [hidePass, setHidePass] = useState(true);
+  const user = "Felipe";
 
   function handleModal() {
     setOpen(!open);
   }
+  function handleModalLogin() {
+    setOpenLogin(!openLogin);
+  }
   function handleDate(valor) {
     setDate(valor);
+  }
+  function handleHidePass() {
+    setHidePass(!hidePass);
   }
   function handleDeliveryDay() {
     setOpen(false);
@@ -35,11 +46,14 @@ export default function Header() {
         style={styles.tinyLogo}
         source={require("../../../assets/router.png")}
       />
-      <>
+      {/* Verificação se tem usuario logado */}
+      {user != "" ? (
         <TouchableOpacity onPress={handleModal}>
           <Text>Data</Text>
         </TouchableOpacity>
-      </>
+      ) : (
+        ""
+      )}
 
       <Modal animationType="slide" transparent={true} visible={open}>
         <View style={styles.viewCentered}>
@@ -56,7 +70,41 @@ export default function Header() {
         </View>
       </Modal>
 
-      <TouchableOpacity style={styles.appButtonContainer}>
+      <Modal animationType="slide" transparent={true} visible={openLogin}>
+        <View style={styles.viewCentered}>
+          <View style={styles.modalView}>
+            <Image
+              source={require("../../assets/delivery.png")}
+              style={styles.imgLogin}
+            />
+            <Text style={styles.textLogin}>Login</Text>
+            <Text>Faça login em sua conta</Text>
+            <View style={styles.inputView}>
+              <Feather name="user" size={20} />
+              <TextInput placeholder="Usuario" />
+              <Text></Text>
+            </View>
+            <View style={styles.inputView}>
+              <Feather name="key" size={20} />
+              <TextInput placeholder="Password" secureTextEntry={hidePass} />
+              <Feather
+                name={hidePass === true ? "eye" : "eye-off"}
+                onPress={handleHidePass}
+                size={20}
+              />
+            </View>
+            <TouchableOpacity
+              style={styles.appButtonContainerLogin}
+              onPress={handleModalLogin}>
+              <Text style={styles.appButtonText}>Login</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
+      <TouchableOpacity
+        style={styles.appButtonContainer}
+        onPress={handleModalLogin}>
         <Text style={styles.appButtonText}>Login</Text>
       </TouchableOpacity>
     </View>
@@ -119,5 +167,42 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  imgLogin: {
+    width: 50,
+    height: 50,
+  },
+  inputView: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    backgroundColor: "#aaaa",
+    padding: 5,
+    width: 250,
+    height: 50,
+
+    marginTop: 5,
+    justifyContent: "space-between",
+  },
+  appButtonContainerLogin: {
+    elevation: 2,
+    backgroundColor: "#fff",
+    borderColor: "1px solid rgb(221, 87, 87)",
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    marginTop: 5,
+  },
+  appButtonText: {
+    fontSize: 18,
+    color: "rgb(221, 87, 87)",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase",
+  },
+  textLogin: {
+    color: "rgb(221, 87, 87)",
+    fontSize: 25,
+    fontWeight: "bold",
   },
 });
