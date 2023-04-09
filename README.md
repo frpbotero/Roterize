@@ -8,6 +8,14 @@
 
 Projeto consiste em um sistema de controle de entrega, onde foi adicionado um campo de coleta de assinatura de recebimento. O usuário pode cadastrar os produtos, clientes e pedidos para ser entregue. Onde possui uma interface para Administrador e outra para o Entregador, filtrando todos os pedidos do dia e sua rota.
 
+## 🛠️ Tecnologias
+ - React
+ - React Native
+ - Node.Js
+ - Typescript
+ - MongoDB
+ - RealmeDB
+
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
