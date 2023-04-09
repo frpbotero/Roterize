@@ -14,15 +14,19 @@ const statusBarHeight = StatusBar.currentHeight
   ? StatusBar.currentHeight + 22
   : 64;
 
-function onPress() {
-  console.log("hello");
-}
-
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [date, setDate] = useState(false);
 
   function handleModal() {
     setOpen(!open);
+  }
+  function handleDate(valor) {
+    setDate(valor);
+  }
+  function handleDeliveryDay() {
+    setOpen(false);
+    console.log(date);
   }
 
   return (
@@ -31,20 +35,22 @@ export default function Header() {
         style={styles.tinyLogo}
         source={require("../../../assets/router.png")}
       />
-      <TouchableOpacity onPress={handleModal}>
-        <Text>Data</Text>
-      </TouchableOpacity>
+      <>
+        <TouchableOpacity onPress={handleModal}>
+          <Text>Data</Text>
+        </TouchableOpacity>
+      </>
 
       <Modal animationType="slide" transparent={true} visible={open}>
         <View style={styles.viewCentered}>
           <View style={styles.modalView}>
-            <TouchableOpacity onPress={handleModal}>
+            <TouchableOpacity onPress={handleDeliveryDay}>
               <Text>X</Text>
             </TouchableOpacity>
             <DatePicker
               format="DD/MM/YYYY"
               style={styles.dateComponent}
-              date={this.state.data}
+              onDateChange={handleDate}
             />
           </View>
         </View>
@@ -94,9 +100,9 @@ const styles = StyleSheet.create({
   },
   viewCentered: {
     flex: 1,
-    justifyContent: "center",
+
     alignContent: "center",
-    marginTop: 22,
+    marginTop: 64,
   },
   modalView: {
     margin: 20,

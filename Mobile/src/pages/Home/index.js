@@ -1,17 +1,21 @@
 import { StyleSheet, Text, View } from "react-native";
 import Header from "../../components/Header";
+import Card from "../../components/Card";
 
 export default function Home() {
   return (
     <View style={styles.container}>
       <Header />
-      <Text>Pagina Home</Text>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: "#FFF",
   },
 });
