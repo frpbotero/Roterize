@@ -2,8 +2,6 @@
 
 <img src="https://github.com/FeBotero/Roterize/blob/main/frontend/public/Router1.svg"  width="120" alt="Roterize">
 
-
-
 <img src="https://github.com/FeBotero/Roterize/blob/main/frontend/public/Home.png" alt="Roterize">
 
 Projeto consiste em um sistema de controle de entrega, onde foi adicionado um campo de coleta de assinatura de recebimento. O usuário pode cadastrar os produtos, clientes e pedidos para ser entregue. Onde possui uma interface para Administrador e outra para o Entregador, filtrando todos os pedidos do dia e sua rota.
@@ -16,6 +14,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] CRUD produtos, clientes e pedidos
 - [x] Responsividade Delivery Mobile
 - [x] Criação de PDF
+- [ ] Criar carga de donwload para app mobile. Baixar sempre a rota do dia.
 - [ ] Filtro delivery por data(Ano/Mês/Dia), por empresa
 - [ ] Inserir logo da empresa para personalizar relatório
 - [ ] Organização de rota arrastavel

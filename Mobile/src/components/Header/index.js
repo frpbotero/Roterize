@@ -104,12 +104,19 @@ export default function Header() {
           </View>
         </View>
       </Modal>
-
-      <TouchableOpacity
-        style={styles.appButtonContainer}
-        onPress={handleModalLogin}>
-        <Text style={styles.appButtonText}>Login</Text>
-      </TouchableOpacity>
+      {user != "" ? (
+        <TouchableOpacity
+          style={styles.appButtonContainer}
+          onPress={handleModalLogin}>
+          <Text style={styles.appButtonText}>Logout</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={styles.appButtonContainer}
+          onPress={handleModalLogin}>
+          <Text style={styles.appButtonText}>Login</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
