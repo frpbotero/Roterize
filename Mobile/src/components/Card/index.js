@@ -1,17 +1,17 @@
 import { Text, View, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-export default function Card() {
+export default function Card({ name, address, deliveryList, status, _id }) {
   return (
     <View style={styles.container}>
       <View style={styles.headCard}>
-        <Text>Açucar ME</Text>
+        <Text>{name}</Text>
         <View style={styles.qtdDelivery}>
           <Feather name="box" size={27} color="#000" />
-          <Text>3</Text>
+          <Text>{deliveryList}</Text>
         </View>
       </View>
-      <Text>Rua Castanho Moraes, 9999 - Jornalista</Text>
+      <Text>{address}</Text>
     </View>
   );
 }
