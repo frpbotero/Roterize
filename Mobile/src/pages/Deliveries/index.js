@@ -8,7 +8,6 @@ export default function Deliveries() {
       <Header />
       <View>
         <Card />
-        <Card />
       </View>
     </View>
   );

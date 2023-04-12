@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import DatePicker from "react-native-modern-datepicker";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const statusBarHeight = StatusBar.currentHeight
   ? StatusBar.currentHeight + 22
@@ -21,7 +22,8 @@ export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
   const [date, setDate] = useState(false);
   const [hidePass, setHidePass] = useState(true);
-  const user = "Felipe";
+  const [user, setUser] = useState("");
+  const navigation = useNavigation();
 
   function handleModal() {
     setOpen(!open);
@@ -29,6 +31,7 @@ export default function Header() {
   function handleModalLogin() {
     setOpenLogin(!openLogin);
   }
+
   function handleDate(valor) {
     setDate(valor);
   }
@@ -38,6 +41,15 @@ export default function Header() {
   function handleDeliveryDay() {
     setOpen(false);
     console.log(date);
+  }
+  function loginUser() {
+    setUser("Felipe");
+    navigation.navigate("Deliveries");
+    setOpenLogin(false);
+  }
+  function logout() {
+    navigation.navigate("Home");
+    setUser("");
   }
 
   return (
@@ -98,16 +110,14 @@ export default function Header() {
             </View>
             <TouchableOpacity
               style={styles.appButtonContainerLogin}
-              onPress={handleModalLogin}>
+              onPress={loginUser}>
               <Text style={styles.appButtonText}>Login</Text>
             </TouchableOpacity>
           </View>
         </View>
       </Modal>
       {user != "" ? (
-        <TouchableOpacity
-          style={styles.appButtonContainer}
-          onPress={handleModalLogin}>
+        <TouchableOpacity style={styles.appButtonContainer} onPress={logout}>
           <Text style={styles.appButtonText}>Logout</Text>
         </TouchableOpacity>
       ) : (
