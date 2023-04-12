@@ -9,6 +9,7 @@ async function findAll(req, res) {
 }
 async function findById(req, res) {
   const id = req.params.id;
+  console.log(id);
 
   if (!isObjectIdValid(id)) {
     return res.status(404).json({ message: "ID inválido!" });

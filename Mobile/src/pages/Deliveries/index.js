@@ -1,21 +1,21 @@
 import { StyleSheet, Text, View } from "react-native";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
-import Api from "../../services/Api";
+import { apiService } from "../../services/Api";
 import { useState, useEffect } from "react";
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState();
   async function GetDeliveries() {
-    Api.get("/delivery")
+    apiService.delivery
+      .readAllURL()
       .then((response) => setDeliveries(response.data))
       .catch((error) => console.log(error));
-
-    console.log(deliveries);
   }
 
   useEffect(() => {
     GetDeliveries();
+    console.log(deliveries);
   }, []);
 
   return (
@@ -32,6 +32,7 @@ export default function Deliveries() {
               address={`${order.client.address},${order.client.number} - ${order.client.district} `}
               deliveryList={order.deliveryList.length}
               status={order.status}
+              _id={order._id}
             />
           ))
         )}

@@ -1,22 +1,27 @@
 import React, { useEffect, useState, useRef } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { apiService } from "../../Api/Api";
-import { deliveryType } from "../../types/types";
+import Api, { apiService } from "../../services/Api";
+import { useRoute } from "@react-navigation/native";
+
 import SignatureCanvas from "react-native-signature-canvas";
 
-export function OrderID() {
-  const id = localStorage.getItem("idDelivery");
+export function Delivery() {
+  const route = useRoute();
+  const deliveryID = route.params;
   const [delivery, setDelivery] = useState();
   const [signature, setSignature] = useState(null);
   const signatureRef = useRef(null);
 
   useEffect(() => {
     async function fetchDelivery() {
-      const response = await apiService.delivery.readById(id);
-      setDelivery(response.data);
+      console.log();
+      await apiService.delivery
+        .readById(deliveryID.deliveryID)
+        .then((response) => setDelivery(response.data))
+        .catch((error) => console.log(error));
     }
     fetchDelivery();
-  }, [id]);
+  }, [deliveryID]);
 
   function clearSignature() {
     signatureRef.current?.clearSignature();
@@ -33,7 +38,7 @@ export function OrderID() {
       signature: signature,
     };
 
-    apiService.delivery.updateURL(id, payload);
+    Api.delivery.updateURL(id, payload);
 
     // Navegar para a tela de entrega
   }
@@ -95,6 +100,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    marginTop: 64,
   },
   title: {
     fontSize: 24,
@@ -102,10 +108,17 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   signatureContainer: {
-    marginTop: 16,
+    marginTop: 30,
+    flexDirection: "column",
     alignItems: "center",
+    borderColor: "red",
+    borderWidth: 1,
   },
   signatureCanvas: {
-    width: 13,
+    width: 300,
+    height: 200,
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: "black",
   },
 });

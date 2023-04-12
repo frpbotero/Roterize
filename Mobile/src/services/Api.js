@@ -2,12 +2,13 @@ import axios from "axios";
 
 const Api = axios.create({
   baseURL: "https://roterize.onrender.com",
+  // "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-const apiService = {
+export const apiService = {
   delivery: {
     createURL: function (body) {
       return Api.post("/delivery/", body);
