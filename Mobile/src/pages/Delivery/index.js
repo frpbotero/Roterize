@@ -109,8 +109,10 @@ export function Delivery({ text }) {
             {/* <TouchableOpacity onPress={saveSignature}>
               <Text>Assinar</Text>
             </TouchableOpacity> */}
-            <TouchableOpacity onPress={clearSignature}>
-              <Text>Limpar</Text>
+            <TouchableOpacity
+              onPress={clearSignature}
+              style={styles.buttonClear}>
+              <Text style={styles.buttonText}>Limpar</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -126,7 +128,7 @@ export function Delivery({ text }) {
           )}
         </View>
       </View>
-      <TouchableOpacity style={styles.button} onPress={updateDelivery}>
+      <TouchableOpacity style={styles.buttonContainer} onPress={updateDelivery}>
         <Text style={styles.buttonText}>Salvar</Text>
       </TouchableOpacity>
     </View>
@@ -148,9 +150,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
     flexDirection: "column",
     alignItems: "center",
-    borderColor: "red",
+    borderColor: "gray",
     borderWidth: 1,
-    height: 150,
+    height: 200,
   },
   signatureCanvas: {
     width: 300,
@@ -165,6 +167,38 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderColor: "red",
     borderWidth: 1,
-    height: 150,
+  },
+  loading: {
+    width: "100%",
+    alignItems: "center",
+    height: "100%",
+  },
+  imageLoading: {
+    marginTop: 50,
+  },
+  buttonContainer: {
+    backgroundColor: "green",
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginHorizontal: 10,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  buttonClear: {
+    backgroundColor: "gray",
+    width: 350,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

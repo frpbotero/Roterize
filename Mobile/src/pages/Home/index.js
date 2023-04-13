@@ -19,6 +19,8 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFF",
+    width: "100%",
+    height: "100%",
   },
   content: {
     marginTop: 120,

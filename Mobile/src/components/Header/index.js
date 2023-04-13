@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -22,7 +22,7 @@ export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
   const [date, setDate] = useState(false);
   const [hidePass, setHidePass] = useState(true);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState();
   const navigation = useNavigation();
 
   function handleModal() {
@@ -121,15 +121,15 @@ export default function Header() {
           </View>
         </View>
       </Modal>
-      {user != "" ? (
-        <TouchableOpacity style={styles.appButtonContainer} onPress={logout}>
-          <Text style={styles.appButtonText}>Logout</Text>
-        </TouchableOpacity>
-      ) : (
+      {user === "" ? (
         <TouchableOpacity
           style={styles.appButtonContainer}
           onPress={handleModalLogin}>
           <Text style={styles.appButtonText}>Login</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.appButtonContainer} onPress={logout}>
+          <Text style={styles.appButtonText}>Logout</Text>
         </TouchableOpacity>
       )}
     </View>
