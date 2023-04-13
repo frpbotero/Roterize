@@ -2,16 +2,18 @@ import React, { useEffect, useState, useRef } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Api, { apiService } from "../../services/Api";
 import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
-import SignatureCanvas from "react-native-signature-canvas";
+import SignatureScreen from "react-native-signature-canvas";
 
-export function Delivery() {
+export function Delivery({ text }) {
+  const navigation = useNavigation();
   const route = useRoute();
   const deliveryID = route.params;
   const [delivery, setDelivery] = useState();
   const [signature, setSignature] = useState(null);
-  const signatureRef = useRef(null);
-
+  // const signatureRef = useRef(null);
+  const ref = useRef(null);
   useEffect(() => {
     async function fetchDelivery() {
       console.log();
@@ -24,28 +26,49 @@ export function Delivery() {
   }, [deliveryID]);
 
   function clearSignature() {
-    signatureRef.current?.clearSignature();
+    ref.current?.clearSignature();
     setSignature(null);
   }
 
-  function saveSignature() {
-    setSignature(signatureRef.current?.toDataURL());
-  }
+  // function saveSignature() {
+  //   setSignature(ref.current.toDataURL());
 
-  function updateDelivery() {
+  // }
+
+  async function updateDelivery() {
     const payload = {
       status: "Entregue",
       signature: signature,
     };
 
-    Api.delivery.updateURL(id, payload);
+    await apiService.delivery
+      .updateURL(deliveryID.deliveryID, payload)
+      .then((response) => alert(response.data.message))
+      .catch((erro) => console.log(erro));
 
     // Navegar para a tela de entrega
+    navigation.navigate("Deliveries");
   }
 
   if (!delivery) {
     return <Text>Loading...</Text>;
   }
+  // Called after ref.current.readSignature() reads a non-empty base64 string
+  function saveSignature(signature) {
+    console.log(signature);
+    setSignature(signature);
+    // onOK(signature); // Callback from Component props
+  }
+
+  // Called after end of stroke
+  const handleEnd = () => {
+    ref.current.readSignature();
+  };
+
+  // Called after ref.current.getData()
+  const handleData = (data) => {
+    console.log(data);
+  };
 
   return (
     <View style={styles.container}>
@@ -68,26 +91,34 @@ export function Delivery() {
       </View>
       <View>
         <View style={styles.signatureContainer}>
-          <SignatureCanvas
-            ref={signatureRef}
-            strokeColor="#000"
-            strokeWidth={3}
-            canvasStyle={styles.signatureCanvas}
-            onClear={clearSignature}
+          <SignatureScreen
+            ref={ref}
+            onEnd={handleEnd}
+            onGetData={handleData}
+            onOK={saveSignature}
+            autoClear={false}
+            descriptionText={text}
           />
-          <TouchableOpacity style={styles.button} onPress={clearSignature}>
-            <Text style={styles.buttonText}>Limpar</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={saveSignature}>
-            <Text style={styles.buttonText}>Assinar</Text>
-          </TouchableOpacity>
-        </View>
-        {signature && (
-          <View style={styles.signatureContainer}>
-            <Image source={{ uri: signature }} style={styles.signatureImage} />
-            <Text>Responsável</Text>
+          <View>
+            {/* <TouchableOpacity onPress={saveSignature}>
+              <Text>Assinar</Text>
+            </TouchableOpacity> */}
+            <TouchableOpacity onPress={clearSignature}>
+              <Text>Limpar</Text>
+            </TouchableOpacity>
           </View>
-        )}
+        </View>
+        <View>
+          {!signature ? (
+            <Text></Text>
+          ) : (
+            <Image
+              resizeMode={"cover"}
+              style={{ width: 300, height: 300, padding: 10 }}
+              source={{ uri: signature }}
+            />
+          )}
+        </View>
       </View>
       <TouchableOpacity style={styles.button} onPress={updateDelivery}>
         <Text style={styles.buttonText}>Salvar</Text>
@@ -113,6 +144,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderColor: "red",
     borderWidth: 1,
+    height: 150,
   },
   signatureCanvas: {
     width: 300,
@@ -120,5 +152,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderWidth: 1,
     borderColor: "black",
+  },
+  previewContainer: {
+    marginTop: 30,
+    flexDirection: "column",
+    alignItems: "center",
+    borderColor: "red",
+    borderWidth: 1,
+    height: 150,
   },
 });
