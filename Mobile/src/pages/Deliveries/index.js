@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
 import { apiService } from "../../services/Api";
@@ -15,15 +15,19 @@ export default function Deliveries() {
 
   useEffect(() => {
     GetDeliveries();
-    console.log(deliveries);
-  }, []);
+  }, [deliveries]);
 
   return (
     <View style={styles.container}>
       <Header />
       <View>
         {!deliveries ? (
-          <Text>Carregando...</Text>
+          <View style={styles.loading}>
+            <Image
+              style={styles.imageLoading}
+              source={require("../../../assets/loading.gif")}
+            />
+          </View>
         ) : (
           deliveries.map((order, index) => (
             <Card
@@ -44,5 +48,13 @@ export default function Deliveries() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFF",
+  },
+  loading: {
+    width: "100%",
+    alignItems: "center",
+    height: "100%",
+  },
+  imageLoading: {
+    marginTop: 50,
   },
 });

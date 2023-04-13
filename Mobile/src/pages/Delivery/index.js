@@ -12,11 +12,11 @@ export function Delivery({ text }) {
   const deliveryID = route.params;
   const [delivery, setDelivery] = useState();
   const [signature, setSignature] = useState(null);
-  // const signatureRef = useRef(null);
+
   const ref = useRef(null);
+
   useEffect(() => {
     async function fetchDelivery() {
-      console.log();
       await apiService.delivery
         .readById(deliveryID.deliveryID)
         .then((response) => setDelivery(response.data))
@@ -51,11 +51,17 @@ export function Delivery({ text }) {
   }
 
   if (!delivery) {
-    return <Text>Loading...</Text>;
+    return (
+      <View style={styles.loading}>
+        <Image
+          style={styles.imageLoading}
+          source={require("../../../assets/loading.gif")}
+        />
+      </View>
+    );
   }
   // Called after ref.current.readSignature() reads a non-empty base64 string
   function saveSignature(signature) {
-    console.log(signature);
     setSignature(signature);
     // onOK(signature); // Callback from Component props
   }

@@ -51,13 +51,18 @@ export default function Header() {
     navigation.navigate("Home");
     setUser("");
   }
+  function delivery() {
+    navigation.navigate("Deliveries");
+  }
 
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.tinyLogo}
-        source={require("../../../assets/router.png")}
-      />
+      <TouchableOpacity onPress={delivery}>
+        <Image
+          style={styles.tinyLogo}
+          source={require("../../../assets/router.png")}
+        />
+      </TouchableOpacity>
       {/* Verificação se tem usuario logado */}
       {user != "" ? (
         <TouchableOpacity onPress={handleModal} style={styles.DataContainer}>
