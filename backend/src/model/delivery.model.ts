@@ -25,4 +25,4 @@ const deliverySchema = new Schema<IDelivery>({
   createdAt: { type: String, require: true },
   updatedAt: { type: String, require: true },
 });
-export const Delivery = mongoose.model("delivery", deliverySchema);
+export const Delivery = mongoose.model<IDelivery>("delivery", deliverySchema);
