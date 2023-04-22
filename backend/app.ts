@@ -1,5 +1,5 @@
 import express from "express";
-import { connectToDataBase } from "./src/db/database.helper";
+import connection from "./src/db/database.helper";
 import clientsRouter from "./src/router/clients.router";
 import productRouter from "./src/router/products.router";
 import deliveryRouter from "./src/router/delivery.router";
@@ -9,8 +9,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 async function main() {
-  //Conecta com banco de dados
-  await connectToDataBase();
   //Cria o servidor Express
   const app = express();
 
@@ -29,7 +27,7 @@ async function main() {
   app.use("/delivery", deliveryRouter);
   app.use("/users", userRouter);
 
-  connectToDataBase()
+  connection
     .then(() => {
       console.log("Banco de dados conectado");
 
