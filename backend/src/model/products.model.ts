@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import moment from "moment";
 
-interface IProduct {
+export interface IProduct {
   name: string;
   description: string;
   createdAt: string | Date;
@@ -15,4 +15,4 @@ const productSchema = new Schema<IProduct>({
     default: moment(new Date()).format("DD/MM/YYYY, HH:mm:ss"),
   },
 });
-export const product = mongoose.model<IProduct>("Product", productSchema);
+export const Product = mongoose.model<IProduct>("Product", productSchema);
