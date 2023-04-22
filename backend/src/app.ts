@@ -1,9 +1,9 @@
 import express from "express";
-import connection from "./src/db/database.helper";
-import clientsRouter from "./src/router/clients.router";
-import productRouter from "./src/router/products.router";
-import deliveryRouter from "./src/router/delivery.router";
-import userRouter from "./src/router/users.router";
+import connection from "./db/database.helper";
+import clientsRouter from "./router/clients.router";
+import productRouter from "./router/products.router";
+import deliveryRouter from "./router/delivery.router";
+import userRouter from "./router/users.router";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
