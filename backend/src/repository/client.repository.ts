@@ -7,6 +7,9 @@ export const clientRepository = {
   getByID(id: string) {
     return Client.findOne({ _id: id });
   },
+  create(body: IClient) {
+    return Client.create(body);
+  },
   update(id: string, body: Partial<IClient>) {
     return Client.updateOne({ _id: id }, { $set: body });
   },

@@ -7,6 +7,9 @@ export const deliveryRepository = {
   getByID(id: string) {
     return Delivery.findOne({ _id: id });
   },
+  create(body: IDelivery) {
+    return Delivery.create(body);
+  },
   update(id: string, body: Partial<IDelivery>) {
     return Delivery.updateOne({ _id: id }, { $set: body });
   },
