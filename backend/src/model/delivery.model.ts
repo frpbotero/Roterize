@@ -22,7 +22,10 @@ const deliverySchema = new Schema<IDelivery>({
   descriptionDelivery: { type: String, require: true },
   signature: { type: String },
   status: { type: String, require: true },
-  createdAt: { type: String, require: true },
+  createdAt: {
+    type: String,
+    default: moment(new Date()).format("DD/MM/YYYY, HH:mm:ss"),
+  },
   updatedAt: { type: String, require: true },
 });
 export const Delivery = mongoose.model<IDelivery>("delivery", deliverySchema);
