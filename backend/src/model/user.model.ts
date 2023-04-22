@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import moment from "moment/moment";
 
-interface IUser {
+export interface IUser {
   name: string;
   cpf: string;
   permission: string;
