@@ -6,7 +6,7 @@ interface IProducts {
   qtd: number;
 }
 
-interface IDelivery {
+export interface IDelivery {
   client: Object;
   deliveryList: Array<IProducts>;
   descriptionDelivery: string;
