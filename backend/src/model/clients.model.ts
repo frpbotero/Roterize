@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import moment from "moment/moment";
 
-interface IClient {
+export interface IClient {
   name: string;
   cnpj: string;
   cellPhone: Number;
