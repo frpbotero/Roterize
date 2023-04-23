@@ -1,6 +1,7 @@
 import { clientRepository } from "../repository/client.repository";
 
 import { IClient } from "../model/clients.model";
+import { validField } from "../utils/validaFields";
 
 function getAll() {
   return clientRepository
@@ -10,7 +11,12 @@ function getAll() {
 function getByID(id: string) {
   return clientRepository.getByID(id);
 }
-function create(body: IClient) {
+async function create(body: IClient) {
+  const client = await clientRepository.getByCNPJ(body.cnpj);
+  if (client) throw new Error("Cliente já cadastrado!");
+  if (validField(body) == false) {
+    throw new Error("Favor verificar os dados enviados!");
+  }
   return clientRepository.create(body);
 }
 function update(id: string, body: Partial<IClient>) {

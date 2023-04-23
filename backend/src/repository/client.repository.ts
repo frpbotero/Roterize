@@ -7,6 +7,9 @@ export const clientRepository = {
   getByID(id: string) {
     return Client.findOne({ _id: id });
   },
+  getByCNPJ(cnpj: string) {
+    return Client.findOne({ cnpj });
+  },
   create(body: IClient) {
     return Client.create(body);
   },

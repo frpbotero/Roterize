@@ -1,9 +1,9 @@
 import express from "express";
 import connection from "./db/database.helper";
-import clientsRouter from "./router/clients.router";
-import productRouter from "./router/products.router";
-import deliveryRouter from "./router/delivery.router";
-import userRouter from "./router/users.router";
+import ClientRouter from "./router/clients.router";
+import ProductRouter from "./router/products.router";
+import DeliveryRouter from "./router/delivery.router";
+import UserRouter from "./router/users.router";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
@@ -22,10 +22,10 @@ async function main() {
   });
 
   // Rotas
-  app.use("/client", clientsRouter);
-  app.use("/product", productRouter);
-  app.use("/delivery", deliveryRouter);
-  app.use("/user", userRouter);
+  app.use("/client", ClientRouter);
+  app.use("/product", ProductRouter);
+  app.use("/delivery", DeliveryRouter);
+  app.use("/user", UserRouter);
 
   connection
     .then(() => {

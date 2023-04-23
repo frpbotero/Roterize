@@ -1,4 +1,4 @@
-import { productRepository } from "../repository/product.repository.js";
+import { productRepository } from "../repository/product.repository";
 import { IProduct } from "../model/products.model.js";
 
 function getAll() {
