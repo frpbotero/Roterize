@@ -20,7 +20,7 @@ function deleteClient(id: string) {
   return clientRepository.delete(id);
 }
 
-module.exports = {
+export default {
   getAll,
   getByID,
   create,
