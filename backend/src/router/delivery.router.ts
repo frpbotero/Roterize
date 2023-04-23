@@ -34,7 +34,7 @@ router.put("/:id", async (req: Request, res: Response) => {
     if (!delivery) {
       return res.status(404).send({ message: "Pedido não entrado!" });
     }
-    await DeliveryService.updateUser(req.params.id, req.body);
+    await DeliveryService.update(req.params.id, req.body);
     res.status(200).send({ message: "Pedido atualizado com sucesso!" });
   } catch (error: any) {
     res.status(400).send({ message: error.message });
@@ -46,7 +46,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
     if (!delivery) {
       return res.status(404).send({ message: "Pedido não entrado!" });
     }
-    await DeliveryService.deleteUser(req.params.id);
+    await DeliveryService.deleteDelivery(req.params.id);
     res.status(200).send({ message: "Pedido excluído com sucesso!" });
   } catch (error: any) {
     res.status(400).send({ message: error.message });

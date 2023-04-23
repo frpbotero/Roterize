@@ -19,7 +19,7 @@ function deleteDelivery(id: string) {
   return deliveryRepository.delete(id);
 }
 
-module.exports = {
+export default {
   getAll,
   getByID,
   create,
