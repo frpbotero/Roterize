@@ -22,10 +22,10 @@ async function main() {
   });
 
   // Rotas
-  app.use("/clients", clientsRouter);
-  app.use("/products", productRouter);
+  app.use("/client", clientsRouter);
+  app.use("/product", productRouter);
   app.use("/delivery", deliveryRouter);
-  app.use("/users", userRouter);
+  app.use("/user", userRouter);
 
   connection
     .then(() => {
