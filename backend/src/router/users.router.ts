@@ -8,7 +8,7 @@ router.get("/", async (req: Request, res: Response) => {
   if (!users) {
     return res
       .status(404)
-      .send({ message: "Não encontramos usuários cadastrados!" });
+      .send({ message: "Não foi encontrado usuários cadastrados!" });
   }
   res.status(200).send(users);
 });
