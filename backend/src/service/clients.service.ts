@@ -14,8 +14,11 @@ function getByID(id: string) {
 async function create(body: IClient) {
   const client = await clientRepository.getByCNPJ(body.cnpj);
   if (client) throw new Error("Cliente já cadastrado!");
-  if (validField(body) == false) {
-    throw new Error("Favor verificar os dados enviados!");
+  console.log(validField(body));
+  if (validField(body) !== true) {
+    throw new Error(
+      `Favor verificar os dados enviados! Campo [${validField(body)}]`
+    );
   }
   return clientRepository.create(body);
 }

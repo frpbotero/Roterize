@@ -19,7 +19,7 @@ async function create(body: IUser) {
   if (validarCPF(body.cpf) == false) {
     throw new Error("CPF inválido!");
   }
-  if (validField(body) == false) {
+  if (validField(body) !== true) {
     throw new Error("Favor verificar os dados enviados!");
   }
   if (body.password) {
