@@ -1,5 +1,6 @@
 import { deliveryRepository } from "../repository/delivery.repository";
 import { IDelivery } from "../model/delivery.model";
+import { validField } from "../utils/validaFields";
 
 function getAll() {
   return deliveryRepository
@@ -10,6 +11,9 @@ function getByID(id: string) {
   return deliveryRepository.getByID(id);
 }
 function create(body: IDelivery) {
+  if (validField(body) !== true) {
+    throw new Error(`Favor verificar os dados enviados!`);
+  }
   return deliveryRepository.create(body);
 }
 function update(id: string, body: Partial<IDelivery>) {

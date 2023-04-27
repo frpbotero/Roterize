@@ -27,7 +27,11 @@ async function create(body: IUser) {
   }
   return userRespository.create(body);
 }
-function updateUser(id: string, body: Partial<IUser>) {
+async function updateUser(id: string, body: Partial<IUser>) {
+  if (body.password) {
+    body.password = await bcrypt.hash(body.password, 10);
+  }
+
   return userRespository.update(id, body);
 }
 function deleteUser(id: string) {
