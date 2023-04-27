@@ -1,5 +1,5 @@
 import { userRespository } from "../repository/user.repository";
-import { IUser } from "../model/user.model";
+
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -24,3 +24,7 @@ async function auth(email: string, password: string) {
     throw new Error("Falha na autenticação!");
   }
 }
+
+export default {
+  auth,
+};
