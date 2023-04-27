@@ -4,6 +4,7 @@ import ClientRouter from "./router/clients.router";
 import ProductRouter from "./router/products.router";
 import DeliveryRouter from "./router/delivery.router";
 import UserRouter from "./router/users.router";
+import AuthRouter from "./router/auth.router";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
@@ -26,6 +27,7 @@ async function main() {
   app.use("/product", ProductRouter);
   app.use("/delivery", DeliveryRouter);
   app.use("/user", UserRouter);
+  app.use("/auth", AuthRouter);
 
   connection
     .then(() => {

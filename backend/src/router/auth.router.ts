@@ -13,3 +13,4 @@ router.post("/", async (req: Request, res: Response) => {
     res.status(401).send({ message: error.message });
   }
 });
+export default router;
