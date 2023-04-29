@@ -52,7 +52,7 @@ export function Login() {
     <div>
       <div className="containerLogin">
         <button onClick={openModal}>ADM</button>
-        <button onClick={openModalDelivery}>Delivery</button>
+        {/* <button onClick={openModalDelivery}>Delivery</button> */}
       </div>
       <div>
         <Modal
@@ -77,7 +77,7 @@ export function Login() {
           </div>
         </Modal>
       </div>
-      <Modal
+      {/* <Modal
         isOpen={modaIsOpenDelivery}
         onRequestClose={CloseModalDelivery}
         style={customStyles}>
@@ -97,7 +97,7 @@ export function Login() {
             <button onClick={loginDelivery}>Login</button>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }
