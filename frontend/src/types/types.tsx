@@ -37,3 +37,7 @@ export type deliveryList = {
   product: productsType;
   qtd: Number;
 };
+export interface IUser {
+  email: string;
+  password: string;
+}
