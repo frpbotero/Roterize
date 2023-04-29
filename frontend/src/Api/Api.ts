@@ -1,5 +1,5 @@
 import axios from "axios";
-import { clientsType, deliveryType, productsType } from "../types/types";
+import { IUser, clientsType, deliveryType, productsType } from "../types/types";
 
 const api = axios.create({
   baseURL: "https://roterize.onrender.com",
@@ -61,6 +61,11 @@ export const apiService = {
     },
     deleteURL: function (id: any) {
       return api.delete<any>("/delivery/" + id);
+    },
+  },
+  auth: {
+    loginUser: function (body: IUser) {
+      return api.post("/auth", body);
     },
   },
 };
