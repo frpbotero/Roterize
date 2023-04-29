@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { apiService } from "../../Api/Api";
 
 import Modal from "react-modal";
 import "./Login.css";
@@ -24,6 +25,13 @@ const customStyles = {
 export function Login() {
   const [modaIsOpen, setIsOpen] = useState(false);
   const [modaIsOpenDelivery, setIsOpenDelivery] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const payload = {
+    email: email,
+    password: password,
+  };
 
   const navigate = useNavigate();
   function openModal() {
@@ -40,8 +48,9 @@ export function Login() {
   }
 
   function loginADM() {
-    localStorage.setItem("User", "ADM");
-    navigate("/product");
+    console.log(payload);
+    // localStorage.setItem("User", "ADM");
+    // navigate("/product");
   }
   function loginDelivery() {
     localStorage.setItem("User", "Delivery");
@@ -66,11 +75,19 @@ export function Login() {
             <div className="contentForm">
               <div>
                 <img src={user} alt="" />{" "}
-                <input type="text" placeholder="Login" />
+                <input
+                  type="text"
+                  placeholder="Login"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div>
                 <img src={pass} alt="" />{" "}
-                <input type="password" placeholder="Senha" />
+                <input
+                  type="password"
+                  placeholder="Senha"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <button onClick={loginADM}>Login</button>
             </div>
