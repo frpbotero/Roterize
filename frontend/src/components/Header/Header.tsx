@@ -11,15 +11,15 @@ export function Header() {
   const { setDate } = useContext(dateContext);
   const { user, setUser } = useContext(userContext);
 
-  const [activeLink, setActiveLink] = useState<any>(null); // adicione o estado
+  const [activeLink, setActiveLink] = useState<any>(null);
   function logout() {
     setUser("");
     navigate("/");
   }
 
-  function handleDateChange(newDate: Date) {
-    setDate(newDate);
-  }
+  // function handleDateChange(newDate: Date) {
+  //   setDate(newDate);
+  // }
   useEffect(() => {
     setUserAuth(user);
   }, [user]);
@@ -28,69 +28,73 @@ export function Header() {
       <Link to="/">
         <img src={logo} alt="" className="logoImage" />
       </Link>
-      {!userAuth ? (
-        <div>
-          <Link to="/login">
-            <button className="buttonLogin">Login</button>
-          </Link>
-        </div>
-      ) : userAuth === "ADM" ? (
-        //Header Administrativo
-        <div className="containerHeader">
-          <div className="contentOptionHeader">
-            <Link
-              to="/product"
-              className={activeLink === "/product" ? "active" : ""}
-              onClick={() => setActiveLink("/product")}>
-              Produtos
+      {
+        !userAuth ? (
+          <div>
+            <Link to="/login">
+              <button className="buttonLogin">Login</button>
             </Link>
-            <Link
-              to="/client"
-              className={activeLink === "/client" ? "active" : ""}
-              onClick={() => setActiveLink("/client")}>
-              Clientes
-            </Link>
-            <Link
-              to="/order"
-              className={activeLink === "/order" ? "active" : ""}
-              onClick={() => setActiveLink("/order")}>
-              Pedidos
-            </Link>
-            <Link
-              to="/delivery"
-              className={activeLink === "/delivery" ? "active" : ""}
-              onClick={() => setActiveLink("/delivery")}>
-              Rota
-            </Link>
-            <Link
-              to="/reports"
-              className={activeLink === "/reports" ? "active" : ""}
-              onClick={() => setActiveLink("/reports")}>
-              Report
-            </Link>
-            {/* <Link to="">USUÁRIO</Link> */}
           </div>
+        ) : (
+          // userAuth === "ADM" ?
+          //Header Administrativo
+          <div className="containerHeader">
+            <div className="contentOptionHeader">
+              <Link
+                to="/product"
+                className={activeLink === "/product" ? "active" : ""}
+                onClick={() => setActiveLink("/product")}>
+                Produtos
+              </Link>
+              <Link
+                to="/client"
+                className={activeLink === "/client" ? "active" : ""}
+                onClick={() => setActiveLink("/client")}>
+                Clientes
+              </Link>
+              <Link
+                to="/order"
+                className={activeLink === "/order" ? "active" : ""}
+                onClick={() => setActiveLink("/order")}>
+                Pedidos
+              </Link>
+              <Link
+                to="/delivery"
+                className={activeLink === "/delivery" ? "active" : ""}
+                onClick={() => setActiveLink("/delivery")}>
+                Rota
+              </Link>
+              <Link
+                to="/reports"
+                className={activeLink === "/reports" ? "active" : ""}
+                onClick={() => setActiveLink("/reports")}>
+                Report
+              </Link>
+              {/* <Link to="">USUÁRIO</Link> */}
+            </div>
 
-          <button className="buttonlogout" onClick={logout}>
-            Logout
-          </button>
-        </div>
-      ) : (
-        //Header Entrega
-        <div className="containerHeader">
-          <div className="contentOptionHeader">
-            <input
-              type="date"
-              onChange={(e) => handleDateChange(new Date(e.target.value))}
-            />
-            <Link to="/delivery">Go</Link>
+            <button className="buttonlogout" onClick={logout}>
+              Logout
+            </button>
           </div>
+        )
+        // : (
+        //   //Header Entrega
+        //   <div className="containerHeader">
+        //     <div className="contentOptionHeader">
+        //       <input
+        //         type="date"
+        //         onChange={(e) => handleDateChange(new Date(e.target.value))}
+        //       />
+        //       <Link to="/delivery">Go</Link>
+        //     </div>
 
-          <button className="buttonlogout" onClick={logout}>
-            Logout
-          </button>
-        </div>
-      )}
+        //     <button className="buttonlogout" onClick={logout}>
+        //       Logout
+        //     </button>
+        //   </div>
+        // )
+      }
     </div>
   );
 }

@@ -1,9 +1,12 @@
 import axios from "axios";
 import { IUser, clientsType, deliveryType, productsType } from "../types/types";
 
+const token = localStorage.getItem("user");
+
 const api = axios.create({
   baseURL: "https://roterize.onrender.com",
   headers: {
+    Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
   },
 });
@@ -11,36 +14,36 @@ const api = axios.create({
 export const apiService = {
   clients: {
     createURL: function (body: clientsType) {
-      return api.post<clientsType>("/clients", body);
+      return api.post<clientsType>("/client", body);
     },
     updateURL: function (id: any, body: clientsType) {
-      return api.put<any>("/clients/" + id, body);
+      return api.put<any>("/client/" + id, body);
     },
     readAllURL: function () {
-      return api.get<clientsType>("/clients");
+      return api.get<clientsType>("/client");
     },
     readById: function (id: any) {
-      return api.get<any>("/clients/" + id);
+      return api.get<any>("/client/" + id);
     },
     deleteURL: function (id: any) {
-      return api.delete<any>("/clients/" + id);
+      return api.delete<any>("/client/" + id);
     },
   },
   products: {
     createURL: function (body: productsType) {
-      return api.post<productsType>("/products/", body);
+      return api.post<productsType>("/product/", body);
     },
     updateURL: function (id: any, body: productsType) {
-      return api.put<any>("/products/:id", body);
+      return api.put<any>("/product/:id", body);
     },
     readAllURL: function () {
-      return api.get<productsType>("/products/");
+      return api.get<productsType>("/product/");
     },
     readById: function (id: any) {
-      return api.get<any>("/products/:id");
+      return api.get<any>("/product/:id");
     },
     deleteURL: function (id: any) {
-      return api.delete<any>("/products/:id");
+      return api.delete<any>("/product/:id");
     },
   },
   delivery: {
