@@ -9,6 +9,7 @@ import adm from "../../assets/adm.png";
 import delivery from "../../assets/delivery.png";
 import user from "../../assets/user.svg";
 import pass from "../../assets/pass.svg";
+import { IUser } from "../../types/types";
 
 const customStyles = {
   content: {
@@ -28,7 +29,7 @@ export function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const payload = {
+  const payload: IUser = {
     email: email,
     password: password,
   };
@@ -48,7 +49,14 @@ export function Login() {
   }
 
   function loginADM() {
-    console.log(payload);
+    apiService.auth
+      .loginUser(payload)
+      .then((response) => {
+        console.log(response.data);
+        const data = response.data;
+        localStorage.setItem("user", data.token);
+      })
+      .catch((error) => console.log(error.response.data.message));
     // localStorage.setItem("User", "ADM");
     // navigate("/product");
   }
