@@ -5,14 +5,14 @@ type userContextProps = {
 };
 
 export const userContext = createContext<any>({
-  date: new Date(),
-  toogleDate: () => {},
+  user: "",
+  toogleUser: () => {},
 });
 export const UserProvider = ({ children }: userContextProps) => {
-  const [date, setDate] = useState(new Date());
+  const [user, setUser] = useState("");
 
   return (
-    <userContext.Provider value={{ date, setDate }}>
+    <userContext.Provider value={{ user, setUser }}>
       {children}
     </userContext.Provider>
   );

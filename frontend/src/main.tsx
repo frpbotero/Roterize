@@ -14,6 +14,7 @@ import { OrderID } from "./pages/OrderID/OrderID";
 import { DateProvider } from "./context/DateContext";
 import { ReportID } from "./pages/ReportID/ReportID";
 import { Reports } from "./pages/Reports/Reports";
+import { UserProvider } from "./context/userContext";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <DateProvider>
-      <RouterProvider router={router} />
-    </DateProvider>
+    <UserProvider>
+      <DateProvider>
+        <RouterProvider router={router} />
+      </DateProvider>
+    </UserProvider>
   </React.StrictMode>
 );
