@@ -1,36 +1,40 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../../assets/router2.svg";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { dateContext } from "../../context/DateContext";
+import { userContext } from "../../context/userContext";
 
 export function Header() {
-  const oauth = localStorage.getItem("User");
   const navigate = useNavigate();
+  const [userAuth, setUserAuth] = useState("");
   const { setDate } = useContext(dateContext);
+  const { user, setUser } = useContext(userContext);
 
   const [activeLink, setActiveLink] = useState<any>(null); // adicione o estado
   function logout() {
-    localStorage.removeItem("User");
+    setUser("");
     navigate("/");
   }
 
   function handleDateChange(newDate: Date) {
     setDate(newDate);
   }
-
+  useEffect(() => {
+    setUserAuth(user);
+  }, [user]);
   return (
     <div className="containerHeader">
       <Link to="/">
         <img src={logo} alt="" className="logoImage" />
       </Link>
-      {!oauth ? (
+      {!userAuth ? (
         <div>
           <Link to="/login">
             <button className="buttonLogin">Login</button>
           </Link>
         </div>
-      ) : oauth === "ADM" ? (
+      ) : userAuth === "ADM" ? (
         //Header Administrativo
         <div className="containerHeader">
           <div className="contentOptionHeader">
