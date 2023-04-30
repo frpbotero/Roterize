@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { apiService } from "../../Api/Api";
 
 import Modal from "react-modal";
@@ -6,10 +6,11 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 
 import adm from "../../assets/adm.png";
-import delivery from "../../assets/delivery.png";
+
 import user from "../../assets/user.svg";
 import pass from "../../assets/pass.svg";
 import { IUser } from "../../types/types";
+import { userContext } from "../../context/userContext";
 
 const customStyles = {
   content: {
@@ -25,9 +26,10 @@ const customStyles = {
 
 export function Login() {
   const [modaIsOpen, setIsOpen] = useState(false);
-  const [modaIsOpenDelivery, setIsOpenDelivery] = useState(false);
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const { setUser } = useContext(userContext);
 
   const payload: IUser = {
     email: email,
@@ -41,12 +43,6 @@ export function Login() {
   function CloseModal() {
     setIsOpen(false);
   }
-  function openModalDelivery() {
-    setIsOpenDelivery(true);
-  }
-  function CloseModalDelivery() {
-    setIsOpenDelivery(false);
-  }
 
   function loginADM() {
     apiService.auth
@@ -55,6 +51,7 @@ export function Login() {
         console.log(response.data);
         const data = response.data;
         localStorage.setItem("user", data.token);
+        setUser(data.token);
         navigate("/product");
       })
       .catch((error) => console.log(error.response.data.message));
@@ -103,27 +100,6 @@ export function Login() {
           </div>
         </Modal>
       </div>
-      {/* <Modal
-        isOpen={modaIsOpenDelivery}
-        onRequestClose={CloseModalDelivery}
-        style={customStyles}>
-        <div className="containerForm">
-          <img className="imageLogin" src={delivery} alt="" />
-          <h3>Login</h3>
-          <p>Faça login em sua conta</p>
-          <div className="contentForm">
-            <div>
-              <img src={user} alt="" />{" "}
-              <input type="text" placeholder="Login" />
-            </div>
-            <div>
-              <img src={pass} alt="" />{" "}
-              <input type="password" placeholder="Senha" />
-            </div>
-            <button onClick={loginDelivery}>Login</button>
-          </div>
-        </div>
-      </Modal> */}
     </div>
   );
 }
