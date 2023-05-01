@@ -23,7 +23,6 @@ export function CardReport({
 }: CardProps) {
   const navigate = useNavigate();
 
-  console.log(status);
   const card = document.getElementById("card");
 
   //Função para atualizar o estado da entrega

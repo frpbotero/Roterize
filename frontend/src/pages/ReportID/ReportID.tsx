@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import { apiService } from "../../Api/Api";
 import { deliveryType } from "../../types/types";
-import carregando from "../../../public/carregando.gif";
+import carregando from "../../assets/carregando.gif";
 import "./ReportID.css";
 import { generatePDF } from "../../utils/pdfCreate";
 

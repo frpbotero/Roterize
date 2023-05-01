@@ -5,23 +5,29 @@ import { Link, useNavigate } from "react-router-dom";
 import { dateContext } from "../../context/DateContext";
 import { userContext } from "../../context/userContext";
 
+const userLocal: any = localStorage.getItem("user");
+
 export function Header() {
   const navigate = useNavigate();
   const [userAuth, setUserAuth] = useState("");
   const { setDate } = useContext(dateContext);
-  const { user, setUser } = useContext(userContext);
+  const { user } = useContext(userContext);
 
   const [activeLink, setActiveLink] = useState<any>(null);
   function logout() {
-    setUser("");
+    setUserAuth("");
+    localStorage.clear();
     navigate("/");
   }
 
-  // function handleDateChange(newDate: Date) {
-  //   setDate(newDate);
-  // }
+  function getUser() {
+    if (userLocal) {
+      setUserAuth(userLocal);
+    }
+  }
+
   useEffect(() => {
-    setUserAuth(user);
+    getUser();
   }, [user]);
   return (
     <div className="containerHeader">

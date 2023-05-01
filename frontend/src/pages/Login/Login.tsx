@@ -48,7 +48,6 @@ export function Login() {
     apiService.auth
       .loginUser(payload)
       .then((response) => {
-        console.log(response.data);
         const data = response.data;
         localStorage.setItem("user", data.token);
         setUser(data.token);

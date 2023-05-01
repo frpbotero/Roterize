@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { apiService } from "../../Api/Api";
 import { Card } from "../../components/Card/Card";
 import { deliveryType } from "../../types/types";
-import carregando from "../../../public/carregando.gif";
+import carregando from "../../assets/carregando.gif";
 import "./styles.css";
 import { dateContext } from "../../context/DateContext";
 export function ClientRoute() {
