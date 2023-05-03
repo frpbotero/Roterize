@@ -6,6 +6,7 @@ import { productsType } from "../../types/types";
 export function Produtos() {
   const [name, setName] = useState("default");
   const [description, setDescription] = useState("default");
+  const [nameSearch, setNameSearch] = useState("");
 
   const payload: productsType = {
     name: name,
@@ -31,11 +32,21 @@ export function Produtos() {
     clear();
   }
 
+  async function getByName() {
+    await apiService.products
+      .readByName(nameSearch)
+      .then((response) => console.log(response.data));
+  }
+
   return (
     <div className="productContainer">
       <div className="busca">
-        <input type="text" placeholder="Nome" />
-        <button>Buscar</button>
+        <input
+          type="text"
+          placeholder="Nome"
+          onChange={(e) => setNameSearch(e.target.value)}
+        />
+        <button onClick={getByName}>Buscar</button>
       </div>
       <div className="cadastro">
         <button>Cadastrar</button>
