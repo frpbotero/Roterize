@@ -30,13 +30,18 @@ router.get(
   }
 );
 
-router.post("/search", async (req: Request, res: Response) => {
-  const allProducts = await ProductService.getAll();
-  const products = allProducts.filter((product) =>
-    product.name.toLowerCase().includes(req.body.name.toLowerCase())
-  );
-  res.send(products);
-});
+router.post(
+  "/search",
+  permissionMiddleware(["ADM", "COLAB"]),
+  async (req: Request, res: Response) => {
+    console.log(req.headers);
+    const allProducts = await ProductService.getAll();
+    const products = allProducts.filter((product) =>
+      product.name.toLowerCase().includes(req.body.name.toLowerCase())
+    );
+    res.send(products);
+  }
+);
 router.post(
   "/",
   permissionMiddleware(["ADM", "COLAB"]),

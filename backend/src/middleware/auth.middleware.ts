@@ -5,8 +5,6 @@ import userService from "../service/user.service";
 
 dotenv.config();
 
-const secretKey = process.env.SECRET_KEY || "";
-
 export function permissionMiddleware(permission: string[]) {
   return async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers["authorization"];
@@ -18,6 +16,7 @@ export function permissionMiddleware(permission: string[]) {
     const tokenSplited = token.split("Bearer ");
     const decoded = jwt.decode(tokenSplited[1]);
     const decodedInfo = JSON.parse(JSON.stringify(decoded));
+    console.log(decodedInfo.id);
     const user = await userService.getByID(decodedInfo.id);
 
     if (!user) {

@@ -4,7 +4,7 @@ import { IUser, clientsType, deliveryType, productsType } from "../types/types";
 const token = localStorage.getItem("user");
 
 const api = axios.create({
-  baseURL: "https://roterize.onrender.com",
+  baseURL: "http://127.0.0.1:3000",
   headers: {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
@@ -34,19 +34,19 @@ export const apiService = {
       return api.post<productsType>("/product/", body);
     },
     updateURL: function (id: any, body: productsType) {
-      return api.put<any>("/product/:id", body);
+      return api.put<any>("/product/:id" + id, body);
     },
     readAllURL: function () {
       return api.get<productsType>("/product/");
     },
-    readByName: function (name: string) {
-      return api.post("/product/search");
+    readByName: function (body: Partial<productsType>) {
+      return api.post("/product/search", body);
     },
     readById: function (id: any) {
-      return api.get<any>("/product/:id");
+      return api.get<any>("/product/:id" + id);
     },
     deleteURL: function (id: any) {
-      return api.delete<any>("/product/:id");
+      return api.delete<any>("/product/:id" + id);
     },
   },
   delivery: {

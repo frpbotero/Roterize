@@ -13,6 +13,10 @@ export function Produtos() {
     description: description,
   };
 
+  const payloadSearch = {
+    name: nameSearch,
+  };
+
   function clear() {
     //Foi preciso referencia o tipo de input para que o typescript pudesse identificar o value dos campos que precisava
     const productNameInput = document.getElementById(
@@ -34,8 +38,9 @@ export function Produtos() {
 
   async function getByName() {
     await apiService.products
-      .readByName(nameSearch)
-      .then((response) => console.log(response.data));
+      .readByName(payloadSearch)
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error.message));
   }
 
   return (
