@@ -4,11 +4,15 @@
     align-items: center;
     gap:1em
 }
+.hidden{
+    display: none;
+}
 .modal{
     display: flex;
     flex-direction: column;
     gap:1em
 }
+
 .inputClient{
     display: flex;  
     height: 2em;

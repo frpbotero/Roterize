@@ -2,11 +2,13 @@ import { useState } from "react";
 import "./Produtos.css";
 import { apiService } from "../../Api/Api";
 import { productsType } from "../../types/types";
+import { CardProduct } from "../../components/CardProduct/CardProduct";
 
 export function Produtos() {
   const [name, setName] = useState("default");
   const [description, setDescription] = useState("default");
   const [nameSearch, setNameSearch] = useState("");
+  const [productSearch, setProductSearch] = useState<[productsType]>();
 
   const payload: productsType = {
     name: name,
@@ -16,6 +18,9 @@ export function Produtos() {
   const payloadSearch = {
     name: nameSearch,
   };
+
+  const divCreate = document.getElementById("createProduct") as HTMLDivElement;
+  const divSearch = document.getElementById("listSearch") as HTMLDivElement;
 
   function clear() {
     //Foi preciso referencia o tipo de input para que o typescript pudesse identificar o value dos campos que precisava
@@ -37,10 +42,18 @@ export function Produtos() {
   }
 
   async function getByName() {
+    divCreate.classList.remove("modal");
+    divSearch.classList.remove("hidden");
+    divCreate.classList.add("hidden");
     await apiService.products
       .readByName(payloadSearch)
-      .then((response) => console.log(response.data))
+      .then((response) => setProductSearch(response.data))
       .catch((error) => console.log(error.message));
+  }
+
+  function create() {
+    divCreate.classList.add("modal");
+    divSearch.classList.add("hidden");
   }
 
   return (
@@ -54,10 +67,10 @@ export function Produtos() {
         <button onClick={getByName}>Buscar</button>
       </div>
       <div className="cadastro">
-        <button>Cadastrar</button>
+        <button onClick={create}>Cadastrar</button>
       </div>
 
-      <div className="modal">
+      <div className="modal" id="createProduct">
         <div className="productName">
           <label htmlFor="productName">Nome do Produto</label>
           <input
@@ -81,6 +94,21 @@ export function Produtos() {
           <button onClick={createProduct}>Salvar</button>
         </div>
       </div>
+      <div className="modalSearch" id="listSearch">
+        {productSearch
+          ? productSearch.map((element) => (
+              <CardProduct
+                key={element._id}
+                name={element.name}
+                description={element.description}
+              />
+            ))
+          : ""}
+      </div>
     </div>
   );
+}
+
+{
+  /* <CardProduct name={product.name} description={product.description}/> */
 }
