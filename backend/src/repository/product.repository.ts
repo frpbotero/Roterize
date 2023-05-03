@@ -7,7 +7,9 @@ export const productRepository = {
   getByID(id: string) {
     return Product.findById({ _id: id });
   },
-
+  getByName(name: string) {
+    return Product.findOne({ name });
+  },
   create(body: IProduct) {
     return Product.create(body);
   },
