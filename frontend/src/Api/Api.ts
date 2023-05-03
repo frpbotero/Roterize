@@ -39,6 +39,9 @@ export const apiService = {
     readAllURL: function () {
       return api.get<productsType>("/product/");
     },
+    readByName: function (name: string) {
+      return api.post("/product/search");
+    },
     readById: function (id: any) {
       return api.get<any>("/product/:id");
     },
