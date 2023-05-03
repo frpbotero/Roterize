@@ -29,6 +29,14 @@ router.get(
     res.status(200).send(product);
   }
 );
+
+router.post("/search", async (req: Request, res: Response) => {
+  const allProducts = await ProductService.getAll();
+  const products = allProducts.filter((product) =>
+    product.name.toLowerCase().includes(req.body.name.toLowerCase())
+  );
+  res.send(products);
+});
 router.post(
   "/",
   permissionMiddleware(["ADM", "COLAB"]),
