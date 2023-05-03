@@ -10,6 +10,9 @@ export const userRespository = {
   getByEmail(email: string) {
     return User.findOne({ email });
   },
+  getByName(name: string) {
+    return User.findOne({ name });
+  },
   create(body: IUser) {
     return User.create(body);
   },
