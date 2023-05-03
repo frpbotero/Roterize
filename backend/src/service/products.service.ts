@@ -23,6 +23,10 @@ async function create(body: IProduct) {
 
   return productRepository.create(body);
 }
+function getByName(name: string) {
+  return productRepository.getByName(name);
+}
+
 function updateUser(id: string, body: Partial<IProduct>) {
   return productRepository.update(id, body);
 }
@@ -33,6 +37,7 @@ function deleteUser(id: string) {
 export default {
   getAll,
   getByID,
+  getByName,
   create,
   updateUser,
   deleteUser,
