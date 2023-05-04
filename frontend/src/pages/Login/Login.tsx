@@ -49,7 +49,7 @@ export function Login() {
       .loginUser(payload)
       .then((response) => {
         const data = response.data;
-        localStorage.setItem("user", data.token);
+        localStorage.setItem("user", JSON.stringify(data.token));
         setUser(data.token);
         navigate("/product");
       })

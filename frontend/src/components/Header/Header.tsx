@@ -7,7 +7,7 @@ import { userContext } from "../../context/userContext";
 
 export function Header() {
   const navigate = useNavigate();
-  const { user } = useContext(userContext);
+  const { user, setUser } = useContext(userContext);
   const [isAuthenticated, setIsAuthenticated] = useState(!!user);
   // const { setDate } = useContext(dateContext);
 
@@ -17,8 +17,17 @@ export function Header() {
     localStorage.clear();
     navigate("/");
   }
+  const local = localStorage.getItem("user");
+
+  function getUser() {
+    if (local) {
+      setUser(local);
+    }
+  }
+  console.log(!!user);
 
   useEffect(() => {
+    getUser();
     setIsAuthenticated(!!user);
   }, [user]);
   return (
