@@ -5,38 +5,29 @@ import { Link, useNavigate } from "react-router-dom";
 import { dateContext } from "../../context/DateContext";
 import { userContext } from "../../context/userContext";
 
-const userLocal: any = localStorage.getItem("user");
-
 export function Header() {
   const navigate = useNavigate();
-  const [userAuth, setUserAuth] = useState("");
-  // const { setDate } = useContext(dateContext);
   const { user } = useContext(userContext);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!user);
+  // const { setDate } = useContext(dateContext);
 
   const [activeLink, setActiveLink] = useState<any>(null);
   function logout() {
-    setUserAuth("");
+    setIsAuthenticated(false);
     localStorage.clear();
     navigate("/");
   }
 
-  function getUser() {
-    if (user) {
-      setUserAuth(user);
-    }
-    console.log(user);
-  }
-
   useEffect(() => {
-    getUser();
-  }, [userAuth]);
+    setIsAuthenticated(!!user);
+  }, [user]);
   return (
     <div className="containerHeader">
       <Link to="/">
         <img src={logo} alt="" className="logoImage" />
       </Link>
       {
-        !userAuth ? (
+        !isAuthenticated ? (
           <div>
             <Link to="/login">
               <button className="buttonLogin">Login</button>
