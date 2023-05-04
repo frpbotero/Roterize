@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useContext } from "react";
 import { apiService } from "../../Api/Api";
 import { deliveryType } from "../../types/types";
 import { useNavigate } from "react-router-dom";
+import moment from "moment/moment";
 
 //Biblioteca para assinatura
 import SignatureCanvas from "react-signature-canvas";
@@ -37,6 +38,7 @@ export function OrderID() {
 
   function updateDelivery() {
     const payload: any = {
+      updateAt: moment(new Date()).format("DD/MM/YYYY"),
       status: "Entregue",
       signature: signature,
     };

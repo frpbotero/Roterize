@@ -24,7 +24,7 @@ const deliverySchema = new Schema<IDelivery>({
   status: { type: String, require: true },
   createdAt: {
     type: String,
-    default: moment(new Date()).format("DD/MM/YYYY, HH:mm:ss"),
+    default: moment(new Date()).format("DD/MM/YYYY"),
   },
   updatedAt: { type: String, require: true },
 });
