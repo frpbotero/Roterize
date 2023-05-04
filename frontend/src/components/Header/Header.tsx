@@ -10,7 +10,7 @@ const userLocal: any = localStorage.getItem("user");
 export function Header() {
   const navigate = useNavigate();
   const [userAuth, setUserAuth] = useState("");
-  const { setDate } = useContext(dateContext);
+  // const { setDate } = useContext(dateContext);
   const { user } = useContext(userContext);
 
   const [activeLink, setActiveLink] = useState<any>(null);
@@ -21,14 +21,15 @@ export function Header() {
   }
 
   function getUser() {
-    if (userLocal) {
-      setUserAuth(userLocal);
+    if (user) {
+      setUserAuth(user);
     }
+    console.log(user);
   }
 
   useEffect(() => {
     getUser();
-  }, [user]);
+  }, [userAuth]);
   return (
     <div className="containerHeader">
       <Link to="/">
