@@ -10,15 +10,15 @@ Projeto consiste em um sistema de controle de entrega, onde foi adicionado um ca
 
 Você poded acessar e testar aplicação atraves do link <a href="https://roterize.vercel.app/delivery">Roterize</a>
 
-Temos 2 opções de login:
+<h3>Temos 2 opções de login:</h3>
 
-Usuário Administrador:
-   email:fdtal@gmail.com
-   password:123456
+<h4>Usuário Administrador:</h4>
+   <p>email:fdtal@gmail.com</p>
+   <p>password:123456</p>
    
-Usuário Colaborador
-   email:tdofulado@gmail.com
-   password:123456
+<h4>Usuário Colaborador</h4>
+   <p>email:tdofulado@gmail.com</p>
+   <p>password:123456</p>
 
 
 ## 🛠️ Tecnologias
