@@ -8,7 +8,7 @@ Projeto consiste em um sistema de controle de entrega, onde foi adicionado um ca
 
 ## 📦 Teste
 
-Você poded acessar e testar aplicação atraves do link <a href="https://roterize.vercel.app/delivery">Roterize</a>
+Você pode acessar e testar aplicação atraves do link <a href="https://roterize.vercel.app/delivery">Roterize</a>
 
 <h3>Temos 2 opções de login:</h3>
 
