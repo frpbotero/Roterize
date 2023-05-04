@@ -24,13 +24,14 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Responsividade Delivery Mobile
 - [x] Criação de PDF
 - [x] Criação de Mobile
+- [x] Autenticação com JWT
 - [ ] Reordenação de Entregas - Tudo que já foi entregue vai para ultimo lugar.
 - [ ] Criar carga de donwload para app mobile. Baixar sempre a rota do dia.
 - [ ] Filtro delivery por data(Ano/Mês/Dia), por empresa
 - [ ] Inserir logo da empresa para personalizar relatório
 - [ ] Organização de rota arrastavel
 - [ ] Exportar endereço para Api do GoogleMaps
-- [ ] Autenticação com JWT
+
 
 ## 💻 Pré-requisitos
 
