@@ -13,7 +13,17 @@ export function Reports() {
     await apiService.delivery
       .readAllURL()
       .then((response: any) => {
-        setDelivery(response.data);
+        const sortedDelivery = response.data.sort(
+          (a: deliveryType, b: deliveryType) => {
+            if (a.status === "Entregue" && b.status !== "Entregue") {
+              return -1;
+            } else if (a.status !== "EmRota" && b.status === "EmRota") {
+              return -1;
+            }
+            return 0;
+          }
+        );
+        setDelivery(sortedDelivery);
       })
 
       .catch((e: Error) => {
@@ -23,7 +33,7 @@ export function Reports() {
 
   useEffect(() => {
     showDeliveries();
-  }, []);
+  }, [delivery]);
 
   return (
     <div className="routerContainer">

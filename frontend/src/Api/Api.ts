@@ -10,9 +10,6 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
-
-//
-
 export const apiService = {
   clients: {
     createURL: function (body: clientsType) {
