@@ -4,12 +4,14 @@ import { IUser, clientsType, deliveryType, productsType } from "../types/types";
 const token = localStorage.getItem("user");
 
 const api = axios.create({
-  baseURL: "https://roterize.onrender.com",
+  baseURL: "http://127.0.0.1:3000",
   headers: {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
   },
 });
+
+// https://roterize.onrender.com
 
 export const apiService = {
   clients: {

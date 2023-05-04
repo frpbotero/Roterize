@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { apiService } from "../../Api/Api";
 import { Card } from "../../components/Card/Card";
 import { deliveryType } from "../../types/types";
-import carregando from "../../assets/carregando.gif";
+import loading from "../../assets/loading.gif";
 import "./styles.css";
 import { dateContext } from "../../context/DateContext";
 export function ClientRoute() {
@@ -28,7 +28,7 @@ export function ClientRoute() {
     <div className="routerContainer">
       <h1>Delivery</h1>
       {!delivery ? (
-        <img src={carregando} />
+        <img src={loading} />
       ) : (
         delivery.map((order, index) => (
           <div key={`${order}${index}`}>
