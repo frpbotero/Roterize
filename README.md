@@ -6,6 +6,21 @@
 
 Projeto consiste em um sistema de controle de entrega, onde foi adicionado um campo de coleta de assinatura de recebimento. O usuário pode cadastrar os produtos, clientes e pedidos para ser entregue. Onde possui uma interface para Administrador e outra para o Entregador, filtrando todos os pedidos do dia e sua rota.
 
+## 📦 Teste
+
+Você pode acessar e testar aplicação atraves do link <a href="https://roterize.vercel.app/delivery">Roterize</a>
+
+<h3>Temos 2 opções de login:</h3>
+
+<h4>Usuário Administrador:</h4>
+   <p>email:fdtal@gmail.com</p>
+   <p>password:123456</p>
+   
+<h4>Usuário Colaborador</h4>
+   <p>email:tdofulado@gmail.com</p>
+   <p>password:123456</p>
+
+
 ## 🛠️ Tecnologias
 
 - React
@@ -14,6 +29,8 @@ Projeto consiste em um sistema de controle de entrega, onde foi adicionado um ca
 - Typescript
 - MongoDB
 - RealmeDB
+
+
 
 ### Ajustes e melhorias
 
@@ -24,13 +41,14 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Responsividade Delivery Mobile
 - [x] Criação de PDF
 - [x] Criação de Mobile
+- [x] Autenticação com JWT
 - [ ] Reordenação de Entregas - Tudo que já foi entregue vai para ultimo lugar.
 - [ ] Criar carga de donwload para app mobile. Baixar sempre a rota do dia.
 - [ ] Filtro delivery por data(Ano/Mês/Dia), por empresa
 - [ ] Inserir logo da empresa para personalizar relatório
 - [ ] Organização de rota arrastavel
 - [ ] Exportar endereço para Api do GoogleMaps
-- [ ] Autenticação com JWT
+
 
 ## 💻 Pré-requisitos
 
