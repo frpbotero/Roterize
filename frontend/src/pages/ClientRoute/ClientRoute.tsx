@@ -5,6 +5,7 @@ import { deliveryType } from "../../types/types";
 import loading from "../../assets/loading.gif";
 import "./styles.css";
 import { dateContext } from "../../context/DateContext";
+
 export function ClientRoute() {
   const [delivery, setDelivery] = useState<deliveryType[]>([]);
   const { date } = useContext(dateContext);

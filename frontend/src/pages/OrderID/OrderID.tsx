@@ -38,7 +38,7 @@ export function OrderID() {
 
   function updateDelivery() {
     const payload: any = {
-      updateAt: moment(new Date()).format("DD/MM/YYYY"),
+      updatedAt: moment(new Date()).format("DD/MM/YYYY"),
       status: "Entregue",
       signature: signature,
     };
