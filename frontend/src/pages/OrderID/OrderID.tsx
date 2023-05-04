@@ -42,7 +42,7 @@ export function OrderID() {
       status: "Entregue",
       signature: signature,
     };
-
+    console.log(payload);
     apiService.delivery.updateURL(id, payload);
 
     navigate("/delivery");

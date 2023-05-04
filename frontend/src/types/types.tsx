@@ -26,7 +26,7 @@ export type deliveryType = {
   client: clientsType;
   deliveryList: Array<deliveryList>;
   descriptionDelivery: string;
-
+  updatedAt?: string;
   signature?: string;
   status: string;
   map?: Array<string>;

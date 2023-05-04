@@ -17,6 +17,7 @@ export function ReportID() {
     fetchDelivery();
   }, [id]);
 
+  console.log(delivery);
   if (!delivery) {
     return (
       <div>
@@ -51,7 +52,7 @@ export function ReportID() {
           ))}
         </ul>
         <div className="receiver">
-          <p>Entregue {delivery.date}</p>
+          <p>Entregue {delivery.updatedAt}</p>
           <img src={delivery.signature} alt="Assinatura" />
           <span>Responsável</span>
         </div>
