@@ -33,7 +33,7 @@ export function Reports() {
 
   useEffect(() => {
     showDeliveries();
-  }, [delivery]);
+  }, []);
 
   return (
     <div className="routerContainer">
