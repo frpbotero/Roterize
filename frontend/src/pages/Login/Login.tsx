@@ -54,8 +54,6 @@ export function Login() {
         navigate("/product");
       })
       .catch((error) => console.log(error.response.data.message));
-    // localStorage.setItem("User", "ADM");
-    //
   }
   function loginDelivery() {
     localStorage.setItem("User", "Delivery");
