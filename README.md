@@ -15,6 +15,18 @@ Projeto consiste em um sistema de controle de entrega, onde foi adicionado um ca
 - MongoDB
 - RealmeDB
 
+## 🛠️ Teste
+
+Você poded acessar e testar aplicação atraves do link <a href="https://roterize.vercel.app/delivery"/>
+Temos 2 opções de login:
+
+Usuário Administrador:
+   email:fdtal@gmail.com
+   password:123456
+Usuário Colaborador
+   email:tdofulado@gmail.com
+   password:123456
+
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
