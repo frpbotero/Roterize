@@ -6,6 +6,20 @@
 
 Projeto consiste em um sistema de controle de entrega, onde foi adicionado um campo de coleta de assinatura de recebimento. O usuário pode cadastrar os produtos, clientes e pedidos para ser entregue. Onde possui uma interface para Administrador e outra para o Entregador, filtrando todos os pedidos do dia e sua rota.
 
+## 🛠️ Teste
+
+Você poded acessar e testar aplicação atraves do link <a href="https://roterize.vercel.app/delivery">Roterize</a>
+
+***Temos 2 opções de login:
+
+Usuário Administrador:
+   email:fdtal@gmail.com
+   password:123456
+Usuário Colaborador
+   email:tdofulado@gmail.com
+   password:123456
+
+
 ## 🛠️ Tecnologias
 
 - React
@@ -15,17 +29,7 @@ Projeto consiste em um sistema de controle de entrega, onde foi adicionado um ca
 - MongoDB
 - RealmeDB
 
-## 🛠️ Teste
 
-Você poded acessar e testar aplicação atraves do link <a href="https://roterize.vercel.app/delivery"/>
-Temos 2 opções de login:
-
-Usuário Administrador:
-   email:fdtal@gmail.com
-   password:123456
-Usuário Colaborador
-   email:tdofulado@gmail.com
-   password:123456
 
 ### Ajustes e melhorias
 
