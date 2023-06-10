@@ -39,43 +39,17 @@ export function Clientes() {
   }
 
   function clearClient() {
-    const clientName = document.getElementById("name") as HTMLInputElement;
-    const clientCNPJ = document.getElementById("CNPJ") as HTMLInputElement;
-    const clientWhatsapp = document.getElementById(
-      "whatsapp"
-    ) as HTMLInputElement;
-    const clienteContact = document.getElementById(
-      "contact"
-    ) as HTMLInputElement;
-    const clientEmail = document.getElementById("email") as HTMLInputElement;
-    const clientZipCode = document.getElementById(
-      "zipCode"
-    ) as HTMLInputElement;
-    const clientAddress = document.getElementById(
-      "address"
-    ) as HTMLInputElement;
-    const clientDistrict = document.getElementById(
-      "district"
-    ) as HTMLInputElement;
-    const clientNumber = document.getElementById("number") as HTMLInputElement;
-    const clientComplement = document.getElementById(
-      "complement"
-    ) as HTMLInputElement;
-    const clientReferencePoint = document.getElementById(
-      "referencePoint"
-    ) as HTMLInputElement;
-
-    clientName.value = "";
-    clientCNPJ.value = "";
-    clientWhatsapp.value = "";
-    clienteContact.value = "";
-    clientEmail.value = "";
-    clientZipCode.value = "";
-    clientAddress.value = "";
-    clientDistrict.value = "";
-    clientNumber.value = "";
-    clientComplement.value = "";
-    clientReferencePoint.value = "";
+    setName('')
+    setCNPJ('')
+    setNumberwhats('')
+    setNumbercontact('')
+    setEmail('')
+    setCep('')
+    setAddress('')
+    setDistrict('')
+    setNumber('')
+    setComplement('')
+    setReferencePoint('')
   }
 
   return (
@@ -97,6 +71,7 @@ export function Clientes() {
             id="name"
             placeholder="Brasil Bebnameas ltda."
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         </div>
         <div className="clientData">
@@ -108,6 +83,7 @@ export function Clientes() {
               id="CNPJ"
               placeholder="99.999.999/9999-99"
               onChange={(e) => setCNPJ(e.target.value)}
+              value={CNPJ}
             />
           </div>
           <div>
@@ -118,6 +94,7 @@ export function Clientes() {
               id="whatsapp"
               placeholder="(92)9999-9999"
               onChange={(e) => setNumberwhats(e.target.value)}
+              value={numberwhats}
             />
           </div>
           <div>
@@ -128,6 +105,7 @@ export function Clientes() {
               id="contact"
               placeholder="(92)9999-9999"
               onChange={(e) => setNumbercontact(e.target.value)}
+              value={numbercontact}
             />
           </div>
         </div>
@@ -140,6 +118,7 @@ export function Clientes() {
               id="email"
               placeholder="email@dominio.com.br"
               onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
           </div>
           <div>
@@ -150,6 +129,7 @@ export function Clientes() {
               id="zipCode"
               placeholder="CEP"
               onChange={(e) => setCep(e.target.value)}
+              value={cep}
             />
           </div>
         </div>
@@ -162,6 +142,7 @@ export function Clientes() {
               id="address"
               placeholder="Endereço"
               onChange={(e) => setAddress(e.target.value)}
+              value={address}
             />
           </div>
           <div>
@@ -172,6 +153,7 @@ export function Clientes() {
               id="district"
               placeholder="bairro"
               onChange={(e) => setDistrict(e.target.value)}
+              value={district}
             />
           </div>
           <div>
@@ -182,6 +164,7 @@ export function Clientes() {
               id="number"
               placeholder="543"
               onChange={(e) => setNumber(e.target.value)}
+              value={number}
             />
           </div>
         </div>
@@ -194,6 +177,7 @@ export function Clientes() {
               id="complement"
               placeholder="Galpão 9"
               onChange={(e) => setComplement(e.target.value)}
+              value={complement}
             />
           </div>
           <div>
@@ -204,6 +188,7 @@ export function Clientes() {
               id="referencePoint"
               placeholder="Próximo a bola da Suframa"
               onChange={(e) => setReferencePoint(e.target.value)}
+              value={referencePoint}
             />
           </div>
         </div>
