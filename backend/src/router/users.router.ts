@@ -32,7 +32,6 @@ router.get(
 );
 router.post(
   "/",
-  permissionMiddleware(["ADM"]),
   async (req: Request, res: Response) => {
     try {
       await UserService.create(req.body);
