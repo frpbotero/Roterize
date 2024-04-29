@@ -1,3 +1,4 @@
+import 'package:app/app/api/Helper.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,35 +9,91 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController loginController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  bool showPass = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListView(
-          children: [
-            SizedBox(
-              child: TextFormField(
-                controller: loginController,
-                decoration: const InputDecoration(hintText: "Login"),
-              ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: 50.0),
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              width: 350,
+              height: 500,
+              child: Card(
+                  child: Column(
+                children: [
+                  const SizedBox(
+                    child: Image(
+                      image: AssetImage("images/logo.png"),
+                      width: 250,
+                    ),
+                  ),
+                  const Text(
+                    "Roterize",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                  SizedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: TextFormField(
+                        controller: email,
+                        decoration: const InputDecoration(hintText: "Login"),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 350.0, // Defina uma largura específica
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: TextFormField(
+                        controller: password,
+                        obscureText: showPass,
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                showPass = !showPass;
+                              });
+                            },
+                            icon: showPass
+                                ? const Icon(Icons.key_off)
+                                : const Icon(Icons.key),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: OutlinedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue[900])),
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () async {
+                            var response = await HelperApi.loginUser(
+                                email.text, password.text);
+                            if (response.statusCode == 200) {
+                              Navigator.pushNamed(context, "/deliveryList");
+                            }
+                          },
+                        )),
+                  )
+                ],
+              )),
             ),
-            SizedBox(
-              child: TextFormField(
-                controller: passwordController,
-                decoration: const InputDecoration(hintText: "Password"),
-              ),
-            ),
-            SizedBox(
-                child: OutlinedButton(
-              child: const Text("Login"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/deliveryList');
-              },
-            ))
-          ],
+          ),
         ),
       ),
     );

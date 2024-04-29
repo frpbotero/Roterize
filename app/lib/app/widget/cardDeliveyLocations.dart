@@ -5,15 +5,31 @@ class CardDeliveryLocations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDelivered = false;
+
     return Card(
+      color: isDelivered ? Color.fromARGB(144, 244, 243, 243) : Colors.white,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text("CB Comercial"), Text("10 Crachas")],
+              children: [
+                Text(
+                  "CB Comercial",
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text("2 Volumes"),
+                SizedBox(
+                  height: 5,
+                ),
+                Text("Rua Franz Schubert, 840 - Flores")
+              ],
             ),
             IconButton(
                 onPressed: () {

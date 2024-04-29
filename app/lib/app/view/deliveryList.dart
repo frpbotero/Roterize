@@ -9,48 +9,70 @@ class DeliveryList extends StatefulWidget {
 }
 
 class _DeliveryListState extends State<DeliveryList> {
-  TextEditingController data = TextEditingController();
+  bool isSelect = false;
+  late DateTime data;
+
+  showDate() async {
+    data = (await showDatePicker(
+        context: context,
+        firstDate: DateTime(2022),
+        lastDate: DateTime(2030)))!;
+    print(data);
+    setState(() {
+      isSelect = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: const Text(
+        "Roterize",
+      )),
       body: ListView(
+        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: 200,
-                child: TextFormField(
-                  controller: data,
-                  decoration: const InputDecoration(hintText: "Data"),
-                ),
-              ),
-              OutlinedButton(onPressed: () {}, child: Text("Buscar"))
+                  width: 200,
+                  child: TextButton(
+                    child: isSelect
+                        ? Text(
+                            "${data.day} / ${data.month.round()} / ${data.year}")
+                        : const Text("Data"),
+                    onPressed: () {
+                      showDate();
+                    },
+                  )),
+              OutlinedButton(onPressed: () {}, child: const Text("Buscar"))
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: SizedBox(
-              height: 750,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations(),
-                    CardDeliveryLocations()
-                  ],
-                ),
+          const SizedBox(
+            height: 10,
+          ),
+          const SizedBox(
+            height: 750,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations(),
+                  CardDeliveryLocations()
+                ],
               ),
             ),
           )
