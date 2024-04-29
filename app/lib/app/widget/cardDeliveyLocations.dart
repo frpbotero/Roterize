@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 
 class CardDeliveryLocations extends StatelessWidget {
-  const CardDeliveryLocations({super.key});
+  final String company;
+  final String box;
+  final String addressDelivery;
+  final bool isDelivered;
+
+  const CardDeliveryLocations(
+      {super.key,
+      required this.company,
+      required this.box,
+      required this.addressDelivery,
+      required this.isDelivered});
 
   @override
   Widget build(BuildContext context) {
-    bool isDelivered = false;
-
     return Card(
       color: isDelivered ? Color.fromARGB(144, 244, 243, 243) : Colors.white,
       child: Padding(
@@ -14,21 +22,21 @@ class CardDeliveryLocations extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "CB Comercial",
-                  style: TextStyle(fontWeight: FontWeight.w700),
+                  company,
+                  style: const TextStyle(fontWeight: FontWeight.w700),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                Text("2 Volumes"),
-                SizedBox(
+                Text("$box Volumes"),
+                const SizedBox(
                   height: 5,
                 ),
-                Text("Rua Franz Schubert, 840 - Flores")
+                Text(addressDelivery)
               ],
             ),
             IconButton(

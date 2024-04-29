@@ -11,13 +11,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-  bool showPass = false;
+  bool showPass = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 50.0),
+          padding: EdgeInsets.only(top: 100.0),
           child: Align(
             alignment: Alignment.topCenter,
             child: SizedBox(
