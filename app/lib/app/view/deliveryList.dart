@@ -21,7 +21,6 @@ class _DeliveryListState extends State<DeliveryList> {
         context: context,
         firstDate: DateTime(2022),
         lastDate: DateTime(2030)))!;
-    print(data);
     setState(() {
       isSelect = true;
     });
@@ -50,9 +49,10 @@ class _DeliveryListState extends State<DeliveryList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-        "Roterize",
-      )),
+        title: const Text(
+          "Roterize",
+        ),
+      ),
       body: ListView(
         padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
         children: [
@@ -60,21 +60,23 @@ class _DeliveryListState extends State<DeliveryList> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                  width: 200,
-                  child: TextButton(
-                    child: isSelect
-                        ? Text(
-                            "${data.day} / ${data.month.round()} / ${data.year}")
-                        : const Text("Data"),
-                    onPressed: () {
-                      showDate();
-                    },
-                  )),
-              OutlinedButton(
+                width: 200,
+                child: TextButton(
+                  child: isSelect
+                      ? Text(
+                          "${data.day} / ${data.month.round()} / ${data.year}")
+                      : const Text("Data"),
                   onPressed: () {
-                    getDeliveries();
+                    showDate();
                   },
-                  child: const Text("Buscar"))
+                ),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  getDeliveries();
+                },
+                child: const Text("Buscar"),
+              )
             ],
           ),
           const SizedBox(
@@ -82,9 +84,7 @@ class _DeliveryListState extends State<DeliveryList> {
           ),
           SizedBox(
             height: 750,
-            child:
-                //  Text("Teste")
-                ListView(
+            child: ListView(
               children: deliveries.map((delivery) {
                 // Verifique se o delivery tem a propriedade 'client' e se 'client' é um mapa válido
                 if (delivery.containsKey('client') &&
@@ -96,19 +96,19 @@ class _DeliveryListState extends State<DeliveryList> {
                   String district = delivery['client']['district'] ?? '';
                   List products = delivery['deliveryList'];
                   int qtd = 0;
+                  String id = delivery['_id'];
                   for (Map product in products) {
                     int qtdProduct = product['qtd'];
                     qtd += qtdProduct;
                   }
-
                   bool isDelivered =
                       delivery['status'] == "Entregue" ? true : false;
                   return CardDeliveryLocations(
-                    company: name,
-                    addressDelivery: "$address - $number - $district",
-                    box: "$qtd",
-                    isDelivered: isDelivered,
-                  );
+                      company: name,
+                      addressDelivery: "$address - $number - $district",
+                      box: "$qtd",
+                      isDelivered: isDelivered,
+                      id: id);
                 } else {
                   return const Text(
                       'Aconteceu algo de errado, favor entrar em contato com suporte.');

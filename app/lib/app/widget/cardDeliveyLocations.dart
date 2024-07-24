@@ -5,13 +5,15 @@ class CardDeliveryLocations extends StatelessWidget {
   final String box;
   final String addressDelivery;
   final bool isDelivered;
+  final String id;
 
   const CardDeliveryLocations(
       {super.key,
       required this.company,
       required this.box,
       required this.addressDelivery,
-      required this.isDelivered});
+      required this.isDelivered,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +42,11 @@ class CardDeliveryLocations extends StatelessWidget {
               ],
             ),
             IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, "/delivery");
-                },
-                icon: const Icon(Icons.arrow_forward_ios_outlined))
+              onPressed: () {
+                Navigator.pushNamed(context, "/delivery", arguments: id);
+              },
+              icon: const Icon(Icons.arrow_forward_ios_outlined),
+            )
           ],
         ),
       ),
