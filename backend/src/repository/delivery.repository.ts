@@ -18,7 +18,7 @@ export const deliveryRepository = {
     return Delivery.deleteOne({ _id: id });
   },
   getByDate(date: string) {
-    const formattedDate = moment(date, "YYYY-MM-DD").format("YYYY-MM-DD");
+    const formattedDate = moment(date, "DD/MM/YYYY").format("DD/MM/YYYY");
     return Delivery.find({ createdAt: formattedDate });
   }
 };
