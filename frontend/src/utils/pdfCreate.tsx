@@ -23,24 +23,22 @@ export function generatePDF(delivery: any): void {
   doc.text(`Descrição: ${delivery.descriptionDelivery}`, 10, 40);
   doc.text("Responsável", 10, 220);
 
-  // Adicionar a lista de entrega como uma lista com marcadores
-  console.log(delivery.deliveryList);
-  const items: any = delivery.deliveryList.map(
-    (item: any, index: any) => `${item.product} - ${item.qtd}`
-  );
+  // Adicionar a lista de entrega como uma tabela
+  const items = delivery.deliveryList.map((item: any) => [item.product, item.qtd]);
   doc.setFontSize(12);
   doc.text("Itens:", 10, 60);
   autoTable(doc, {
     startY: 65,
-    head: [["Produto - Quantidade"]],
-    body: [items],
+    head: [["Produto", "Quantidade"]],
+    body: items,
   });
 
   // Configurar a fonte e tamanho do texto da informação de entrega
   doc.setFont("helvetica", "normal");
   doc.setFontSize(12);
-  // Adicionar a informação de entrega
-  doc.text(`Entregue ${delivery.date}`, 10, 210);
+  // Verificar se a data de entrega está definida e adicionar a informação de entrega
+  const deliveryDate = delivery.updatedAt ? `Entregue ${delivery.updatedAt}` : "Data de entrega não disponível";
+  doc.text(deliveryDate, 10, 210);
 
   // Converter a imagem base64 para um formato suportado (JPEG ou PNG)
   const img = new Image();
@@ -52,7 +50,7 @@ export function generatePDF(delivery: any): void {
     const ctx = canvas.getContext("2d");
     if (ctx) {
       ctx.drawImage(img, 0, 0);
-      const imageURL = canvas.toDataURL("image/png"); // ou "image/png" para PNG
+      const imageURL = canvas.toDataURL("image/png"); // ou "image/jpeg" para JPEG
 
       // Adicionar a imagem ao PDF como URL da imagem
       doc.addImage(imageURL, "PNG", 30, 230, 80, 50);

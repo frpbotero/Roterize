@@ -22,6 +22,10 @@ function update(id: string, body: Partial<IDelivery>) {
 function deleteDelivery(id: string) {
   return deliveryRepository.delete(id);
 }
+function getByDate(date: string) {
+  return deliveryRepository.getByDate(date);
+}
+
 
 export default {
   getAll,
@@ -29,4 +33,5 @@ export default {
   create,
   update,
   deleteDelivery,
+  getByDate
 };

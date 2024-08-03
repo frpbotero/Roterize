@@ -28,4 +28,5 @@ const deliverySchema = new Schema<IDelivery>({
   },
   updatedAt: { type: String, default: moment(new Date()).format("DD/MM/YYYY") },
 });
+
 export const Delivery = mongoose.model<IDelivery>("delivery", deliverySchema);

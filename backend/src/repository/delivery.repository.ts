@@ -1,4 +1,5 @@
 import { Delivery, IDelivery } from "../model/delivery.model";
+import moment from "moment/moment";
 
 export const deliveryRepository = {
   getAll() {
@@ -16,4 +17,8 @@ export const deliveryRepository = {
   delete(id: string) {
     return Delivery.deleteOne({ _id: id });
   },
+  getByDate(date: string) {
+    const formattedDate = moment(date, "DD/MM/YYYY").format("DD/MM/YYYY");
+    return Delivery.find({ createdAt: formattedDate });
+  }
 };

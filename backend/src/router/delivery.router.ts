@@ -18,6 +18,7 @@ router.get(
     res.status(200).send(deliveries);
   }
 );
+
 router.get(
   "/:id",
   permissionMiddleware(["ADM", "COLAB", "DELIVERY"]),
@@ -29,6 +30,24 @@ router.get(
     res.status(200).send(delivery);
   }
 );
+
+router.get(
+  "/date/:date",
+  permissionMiddleware(["ADM", "COLAB", "DELIVERY"]),
+  async (req: Request, res: Response) => {
+    try {
+      const date = req.params.date;
+      const deliveries = await DeliveryService.getByDate(date);
+      if (!deliveries || deliveries.length === 0) {
+        return res.status(404).send({ message: "Nenhum pedido encontrado para a data especificada!" });
+      }
+      res.status(200).send(deliveries);
+    } catch (error: any) {
+      res.status(400).send({ message: error.message });
+    }
+  }
+);
+
 router.post(
   "/",
   permissionMiddleware(["ADM", "COLAB", "DELIVERY"]),
@@ -41,6 +60,7 @@ router.post(
     }
   }
 );
+
 router.put(
   "/:id",
   permissionMiddleware(["ADM", "COLAB", "DELIVERY"]),
@@ -48,7 +68,7 @@ router.put(
     try {
       const delivery = await DeliveryService.getByID(req.params.id);
       if (!delivery) {
-        return res.status(404).send({ message: "Pedido não entrado!" });
+        return res.status(404).send({ message: "Pedido não encontrado!" });
       }
       await DeliveryService.update(req.params.id, req.body);
       res.status(200).send({ message: "Pedido atualizado com sucesso!" });
@@ -57,6 +77,7 @@ router.put(
     }
   }
 );
+
 router.delete(
   "/:id",
   permissionMiddleware(["ADM"]),
@@ -64,7 +85,7 @@ router.delete(
     try {
       const delivery = await DeliveryService.getByID(req.params.id);
       if (!delivery) {
-        return res.status(404).send({ message: "Pedido não entrado!" });
+        return res.status(404).send({ message: "Pedido não encontrado!" });
       }
       await DeliveryService.deleteDelivery(req.params.id);
       res.status(200).send({ message: "Pedido excluído com sucesso!" });

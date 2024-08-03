@@ -65,12 +65,12 @@ export function Header() {
                 onClick={() => setActiveLink("/order")}>
                 Pedidos
               </Link>
-              <Link
+              {/* <Link
                 to="/delivery"
                 className={activeLink === "/delivery" ? "active" : ""}
                 onClick={() => setActiveLink("/delivery")}>
                 Rota
-              </Link>
+              </Link> */}
               <Link
                 to="/reports"
                 className={activeLink === "/reports" ? "active" : ""}
