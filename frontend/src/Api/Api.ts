@@ -61,8 +61,8 @@ export const apiService = {
     readById: function (id: any) {
       return api.get<any>("/delivery/" + id);
     },
-    readByDate: function (body: any) {
-      return api.post("/delivery/date/", body);
+    readByDate: function (date: string) {
+      return api.get<deliveryType[]>(`/delivery/date/${date}`);
     },
     deleteURL: function (id: any) {
       return api.delete<any>("/delivery/" + id);
