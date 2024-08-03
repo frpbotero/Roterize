@@ -18,8 +18,7 @@ export const deliveryRepository = {
     return Delivery.deleteOne({ _id: id });
   },
   getByDate(date: string) {
-    const start = moment(date, "YYYY-MM-DD").startOf('day').toDate();
-    const end = moment(date, "YYYY-MM-DD").endOf('day').toDate();
-    return Delivery.find({ createdAt: { $gte: start, $lte: end } });
-  },
+    const formattedDate = moment(date, "YYYY-MM-DD").format("YYYY-MM-DD");
+    return Delivery.find({ createdAt: formattedDate });
+  }
 };
