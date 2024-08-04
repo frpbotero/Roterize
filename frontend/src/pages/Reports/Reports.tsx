@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { apiService } from "../../Api/Api";
 import { CardReport } from "../../components/CardReport/CardReport";
 import { deliveryType, ErrorResponse } from "../../types/types";
-import carregando from "../../assets/carregando.gif";
 import { dateContext } from "../../context/DateContext";
 import moment from "moment";
 import "./Reports.css"
