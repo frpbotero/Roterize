@@ -11,6 +11,7 @@ type CardProps = {
   id: any;
   deliveryList: any;
   status: string;
+  className?: string; // Adicione esta linha
 };
 
 export function CardReport({
@@ -20,14 +21,14 @@ export function CardReport({
   id,
   deliveryList,
   status,
+  className, // Receba a classe
 }: CardProps) {
   const navigate = useNavigate();
 
   const card = document.getElementById("card");
 
-  //Função para atualizar o estado da entrega
   function saveLocalStorageID() {
-    if (status == "Entregue") {
+    if (status === "Entregue") {
       localStorage.setItem("idDelivery", id);
       card?.classList.add(status);
       const idTarget: any = localStorage.getItem("idDelivery");
@@ -38,7 +39,7 @@ export function CardReport({
   }
 
   return (
-    <S.containerCard>
+    <S.containerCard id="card" className={className}> {/* Use a className */}
       <div className={`${status}`}>
         <S.headerCard>
           <button onClick={saveLocalStorageID}>
@@ -49,7 +50,7 @@ export function CardReport({
             <h5>{deliveryList}</h5>
           </div>
         </S.headerCard>
-        <p>{address} </p>
+        <p>{address}</p>
       </div>
     </S.containerCard>
   );

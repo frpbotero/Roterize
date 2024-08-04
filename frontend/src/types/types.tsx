@@ -41,3 +41,9 @@ export interface IUser {
   email: string;
   password: string;
 }
+
+export type ErrorResponse = {
+  message: string;
+};
+
+export type ApiResponse = deliveryType[] | ErrorResponse;

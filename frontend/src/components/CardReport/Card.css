@@ -1,31 +1,54 @@
-.containerCard{
-    display: flex;
-    width:  25rem;
-    flex-direction: column;
-    background: #EDF2F7;
-    padding: 0 0.5rem;
-    border-radius: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.containerCard button{
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-.headerCard{
+/* styles.css */
+.containerCard {
+    background: #fff; /* White background for the card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding inside the card */
+    margin: 15px; /* Margin around the card */
+    width: 300px; /* Fixed width */
+    max-width: 100%; /* Responsive width */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  }
+  
+  .containerCard:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  }
+  
+  .headerCard {
     display: flex;
     justify-content: space-between;
-}
-.package{
-    display: flex;
-    justify-content: center;
     align-items: center;
-    gap:0.5rem
-
-}
-@media only screen and (max-width: 480px) {
-    .containerCard{
-        width:  15rem;
-    }
+    border-bottom: 1px solid #ddd; /* Divider line */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
+  
+  .headerCard button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em; /* Larger font size */
+    color: #333; /* Dark text color */
+    font-weight: bold;
+  }
+  
+  .headerCard button h3 {
+    margin: 0;
+  }
+  
+  .package {
+    display: flex;
+    align-items: center;
+  }
+  
+  .package h5 {
+    margin: 0 0 0 10px; /* Margin between icon and text */
+    color: #555; /* Slightly lighter color */
+  }
+  
+  .containerCard p {
+    margin: 0;
+    color: #666; /* Subtle color for the address */
+  }
+  
