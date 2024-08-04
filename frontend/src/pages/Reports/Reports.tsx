@@ -5,7 +5,7 @@ import { deliveryType, ErrorResponse } from "../../types/types";
 import carregando from "../../assets/carregando.gif";
 import { dateContext } from "../../context/DateContext";
 import moment from "moment";
-import "./Reports.css"; // Importe o arquivo CSS
+import './Reports.css';
 
 export function Reports() {
   const [delivery, setDelivery] = useState<deliveryType[]>([]);
