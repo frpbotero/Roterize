@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./Clientes.css";
 import { apiService } from "../../Api/Api";
+import "./Order.css"
 import { clientsType, productsType } from "../../types/types";
 
 interface Payload {
@@ -16,14 +16,14 @@ interface DeliveryList {
 }
 
 export function Order() {
-  //variaveis que compõe o payload
-  const [product, setProduct] = useState<string>();
+  // Variáveis que compõem o payload
+  const [product, setProduct] = useState<string>("");
   const [client, setClient] = useState<clientsType | any>({});
-  const [qtd, setQtd] = useState<Number>(1);
+  const [qtd, setQtd] = useState<number>(1);
   const [descriptionLoad, setDescriptionLoad] = useState<string>("");
   const [delivery, setDelivery] = useState<DeliveryList[]>([]);
 
-  //Variaiveis que armazenam as informações do DB
+  // Variáveis que armazenam as informações do DB
   const [clientDB, setClientDB] = useState<clientsType | any>();
   const [productsBD, setProductsBD] = useState<productsType[] | any>([]);
 
@@ -37,6 +37,7 @@ export function Order() {
       .then((response) => setProductsBD(response.data))
       .catch((error) => console.log(error));
   }
+
   useEffect(() => {
     showClientsProducts();
   }, []);
@@ -77,9 +78,25 @@ export function Order() {
       })
       .catch((error) => console.log(error));
 
-    productSelect.value = "";
-    QtdProduct.value = "";
-    description.value = "";
+    // Clear fields after saving
+    handleCancel();
+  }
+
+  function handleCancel() {
+    setClient({});
+    setProduct("");
+    setQtd(1);
+    setDescriptionLoad("");
+    setDelivery([]);
+
+    // Clear the values of input fields
+    const productSelect = document.getElementById("productSelect") as HTMLSelectElement;
+    const qtdProduct = document.getElementById("quantidade") as HTMLInputElement;
+    const descriptionTextArea = document.getElementById("deliverDescription") as HTMLTextAreaElement;
+
+    if (productSelect) productSelect.value = "";
+    if (qtdProduct) qtdProduct.value = "";
+    if (descriptionTextArea) descriptionTextArea.value = "";
   }
 
   return (
@@ -88,20 +105,19 @@ export function Order() {
         <div className="clientName">
           <label htmlFor="name">Nome Cliente</label>
           <select
-            id="clientName"
             onChange={(e) => setClient(JSON.parse(e.target.value))}>
             <option>Selecione um cliente</option>
             {clientDB
               ? clientDB.map((cliente: any) => (
-                  <option key={cliente._id} value={JSON.stringify(cliente)}>
-                    {cliente.name}
-                  </option>
-                ))
+                <option key={cliente._id} value={JSON.stringify(cliente)}>
+                  {cliente.name}
+                </option>
+              ))
               : "Carregando..."}
           </select>
         </div>
         <div className="deliveryData">
-          <div>
+          <div id="ptd">
             <label htmlFor="produto">Produto</label>
             <select
               id="productSelect"
@@ -109,22 +125,22 @@ export function Order() {
               <option>Selecione um produto</option>
               {productsBD
                 ? productsBD.map((product: any) => (
-                    <option key={product._id} value={product.name}>
-                      {product.name}
-                    </option>
-                  ))
+                  <option key={product._id} value={product.name}>
+                    {product.name}
+                  </option>
+                ))
                 : "Carregando..."}
             </select>
+          </div>
+          <div id="qtd">
             <label htmlFor="quantidade">Quantidade</label>
             <input
               type="number"
               id="quantidade"
               onChange={(e) => setQtd(Number(e.target.value))}
             />
-            <button onClick={productAdd}>Adicionar</button>
           </div>
         </div>
-        <div id="deliveryInfo"></div>
         <div className="deliveryDescription">
           <textarea
             id="deliverDescription"
@@ -133,7 +149,7 @@ export function Order() {
         </div>
 
         <div className="buttonsClient">
-          <button>Cancelar</button>
+          <button onClick={handleCancel}>Cancelar</button>
           <button onClick={saveDelivery}>Salvar</button>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import 'dart:convert';
-
-import 'package:app/app/api/Helper.dart';
-import 'package:app/app/models/delivery_model.dart';
+import 'package:Roterize/app/api/Helper.dart';
+import 'package:Roterize/app/models/delivery_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 import 'dart:ui' as ui;
 
@@ -19,6 +19,7 @@ class _DeliveryState extends State<Delivery> {
   final GlobalKey<SfSignaturePadState> signatureGlobalKey = GlobalKey();
   String id = "";
   String company = "";
+  String description = "";
   List<DeliveryItemModel> items = [];
   String? signature; // Variável para armazenar a assinatura em Base64
   DeliveryModel? delivery; // Alterado para ser nullable
@@ -70,7 +71,62 @@ class _DeliveryState extends State<Delivery> {
       delivery = deliveryData;
       company = delivery!.client.name;
       items = delivery!.deliveryList;
+      description = delivery!.descriptionDelivery;
     });
+  }
+
+  void _setOrientationLandscape() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+  }
+
+  void _setOrientationPortrait() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
+
+  Future<void> _updateDelivery() async {
+    if (delivery != null) {
+      final updatedDelivery = delivery!.update(
+        status: "Entregue",
+        signature: signature,
+      );
+      try {
+        final response = await HelperApi.putDelivery(id, updatedDelivery);
+        if (response.statusCode == 200) {
+          Navigator.pushNamed(context, "/deliveryList");
+        } else {
+          _showErrorDialog(
+              'Falha ao salvar. Código de erro: ${response.statusCode}');
+        }
+      } catch (e) {
+        _showErrorDialog('Erro ao salvar: ${e.toString()}');
+      }
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Erro'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -85,85 +141,114 @@ class _DeliveryState extends State<Delivery> {
       );
     }
 
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Scaffold(
       appBar: AppBar(title: const Text("Delivery")),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              company,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            const Divider(),
-            ...items.map((DeliveryItemModel item) => Text(
-                  '${item.qtd} x ${item.product}',
-                  style: const TextStyle(fontSize: 16),
-                )),
-            if (delivery!.status == "EmRota") ...[
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                ),
-                child: SfSignaturePad(
-                  key: signatureGlobalKey,
-                  backgroundColor: Colors.white,
-                  strokeColor: Colors.black,
-                  minimumStrokeWidth: 1.0,
-                  maximumStrokeWidth: 4.0,
-                ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                company,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
-            ] else if (delivery!.signature != null) ...[
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                ),
-                child: Image.memory(
-                  base64Decode(delivery!.signature!
-                      .replaceFirst('data:image/png;base64,', '')),
-                  fit: BoxFit.cover,
-                ),
+              const Divider(),
+              const Text(
+                "Itens",
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
               ),
-            ],
-            const SizedBox(height: 10),
-            if (delivery!.status == "EmRota") ...[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  TextButton(
-                    onPressed: _handleSaveButtonPressed,
-                    child: const Text('Assinar'),
-                  ),
-                  TextButton(
-                    onPressed: _handleClearButtonPressed,
-                    child: const Text('Limpar'),
-                  ),
-                ],
-              ),
+              ...items.map((DeliveryItemModel item) => Text(
+                    '${item.qtd} x ${item.product}',
+                    style: const TextStyle(fontSize: 16),
+                  )),
               const SizedBox(height: 10),
-            ],
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (delivery != null) {
-                    // Atualiza o status e assinatura
-                    final updatedDelivery = delivery!.update(
-                      status: "Entregue",
-                      signature: signature,
-                    );
-                    HelperApi.putDelivery(id, updatedDelivery);
-                  }
-                },
-                child: const Text(
-                  "Salvar",
-                  style: TextStyle(fontSize: 20),
+              const Text(
+                "Observação",
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+              ),
+              Text(
+                description,
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 20),
+              if (delivery!.status == "EmRota") ...[
+                Stack(
+                  children: [
+                    Container(
+                      height: isLandscape
+                          ? MediaQuery.of(context).size.height * 0.7
+                          : 150, // Ajusta a altura da área de assinatura
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                      ),
+                      child: SfSignaturePad(
+                        key: signatureGlobalKey,
+                        backgroundColor: Colors.white,
+                        strokeColor: Colors.black,
+                        minimumStrokeWidth: 1.0,
+                        maximumStrokeWidth: 4.0,
+                      ),
+                    ),
+                    Positioned(
+                      top: 5,
+                      right: 5,
+                      child: IconButton(
+                        icon: const Icon(Icons.screen_rotation),
+                        onPressed: isLandscape
+                            ? _setOrientationPortrait
+                            : _setOrientationLandscape,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: _handleSaveButtonPressed,
+                      child: const Text('Assinar'),
+                    ),
+                    TextButton(
+                      onPressed: _handleClearButtonPressed,
+                      child: const Text('Limpar'),
+                    ),
+                  ],
+                ),
+              ] else if (delivery!.signature != null) ...[
+                Container(
+                  height: isLandscape
+                      ? MediaQuery.of(context).size.height * 0.7
+                      : 150, // Ajusta a altura da área de exibição da assinatura
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Image.memory(
+                    base64Decode(delivery!.signature!
+                        .replaceFirst('data:image/png;base64,', '')),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+              const SizedBox(height: 10),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: _updateDelivery,
+                  child: const Text(
+                    "Salvar",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

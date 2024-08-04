@@ -1,14 +1,11 @@
 import { useState, useContext } from "react";
 import { apiService } from "../../Api/Api";
-
-import Modal from "react-modal";
-import "./Login.css";
 import { useNavigate } from "react-router-dom";
-
+import styles from "./login.module.css";
 import adm from "../../assets/adm.png";
-
 import user from "../../assets/user.svg";
 import pass from "../../assets/pass.svg";
+import login from "../../assets/login.svg";
 import { IUser } from "../../types/types";
 import { userContext } from "../../context/userContext";
 
@@ -25,11 +22,11 @@ const customStyles = {
 };
 
 export function Login() {
-  const [modaIsOpen, setIsOpen] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { setUser } = useContext(userContext);
+  const [error, setError] = useState<string>("");
 
   const payload: IUser = {
     email: email,
@@ -37,14 +34,13 @@ export function Login() {
   };
 
   const navigate = useNavigate();
-  function openModal() {
-    setIsOpen(true);
-  }
-  function CloseModal() {
-    setIsOpen(false);
-  }
+
+
 
   function loginADM() {
+    setLoading(true);
+    setError("");
+
     apiService.auth
       .loginUser(payload)
       .then((response) => {
@@ -53,49 +49,43 @@ export function Login() {
         setUser(data.token);
         navigate("/product");
       })
-      .catch((error) => console.log(error.response.data.message));
-  }
-  function loginDelivery() {
-    localStorage.setItem("User", "Delivery");
-    navigate("/delivery");
+      .catch((error) => {
+        setError(error.response.data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   return (
-    <div>
-      <div className="containerLogin">
-        <button onClick={openModal}>ADM</button>
-        {/* <button onClick={openModalDelivery}>Delivery</button> */}
-      </div>
-      <div>
-        <Modal
-          isOpen={modaIsOpen}
-          onRequestClose={CloseModal}
-          style={customStyles}>
-          <div className="containerForm">
-            <img className="imageLogin" src={adm} alt="" />
-            <h3>Login</h3>
-            <p>Faça login em sua conta</p>
-            <div className="contentForm">
-              <div>
-                <img src={user} alt="" />{" "}
-                <input
-                  type="text"
-                  placeholder="Login"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <img src={pass} alt="" />{" "}
-                <input
-                  type="password"
-                  placeholder="Senha"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <button onClick={loginADM}>Login</button>
-            </div>
+    <div className={styles.containerLogin}>
+      <div className={styles["login-container"]}>
+        <div className={styles["left-panel"]}>
+          <h1>Bem-vindo ao Roterize</h1>
+          <div className={styles["input-group"]}>
+            <img src={user} alt="User Icon" />
+            <input
+              type="text"
+              placeholder="Username"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
-        </Modal>
+          <div className={styles["input-group"]}>
+            <img src={pass} alt="Password Icon" />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button onClick={loginADM} disabled={loading}>
+            {loading ? "Loading..." : "Submit"}
+          </button>
+          {error && <p className={styles["error-message"]}>{error}</p>}
+        </div>
+        <div className={styles["right-panel"]}>
+          <img src={login} className={styles.imageLogin} alt="Welcome" />
+        </div>
       </div>
     </div>
   );

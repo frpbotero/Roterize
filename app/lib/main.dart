@@ -1,5 +1,5 @@
-import 'package:app/app/api/Helper.dart';
-import 'package:app/app/appWidget.dart';
+import 'package:Roterize/app/api/Helper.dart';
+import 'package:Roterize/app/appWidget.dart';
 import 'package:flutter/material.dart';
 
 void main() {

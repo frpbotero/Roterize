@@ -6,6 +6,7 @@ class CardDeliveryLocations extends StatelessWidget {
   final String addressDelivery;
   final bool isDelivered;
   final String id;
+  final String description;
 
   const CardDeliveryLocations(
       {super.key,
@@ -13,7 +14,8 @@ class CardDeliveryLocations extends StatelessWidget {
       required this.box,
       required this.addressDelivery,
       required this.isDelivered,
-      required this.id});
+      required this.id,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {

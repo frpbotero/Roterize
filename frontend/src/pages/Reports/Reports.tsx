@@ -2,29 +2,24 @@ import { useContext, useEffect, useState } from "react";
 import { apiService } from "../../Api/Api";
 import { CardReport } from "../../components/CardReport/CardReport";
 import { deliveryType, ErrorResponse } from "../../types/types";
-import { dateContext } from "../../context/DateContext";
 import moment from "moment";
-import "./Reports.css"
+import "./Reports.css";
 
 export function Reports() {
   const [delivery, setDelivery] = useState<deliveryType[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { date, setDate } = useContext(dateContext);
   const [searchDate, setSearchDate] = useState<string>(moment().format("YYYY-MM-DD"));
 
   async function showDeliveries(date: string) {
     const formattedDate = moment(date).format("DD-MM-YYYY");
     try {
-      console.log(`Buscando entregas para a data: ${formattedDate}`);
       const response = await apiService.delivery.readByDate(formattedDate);
-
 
       if (response.data && typeof response.data === 'object' && 'message' in response.data) {
         const errorResponse = response.data as ErrorResponse;
         setErrorMessage(errorResponse.message);
         setDelivery([]);
       } else {
-
         const deliveries = response.data as deliveryType[];
         const sortedDelivery = deliveries.sort(
           (a: deliveryType, b: deliveryType) => {
@@ -41,7 +36,7 @@ export function Reports() {
       }
     } catch (e) {
       console.log("Erro ao buscar entregas:", e);
-      setErrorMessage(errorMessage);
+      setErrorMessage("Erro ao buscar entregas. Tente novamente mais tarde.");
       setDelivery([]);
     }
   }
@@ -78,8 +73,8 @@ export function Reports() {
             <p>Nenhuma entrega encontrada para a data selecionada.</p>
           </div>
         ) : (
-          delivery.map((order, index) => (
-            <div key={`${order._id}${index}`} className="delivery-item">
+          delivery.map((order) => (
+            <div key={order._id} className="delivery-item">
               <CardReport
                 address={`${order.client.address}, ${order.client.number} - ${order.client.district}`}
                 name={order.client.name}

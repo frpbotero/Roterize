@@ -1,115 +1,114 @@
-.productContainer{
+.productContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:1em
+    gap: 1em;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    width: 50vw;
 }
-.hidden{
+
+.busca,
+.cadastro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 1em;
+}
+
+input[type="text"],
+textarea {
+    width: 95%;
+    padding: 10px;
+    align-items: center;
+    margin-top: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #d32f2f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #b71c1c;
+}
+
+.formContainer {
+    display: flex;
+    gap: 2em;
+    width: 50vw;
+}
+
+.modal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: #ffeaea;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+    /* Ajuste para garantir que a altura seja adequada ao conteúdo */
+    box-sizing: border-box;
+}
+
+.preview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+    /* Ajuste para garantir que a altura seja adequada ao conteúdo */
+    box-sizing: border-box;
+}
+
+.previewImage img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.previewDetails {
+    text-align: center;
+}
+
+.hidden {
     display: none;
 }
-.modal{
+
+.buttonsProduct {
     display: flex;
-    flex-direction: column;
-    gap:1em
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
-.inputClient{
-    display: flex;  
-    height: 2em;
-    background: red;
-    align-items: center;
-}
-.inputClient>label{
-    width: 6em;
-}
-.inputClient>input{
-    border: none;
-    background: transparent;
-}
-
-
-.productName>input{
-    padding-left: 0.5em;
-    height: 1.5em;
-    font-size: large;
-    border-radius: 0.5em;
-
+.buttonsProduct button {
+    width: 45%;
 }
 
 .productName,
-.productData{
+.productData {
     display: flex;
     flex-direction: column;
 }
+
 .productName>label,
-.productData>label{
-    padding: 0 0.5em;
-    font-size: small;
+.productData>label {
+    margin-bottom: 5px;
+    color: #333;
 }
-.productData>textarea{
-    padding-left: 0.5em;
-    height: 5em;
-    border-radius: 0.5em;
-    
-}
-
-
-.buttonsProduct{
-    display: flex;
-    justify-content: center;
-    margin-top: 3em;
-    gap:3em
-    
-}
-.buttonsProduct button{
-    width: 10rem;
-    border-radius: 2em;
-    height: 3em;
-    border: none;
-    font-size: medium;
-    font-weight: bold;
-    cursor: pointer;
-}
-.buttonsProduct button:first-child{
-    
-    border:1px solid red;
-    color: red;
-    transition: all 0.2s;
-}
-.buttonsProduct button:last-child{
-    border: 1px solid green;
-    color:green;
-    transition: all 0.2s;
-}
-.buttonsProduct button:first-child:hover{
-    background: red;
-    color: white;
-    transition: all 0.2s;
-}
-.buttonsProduct button:last-child:hover{
-    background: green;
-    color: white;
-    transition: all 0.2s;
-}
-@media (max-width:700px) {
-    .modal{
-        width: 70%;
-    }
-    #email{
-        width: auto;
-    }
-    #referencePoint{
-        width: auto;
-    }
-    #complement{
-        width: auto;
-    }
-    .clientData,
-.clientInfo,
-.clientCode,
-.clientAddress,
-.clientSpecification{
-    display: flex;
-    flex-direction: column;
-}
-}   

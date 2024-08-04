@@ -1,0 +1,69 @@
+.containerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:1rem
+}
+
+.logoImage {
+    width: 4rem;
+    height: 4rem;
+}
+
+.navLinks {
+    display: flex;
+    gap: 1rem;
+}
+
+.navLinks a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.navLinks a:hover,
+.navLinks a.active {
+    color: red;
+    border-bottom: 2px solid red;
+}
+
+.button {
+    height: 2rem;
+    padding: 0 1rem;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+}
+
+.button:hover {
+    background: darkred;
+}
+
+.buttonLogout {
+    background: white;
+    color: red;
+    border: 1px solid red;
+}
+
+.buttonLogout:hover {
+    background: red;
+    color: white;
+}
+
+.contentOptionHeader{
+    display: flex;
+    gap:1rem
+}
+
+.contentOptionHeader a{
+    text-decoration: none;
+    
+}

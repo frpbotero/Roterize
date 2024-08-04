@@ -1,5 +1,5 @@
-name: app
-description: "A new Flutter project."
+name: Roterize
+description: "The aplication to delivery."
 publish_to: "none"
 version: 0.1.0
 
@@ -12,6 +12,7 @@ dependencies:
   signature: ^5.4.1
   syncfusion_flutter_signaturepad: ^25.1.39
   shared_preferences: ^2.2.2
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:

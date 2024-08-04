@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:app/app/models/delivery_model.dart';
-import 'package:app/app/provider/user.provider.dart';
+import 'package:Roterize/app/models/delivery_model.dart';
+import 'package:Roterize/app/provider/user.provider.dart';
 import 'package:http/http.dart' as http;
 
 class HelperApi {
@@ -23,20 +23,24 @@ class HelperApi {
     return response;
   }
 
-  static getRoute() async {
+  static Future<List<dynamic>> getRoute(String date) async {
     String? token = await LocalStorage.getAccessToken();
 
     var response = await http.get(
-      Uri.parse("$addressApi/delivery"),
+      Uri.parse("$addressApi/delivery/date/$date"),
       headers: {
         "Authorization": "Bearer $token",
         "Content-Type": "application/json"
       },
     );
+    print("AQUI ${response.body}");
+    var decodedResponse = jsonDecode(response.body);
 
-    List<dynamic> responseList = jsonDecode(response.body);
-
-    return responseList;
+    if (decodedResponse is List) {
+      return decodedResponse;
+    } else {
+      return decodedResponse = [];
+    }
   }
 
   static getDelivery(String id) async {

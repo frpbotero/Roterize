@@ -1,0 +1,33 @@
+/* Notification.css */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px; /* Aumente a largura conforme necessário */
+    background-color: #f8d7da; /* Cor de fundo para erro */
+    color: #721c24; /* Cor do texto */
+    border: 1px solid #f5c6cb; /* Borda */
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+  }
+  
+  .notification p {
+    margin: 0;
+    flex: 1; /* Permite que o texto ocupe o máximo de espaço disponível */
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #721c24;
+    cursor: pointer;
+    margin-left: 15px;
+    width:50px
+  }
+  

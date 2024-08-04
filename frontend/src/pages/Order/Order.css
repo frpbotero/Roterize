@@ -1,0 +1,76 @@
+/* Estilização geral do container da página de pedidos */
+.containerDelivery {
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 50vw
+}
+
+/* Estilização do modal de pedidos */
+.modal {
+    /* background-color: #fff; */
+    width: 100%;
+}
+
+/* Estilização para as seções de cliente e dados de entrega */
+.clientName,
+.deliveryData,
+.deliveryDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+/* Estilização dos campos de seleção e input */
+select,
+select,
+deliveryData>input[type="number"],
+deliveryDescription.textarea {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    width: 100%;
+    background: transparent;
+}
+
+/* Estilização do botão */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #d32f2f;
+    /* Cor vermelha */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c62828;
+    /* Vermelho escuro */
+}
+
+/* Estilização da área de informações de entrega */
+#deliveryInfo {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Estilização para a label dos campos de entrada */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.buttonsClient {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}

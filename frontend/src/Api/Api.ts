@@ -2,6 +2,7 @@ import axios from "axios";
 import { IUser, clientsType, deliveryType, productsType } from "../types/types";
 
 const token = localStorage.getItem("user");
+console.log("Token:", token); // Verifica o token no console
 
 const api = axios.create({
   baseURL: "https://roterize.onrender.com",
@@ -10,6 +11,7 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
 export const apiService = {
   clients: {
     createURL: function (body: clientsType) {
